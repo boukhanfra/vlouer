@@ -1,0 +1,13 @@
+go_daddy_user:
+    resource: GoDaddy\UserBundle\Controller\UserController
+    type:     annotation
+    prefix:   /user
+
+go_daddy_index:
+    resource: GoDaddy\IndexBundle\Controller\IndexController
+    type:     annotation
+    prefix:   /
+
+#routing du module fosuer
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
