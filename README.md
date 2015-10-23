@@ -1,4 +1,8 @@
-GoDaddy
+GsmLot
 =======
 
-A Symfony project created on October 19, 2015, 12:05 am.
+The GsmLot web plateform:
+
+Contributors: a.boukhanfra, nizar.ibaline
+
+Created On : 23 October 2015 at 20:36
