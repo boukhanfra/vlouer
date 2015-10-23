@@ -1,10 +1,25 @@
-go_daddy_user:
-    resource: GoDaddy\UserBundle\Controller\UserController
+gsm_lot_user:
+    resource: "@GsmLotUserBundle/Controller/"
     type:     annotation
-    prefix:   /user
+    prefix:   /
 
-go_daddy_index:
-    resource: GoDaddy\IndexBundle\Controller\IndexController
+gsm_lot_subscription:
+    resource: "@GsmLotSubscriptionBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+gsm_lot_product:
+    resource: "@GsmLotProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+gsm_lot_mail_box:
+    resource: "@GsmLotMailBoxBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+gsm_lot_trader:
+    resource: "@GsmLotTraderBundle/Controller/"
     type:     annotation
     prefix:   /
 

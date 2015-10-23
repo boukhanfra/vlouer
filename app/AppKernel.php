@@ -17,8 +17,11 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         	new FOS\UserBundle\FOSUserBundle(),
-            new GoDaddy\IndexBundle\GoDaddyIndexBundle(),
-            new GoDaddy\UserBundle\GoDaddyUserBundle(),
+            new GsmLot\TraderBundle\GsmLotTraderBundle(),
+            new GsmLot\MailBoxBundle\GsmLotMailBoxBundle(),
+            new GsmLot\ProductBundle\GsmLotProductBundle(),
+            new GsmLot\SubscriptionBundle\GsmLotSubscriptionBundle(),
+            new GsmLot\UserBundle\GsmLotUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

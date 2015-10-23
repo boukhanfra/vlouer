@@ -11,7 +11,7 @@ parameters:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: GoDaddy\UserBundle\Entity\User
+    user_class: GsmLot\UserBundle\Entity\User
 
 framework:
     #esi:             ~
