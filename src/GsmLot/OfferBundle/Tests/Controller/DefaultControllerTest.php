@@ -1,6 +1,6 @@
 <?php
 
-namespace GsmLot\ProductBundle\Tests\Controller;
+namespace GsmLot\OfferBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

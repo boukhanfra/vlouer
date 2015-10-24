@@ -1,21 +1,22 @@
 <?php
 
-namespace GsmLot\TraderBundle\Entity;
+namespace GsmLot\OfferBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * City
+ * DeviceType
  *
- * @ORM\Table(name="city")
+ * @ORM\Table()
  * @ORM\Entity
  */
-class City
+class DeviceType
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="city_id", type="integer")
+     * @ORM\Column(name="type_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,20 +25,22 @@ class City
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 
-    /**
-     * @var Country
-     * 
-     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Country",inversedBy="cities")
-     * @ORM\JoinColumn(name="country_id",referencedColumnName="country_id")
-     * 
-     */
-    protected $country;
-    
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="GsmLot\OfferBundle\Entity\Device", mappedBy="type")
+     */
+    protected $devices;
+    
+    public function __construct()
+    {
+    	$this->devices = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -53,13 +56,10 @@ class City
      *
      * @param string $name
      *
-     * @return City
      */
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -71,5 +71,15 @@ class City
     {
         return $this->name;
     }
+
    
+    /**
+     * Get devices
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDevices()
+    {
+        return $this->devices;
+    }
 }

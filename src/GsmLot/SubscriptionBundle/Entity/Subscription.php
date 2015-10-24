@@ -73,8 +73,8 @@ class Subscription
 
     
     /**
-     * @ORM\ManyToOne(targetEntity="Trader", inversedBy="subscriptions")
-     * @ORM\JoinColumn(name="traderId", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader", inversedBy="subscriptions")
+     * @ORM\JoinColumn(name="trader_id", referencedColumnName="trader_id")
      */
     protected $trader;
 

@@ -1,27 +1,27 @@
 gsm_lot_user:
     resource: "@GsmLotUserBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /user
 
 gsm_lot_subscription:
     resource: "@GsmLotSubscriptionBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /subscription
 
 gsm_lot_product:
-    resource: "@GsmLotProductBundle/Controller/"
+    resource: "@GsmLotOfferBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /offer
 
 gsm_lot_mail_box:
     resource: "@GsmLotMailBoxBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /mailbox
 
 gsm_lot_trader:
     resource: "@GsmLotTraderBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /trader
 
 #routing du module fosuer
 fos_user:

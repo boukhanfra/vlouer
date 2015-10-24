@@ -3,7 +3,6 @@
 namespace GsmLot\TraderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * country
@@ -34,10 +33,9 @@ class Country
      * 
      * @var City
      * 
-     * @ORM\OneToMany(targetEntity="GsmLot\TraderBundle\Entity\City")
-     * @JoinColumn(name="city_id",referencedColumnName="city_id")
+     * @ORM\OneToMany(targetEntity="GsmLot\TraderBundle\Entity\City",mappedBy="country")
      */
-    private $cities;
+    protected $cities;
    
     
     /**

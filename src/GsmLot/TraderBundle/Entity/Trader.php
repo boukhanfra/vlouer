@@ -4,10 +4,10 @@ namespace GsmLot\TraderBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use GsmLot\ProductBundle\Entity\Offer;
+use GsmLot\OfferBundle\Entity\Offer;
 use GsmLot\SubscriptionBundle\Entity\Subscription;
 use GsmLot\UserBundle\Entity\User;
-use GsmLot\MailBox\Entity\Message;
+use GsmLot\MailBoxBundle\Entity\Message;
 
 /**
  * Trader
@@ -105,28 +105,34 @@ class Trader
     
    	/**
    	 * 
-   	 * @var Message
    	 * 
-   	 * @ORM\OneToMany(targetEntity="GsmLot\MailBox\Entity\Message")
-   	 * @ORM\JoinColumn(name="trader_id",referencedColumnName="trader_id")
+   	 * @ORM\OneToMany(targetEntity="GsmLot\MailBoxBundle\Entity\Message",mappedBy="receiverTrader")
    	 */
-    protected $messages;
+    protected $messagesReceived;
+
+
+    /**
+     *
+     *
+     * @ORM\OneToMany(targetEntity="GsmLot\MailBoxBundle\Entity\Message",mappedBy="senderTrader")
+     */
+    protected $messagesSent;
     
     
     /**
-     * @ORM\ManyToOne(targetEntity="City")
+     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\City")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="city_id")
      */
     protected $city;
     
     /**
-     * @ORM\OneToMany(targetEntity="Offer", mappedBy="Trader")
+     * @ORM\OneToMany(targetEntity="GsmLot\OfferBundle\Entity\Offer", mappedBy="Trader")
      */
     protected $offers;
     
  
     /**
-     * @ORM\OneToMany(targetEntity="Subscription", mappedBy="Trader")
+     * @ORM\OneToMany(targetEntity="GsmLot\SubscriptionBundle\Entity\Subscription", mappedBy="Trader")
      */
     protected $subscriptions;
     
@@ -135,7 +141,8 @@ class Trader
     {
     	$this->offers = new ArrayCollection();
     	$this->subscriptions = new ArrayCollection();
-    	$this->messages = new ArrayCollection();
+    	$this->messagesReceived = new ArrayCollection();
+    	$this->messagesSent = new ArrayCollection();
     }
     
     
@@ -414,29 +421,8 @@ class Trader
         return $this->city;
     }
 
-    /**
-     * Add offer
-     *
-     * @param \AppBundle\Entity\Offer $offer
-     *
-     * @return Trader
-     */
-    public function addOffer(Offer $offer)
-    {
-        $this->offers[] = $offer;
 
-        
-    }
 
-    /**
-     * Remove offer
-     *
-     * @param \AppBundle\Entity\Offer $offer
-     */
-    public function removeOffer(Offer $offer)
-    {
-        $this->offers->removeElement($offer);
-    }
 
     /**
      * Get offers
@@ -448,28 +434,6 @@ class Trader
         return $this->offers;
     }
 
-    /**
-     * Add subscription
-     *
-     * @param Subscription $subscription
-     *
-     * @return Trader
-     */
-    public function addSubscription(Subscription $subscription)
-    {
-        $this->subscriptions[] = $subscription;
-
-    }
-
-    /**
-     * Remove subscription
-     *
-     * @param Subscription $subscription
-     */
-    public function removeSubscription(Subscription $subscription)
-    {
-        $this->subscriptions->removeElement($subscription);
-    }
 
     /**
      * Get subscriptions
@@ -480,4 +444,17 @@ class Trader
     {
         return $this->subscriptions;
     }
+    
+    
+    public function getMessagesReceived()
+    {
+    	return $this->messagesReceived;
+    }
+    
+    
+    public function getMessagesSent()
+    {
+    	return $this->messagesSent;
+    }
+    
 }

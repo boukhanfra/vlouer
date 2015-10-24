@@ -1,6 +1,6 @@
 <?php
 
-namespace GsmLot\MailBox\Entity;
+namespace GsmLot\MailBoxBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use GsmLot\TraderBundle\Entity\Trader;
@@ -54,13 +54,13 @@ class Message
     private $readed;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Trader")
+     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",inversedBy="messages")
      * @ORM\JoinColumn(name="receiver_trader_id", referencedColumnName="trader_id")
      */
     protected $receiverTrader;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Trader")
+     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",inversedBy="messages")
      * @ORM\JoinColumn(name="sender_trader_id", referencedColumnName="trader_id")
      */
     protected $senderTrader;

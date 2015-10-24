@@ -1,6 +1,6 @@
 <?php
 
-namespace GsmLot\ProductBundle\Entity;
+namespace GsmLot\OfferBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use GsmLot\TraderBundle\Entity\Trader;
@@ -9,7 +9,7 @@ use GsmLot\TraderBundle\Entity\Country;
 /**
  * Offer
  *
- * @ORM\Table()
+ * @ORM\Table(name="offer")
  * @ORM\Entity
  */
 class Offer
@@ -33,9 +33,17 @@ class Offer
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="creationDate", type="datetime")
+     * @ORM\Column(name="created_on", type="datetime")
      */
-    private $creationDate;
+    private $createdOn;
+    
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_on", type="datetime")
+     */
+    private $updatedOn;
 
     /**
      * @var boolean
@@ -54,7 +62,7 @@ class Offer
     /**
      * @var integer
      *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="decimal",precision=16,scale=2)
      */
     private $price;
 
@@ -68,7 +76,7 @@ class Offer
     /**
      * @var boolean
      *
-     * @ORM\Column(name="phisicalStock", type="boolean")
+     * @ORM\Column(name="phisical_stock", type="boolean")
      */
     private $phisicalStock;
 
@@ -87,23 +95,16 @@ class Offer
     private $disabled;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="modificationDate", type="datetime")
-     */
-    private $modificationDate;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Trader", inversedBy="offers")
-     * @ORM\JoinColumn(name="traderId", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader", inversedBy="offers")
+     * @ORM\JoinColumn(name="trader_id", referencedColumnName="trader_id")
      */
     protected $trader;
     
     /**
-     * @ORM\ManyToOne(targetEntity="DeviceModel", inversedBy="offers")
-     * @ORM\JoinColumn(name="DeviceId", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Device", inversedBy="offers")
+     * @ORM\JoinColumn(name="device_id", referencedColumnName="device_id")
      */
-    protected $country;
+    protected $device;
     
     
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace GsmLot\ProductBundle\DependencyInjection;
+namespace GsmLot\OfferBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

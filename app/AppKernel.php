@@ -19,7 +19,7 @@ class AppKernel extends Kernel
         	new FOS\UserBundle\FOSUserBundle(),
             new GsmLot\TraderBundle\GsmLotTraderBundle(),
             new GsmLot\MailBoxBundle\GsmLotMailBoxBundle(),
-            new GsmLot\ProductBundle\GsmLotProductBundle(),
+            new GsmLot\OfferBundle\GsmLotOfferBundle(),
             new GsmLot\SubscriptionBundle\GsmLotSubscriptionBundle(),
             new GsmLot\UserBundle\GsmLotUserBundle(),
         );
