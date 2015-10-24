@@ -8,7 +8,7 @@ use GsmLot\TraderBundle\Entity\Trader;
 /**
  * Subscription
  *
- * @ORM\Table()
+ * @ORM\Table(name="subscription")
  * @ORM\Entity
  */
 class Subscription

@@ -9,7 +9,7 @@ use GsmLot\TraderBundle\Entity\Trader;
  * Mailbox
  *
  * @ORM\Table(name="message")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GsmLot\MailBoxBundle\Repository\MessageRepository")
  */
 class Message
 {

@@ -4,3 +4,6 @@
 /web/bundles/*
 /app/config/parameters.yml
 /vendor/
+.project
+.buildpath
+.settings.*
