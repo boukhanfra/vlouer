@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new GsmLot\OfferBundle\GsmLotOfferBundle(),
             new GsmLot\SubscriptionBundle\GsmLotSubscriptionBundle(),
             new GsmLot\UserBundle\GsmLotUserBundle(),
+            new GsmLot\IndexBundle\GsmLotIndexBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
