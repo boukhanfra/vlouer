@@ -9,11 +9,41 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class OfferController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/")
      * @Template()
      */
-    public function indexAction($name)
+    public function listAction()
     {
-        return array('name' => $name);
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        
+        return $this->render('GsmLotOfferBundle:Offer:list.html.twig',array('user'=>$user));
     }
+        
+    /**
+     * @Route("/create")
+     * @Template()
+     */
+    public function createAction()
+    {
+    	return $this->render('GsmLotOfferBundle:Offer:create.html.twig');
+    }
+        
+    /**
+     * @Route("/disable")
+     * @Template()
+     */
+    public function disableAction()
+    {
+    	
+    }
+    
+    /**
+     * @Route("/remove")
+     * @Template()
+     */
+    public function removeAction()
+    {
+    	
+    }
+    
 }

@@ -4,6 +4,7 @@ namespace GsmLot\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use GsmLot\TraderBundle\Entity\Trader;
 
 
 /**
@@ -21,5 +22,30 @@ class User extends BaseUser
 	 */
 	protected $id;
 	
+	/**
+	 * 
+	 * @var Trader
+	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",mappedBy="user")
+	 */
+	protected $trader;
+	
+	
+	/**
+	 * @return Trader
+	 */
+	public function getTrader()
+	{
+		return $this->trader;	
+	}
+	
+	
+	/**
+	 * 
+	 * @param Trader $trader
+	 */
+	public function setTrader(Trader $trader)
+	{
+		$this->trader = $trader;
+	}
 	
 }
