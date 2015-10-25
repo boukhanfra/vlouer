@@ -60,7 +60,7 @@ class Offer
     private $qte;
 
     /**
-     * @var integer
+     * @var decimal
      *
      * @ORM\Column(name="price", type="decimal",precision=16,scale=2)
      */
