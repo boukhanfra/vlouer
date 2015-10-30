@@ -87,7 +87,7 @@ class Trader
      * 
      * @var User
      * 
-     * @ORM\OneToOne(targetEntity="GsmLot\UserBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="GsmLot\UserBundle\Entity\User",inversedBy="trader")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      */
     protected $user;

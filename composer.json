@@ -1,5 +1,5 @@
 {
-	"name" : "aziz/go-daddy",
+	"name" : "aziz/GsmLot",
 	"license" : "proprietary",
 	"type" : "project",
 	"autoload" : {
@@ -52,5 +52,11 @@
 			"file" : "app/config/parameters.yml"
 		}
 	},
-	"minimum-stability" : "dev"
+	"minimum-stability" : "dev",
+	"description" : "The Gsm Lot plateform",
+	"keywords" : [
+		"Gsm",
+		"lot",
+		"plateform"
+	]
 }

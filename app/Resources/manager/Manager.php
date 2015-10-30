@@ -12,7 +12,7 @@ abstract class Manager
 	 * 
 	 * @var EntityManager
 	 */
-	protected $em;
+	protected  $em;
 	
 	/**
 	 * 
