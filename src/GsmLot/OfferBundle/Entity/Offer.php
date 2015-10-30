@@ -142,49 +142,42 @@ class Offer
     }
 
     /**
-     * Set creationDate
+     * Set createdOn
      *
-     * @param \DateTime $creationDate
+     * @param \DateTime $createdOn
      *
-     * @return Offer
      */
-    public function setCreationDate($creationDate)
+    public function setCreatedOn($createdOn)
     {
-        $this->creationDate = $creationDate;
+        $this->createdOn = $createdOn;
 
-        return $this;
     }
 
     /**
-     * Get creationDate
+     * Get createdOn
      *
      * @return \DateTime
      */
-    public function getCreationDate()
+    public function getCreatedOn()
     {
-        return $this->creationDate;
+        return $this->createdOn;
     }
 
     /**
-     * Set active
-     *
-     * @param boolean $active
-     *
-     * @return Offer
+     * 
+     * @param bool $active
      */
     public function setActive($active)
     {
-        $this->active = $active;
-
-        return $this;
+    	$this->active = $active;
     }
 
     /**
-     * Get active
+     * Is active
      *
      * @return boolean
      */
-    public function getActive()
+    public function isActive()
     {
         return $this->active;
     }
@@ -324,11 +317,11 @@ class Offer
     }
 
     /**
-     * Get disabled
+     * Is disabled
      *
      * @return boolean
      */
-    public function getDisabled()
+    public function isDisabled()
     {
         return $this->disabled;
     }
@@ -403,5 +396,24 @@ class Offer
     public function getCountry()
     {
         return $this->country;
+    }
+    
+    
+    /**
+     * 
+     * @return DateTime
+     */
+    public function getUpdatedOn()
+    {
+    	return $this->updatedOn;
+    }
+    
+    /**
+     * 
+     * @param mixed $updatedOn
+     */
+    public function setUpdateOn($updatedOn)
+    {
+    	$this->updatedOn = $updatedOn;
     }
 }
