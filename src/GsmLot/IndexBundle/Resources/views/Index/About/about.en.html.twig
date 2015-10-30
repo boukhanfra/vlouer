@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+{% block contenu %}
+
+     <div class="container" style="">
+         <div class="row">
+            <div class="col-lg-6">
+ {% image '@GsmLotIndexBundle/Resources/public/images/about1.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="width:500px;" />
+{% endimage %} 
+            </div>
+            
+            <div class="col-lg-6" style="text-align: justify">
+    <blockquote>
+Some words about us
+
+
+Gsmlot is a professional trading platform for mobile phone, accessories and consumer electronics  wholesalers,  distributors and retailers. Our goal is to provide a reliable on time service to the international mobile phone market There are various possibilities for members to improve their business.
+
+The knowledge we have in the industry of wholesale since 2005 has gave us a strong credibility in the exchange industry. Our growing sales and the number of registered partners is a strong sign to find or sell your product with GSMLOT.COM
+	
+The structure based within :
+<ul>
+   <li> Sales Department On call and online</li>
+   <li> Consumer Service Department</li>
+   <li>Verification department</li>   
+</ul>
+	</blockquote>
+        
+            </div>
+     
+     </div>
+     
+     </div>
+     
+{% endblock %}
+
