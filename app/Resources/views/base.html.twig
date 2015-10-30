@@ -3,11 +3,133 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}GsmLot Website{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		{% stylesheets 'bundles/gsmlotindex/css/bootstrap.min.css'
+					 'bundles/gsmlotindex/css/custom.min.css'
+					 'bundles/gsmlotindex/css/languages.css' filter ="cssrewrite"
+	 output="main.css"		%}
+		<link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
+		{% endstylesheets %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <!--  debut block timezones-->
+            <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="{{ path('index_index',{'_locale': app.request.get('_locale')}) }}" class="navbar-brand">GsmLot</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+          <li><a href="{{ path('index_index',{'_locale': app.request.get('_locale')}) }}">{{ 'index.menu.home'|trans }}</a></li>
+            <li>
+              <a href="">Phones</a>
+            </li>
+            <li>
+              <a href="http://news.bootswatch.com">Used</a>
+            </li>
+            <li>
+              <a href="http://news.bootswatch.com">E-consumer</a>
+            </li>
+            <li>
+              <a href="{{ path('index_about',{'_locale': app.request.get('_locale')}) }}">About us</a>
+            </li>
+           
+            <li>
+              <a href="http://news.bootswatch.com">{{ 'index.menu.contactus'|trans({'%name%':'Aziz'}) }}</a>
+            </li>
+          </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+         
+            <li>
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">Login</a>
+            </li>
+         
+         
+         <li>
+         <div class="btn-group" style="margin-top:3px">
+  			<a href="{{ path(app.request.attributes.get('_route'),{'lang':'en'}) }}" class="btn btn-primary"><span class="lang-sm lang-lbl" lang="{{ app.request.get('_locale') }}"></span></a>
+  	    	<a aria-expanded="true" href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+  			<ul class="dropdown-menu">
+  			{% set lang = {'anglais':'en','francais':'fr','espagnol': 'es'} %}
+  			{% for l in lang %}
+  			{% if l != app.request.get('_locale') %}
+  			   <li><a href="{{ path(app.request.attributes.get('_route'),{'_locale': l}) }}"><span class="lang-sm lang-lbl" lang="{{ l }}"></span></a></li>
+  			{% endif %}
+  			{% endfor %}
+  			</ul>
+		</div>
+         </li>
+
+      
+       </ul>
+
+        </div>
+      </div>
+    </div> <!--  end block menubar-->
+  
+  
+  <!--  start block timezones-->  
+    
+        <div class="row" style="margin: 3px 2px 28px 3px">
+            <div class="col-lg-6">
+            </div>
+          
+          
+          <div class="col-lg-6" style="padding-left:40px">
+<span class="label label-success">NYC  {{ "now"|date("H:i", "America/New_York") }}</span>    
+<span class="label label-default">Paris  {{ "now"|date("H:i", "Europe/Paris") }}</span>
+<span class="label label-primary">Hong Kong {{ "now"|date("H:i", "Asia/Hong_Kong") }}</span>
+<span class="label label-warning"> Casablanca  {{ "now"|date("H:i", "Africa/Casablanca") }}</span>
+<span class="label label-danger">Moscow  {{ "now"|date("H:i", "Europe/Moscow") }}</span>
+<span class="label label-info">Istanbul  {{ "now"|date("H:i", "Asia/Istanbul") }}</span>
+        </div>
+        
+        </div>
+        
+
+ 	
+<!--  end block timezones-->
+
+    
+        {% block contenu %}{% endblock %}
+        {% block footer %}
+        <footer style="float:left;" class="midnight-blue" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    &copy; 2015 <a title="Gsmlot website" href="" target="_blank">GsmLot</a>. All Rights Reserved.
+                </div>
+                <div class="col-lg-6">
+                    <span class="pull-right">
+                        <a href="index.php" style="margin-right:8px">Homepage</a>
+                       
+               
+                         <a href="contact-us.php"  style="margin-right:8px">Abouts us</a>
+                  
+                          <a href="contact-us.php"  style="margin-right:8px">Contact us</a>
+                     
+                        <a href="qualite.php">Our conditions</a>
+                                              
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+ 
+        {% block javascripts %}
+    {% javascripts '@GsmLotIndexBundle/Resources/public/js/jquery-1.10.2.min.js'
+					'@GsmLotIndexBundle/Resources/public/js/boostrap.min.js'
+					'@GsmLotIndexBundle/Resources/public/js/custom.min.js'
+		output='main.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+		{% endblock %}
     </body>
 </html>

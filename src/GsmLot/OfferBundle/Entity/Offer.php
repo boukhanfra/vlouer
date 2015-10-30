@@ -28,7 +28,7 @@ class Offer
      *
      * @ORM\Column(name="typeOffer", type="string", length=255)
      */
-    private $typeOffer;
+    private $typeOffer; //referbished
 
     /**
      * @var \DateTime
