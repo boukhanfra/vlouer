@@ -1,10 +1,12 @@
 offer.new.title: Créer une offre
-offer.new.offerType: Type d'offre
-offer.new.brand: Constructeur
-offer.new.norm: Norme de construction
-offer.new.device: Type du matériel
-offer.new.quantity: Quantité
-offer.new.price: Prix
-offer.new.description: Description
-offer.new.physicalStock: Stock physique
-offer.new.submit: Valider
+offer.offerType: Type d'offre
+offer.brand: Constructeur
+offer.norm: Norme de construction
+offer.device: Type du matériel
+offer.quantity: Quantité
+offer.price: Prix
+offer.description: Description
+offer.physicalStock: Stock physique
+offer.submit: Valider
+offer.model: Modèle
+offer.list.title: Liste des mes offres

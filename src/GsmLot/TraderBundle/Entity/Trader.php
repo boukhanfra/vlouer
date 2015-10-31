@@ -126,13 +126,13 @@ class Trader
     protected $city;
     
     /**
-     * @ORM\OneToMany(targetEntity="GsmLot\OfferBundle\Entity\Offer", mappedBy="Trader")
+     * @ORM\OneToMany(targetEntity="GsmLot\OfferBundle\Entity\Offer", mappedBy="trader")
      */
     protected $offers;
     
  
     /**
-     * @ORM\OneToMany(targetEntity="GsmLot\SubscriptionBundle\Entity\Subscription", mappedBy="Trader")
+     * @ORM\OneToMany(targetEntity="GsmLot\SubscriptionBundle\Entity\Subscription", mappedBy="trader")
      */
     protected $subscriptions;
     

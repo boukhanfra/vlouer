@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 class OfferController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/{_locale}",name="offer_list",defaults={"_locale":"en"},requirements={"_locale":"en|fr|es"})
      * @Template()
      */
-    public function listAction()
+    public function listAction($_locale)
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         

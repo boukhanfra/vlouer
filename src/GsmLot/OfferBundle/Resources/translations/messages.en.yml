@@ -1,7 +1,7 @@
-offer.new.title: New offer
-offer.new.device: Device
-offer.new.quantity: Quantity
-offer.new.price: Price
-offer.new.description: Description
-offer.new.physicalStock: Physical stock
-offer.new.submit: Submit
+offer.title: New offer
+offer.device: Device
+offer.quantity: Quantity
+offer.price: Price
+offer.description: Description
+offer.physicalStock: Physical stock
+offer.submit: Submit
