@@ -31,8 +31,6 @@ class Model
 	 */
 	private $name;
 	
-	
-	
 	/**
 	 * @var Norm
 	 *
@@ -41,6 +39,14 @@ class Model
 	 */
 	private $norm;
 	
+	/**
+	 * 
+	 * @var Brand $brand
+	 * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Brand")
+	 * @ORM\JoinColumn(name="brand_id",referencedColumnName="brand_id")
+	 * 
+	 */
+	private $brand;
 	
 	/**
 	 * @return integer
@@ -85,4 +91,36 @@ class Model
 		$this->norm = $norm;
 	}
 	
+
+    /**
+     * Set brand
+     *
+     * @param \GsmLot\OfferBundle\Entity\Brand $brand
+     *
+     * @return Model
+     */
+    public function setBrand(\GsmLot\OfferBundle\Entity\Brand $brand = null)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return \GsmLot\OfferBundle\Entity\Brand
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+    
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+    	return $this->name;
+    }
 }

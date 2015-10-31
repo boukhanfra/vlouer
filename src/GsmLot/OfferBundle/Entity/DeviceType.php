@@ -82,4 +82,36 @@ class DeviceType
     {
         return $this->devices;
     }
+
+    /**
+     * Add device
+     *
+     * @param \GsmLot\OfferBundle\Entity\Device $device
+     *
+     * @return DeviceType
+     */
+    public function addDevice(\GsmLot\OfferBundle\Entity\Device $device)
+    {
+        $this->devices[] = $device;
+
+        return $this;
+    }
+
+    /**
+     * Remove device
+     *
+     * @param \GsmLot\OfferBundle\Entity\Device $device
+     */
+    public function removeDevice(\GsmLot\OfferBundle\Entity\Device $device)
+    {
+        $this->devices->removeElement($device);
+    }
+    
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+    	return $this->name;
+    }
 }

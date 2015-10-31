@@ -18,9 +18,15 @@ security:
             pattern: ^/
             form_login: 
                 provider: fos_userbundle
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check 
                 csrf_provider: security.csrf.token_manager
-            logout: true
-            anonymous: true 
+            logout: 
+                path: fos_user_security_logout
+                target: /login
+            anonymous: ~ 
+            remember_me:
+                key: %secret%
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -33,3 +39,4 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/offer , role: IS_AUTHENTICATED_REMEMBERED }

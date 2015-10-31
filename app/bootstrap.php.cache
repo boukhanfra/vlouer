@@ -617,15 +617,10 @@ $this->headers = clone $this->headers;
 }
 public function __toString()
 {
-try {
-$content = $this->getContent();
-} catch (\LogicException $e) {
-return trigger_error($e, E_USER_ERROR);
-}
 return
 sprintf('%s %s %s', $this->getMethod(), $this->getRequestUri(), $this->server->get('SERVER_PROTOCOL'))."\r\n".
 $this->headers."\r\n".
-$content;
+$this->getContent();
 }
 public function overrideGlobals()
 {
@@ -1031,27 +1026,12 @@ return in_array($this->getMethod(), array('GET','HEAD'));
 }
 public function getContent($asResource = false)
 {
-$currentContentIsResource = is_resource($this->content);
-if (PHP_VERSION_ID < 50600 && false === $this->content) {
+if (PHP_VERSION_ID < 50600 && (false === $this->content || (true === $asResource && null !== $this->content))) {
 throw new \LogicException('getContent() can only be called once when using the resource return type and PHP below 5.6.');
 }
 if (true === $asResource) {
-if ($currentContentIsResource) {
-rewind($this->content);
-return $this->content;
-}
-if (is_string($this->content)) {
-$resource = fopen('php://temp','r+');
-fwrite($resource, $this->content);
-rewind($resource);
-return $resource;
-}
 $this->content = false;
 return fopen('php://input','rb');
-}
-if ($currentContentIsResource) {
-rewind($this->content);
-return stream_get_contents($this->content);
 }
 if (null === $this->content) {
 $this->content = file_get_contents('php://input');
@@ -1199,8 +1179,8 @@ $requestUri = $this->getRequestUri();
 if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, $baseUrl)) {
 return $prefix;
 }
-if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, rtrim(dirname($baseUrl),'/'.DIRECTORY_SEPARATOR).'/')) {
-return rtrim($prefix,'/'.DIRECTORY_SEPARATOR);
+if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, rtrim(dirname($baseUrl),'/').'/')) {
+return rtrim($prefix,'/');
 }
 $truncatedRequestUri = $requestUri;
 if (false !== $pos = strpos($requestUri,'?')) {
@@ -1213,7 +1193,7 @@ return'';
 if (strlen($requestUri) >= strlen($baseUrl) && (false !== $pos = strpos($requestUri, $baseUrl)) && $pos !== 0) {
 $baseUrl = substr($requestUri, 0, $pos + strlen($baseUrl));
 }
-return rtrim($baseUrl,'/'.DIRECTORY_SEPARATOR);
+return rtrim($baseUrl,'/');
 }
 protected function prepareBasePath()
 {
@@ -1242,8 +1222,7 @@ $pathInfo ='/';
 if ($pos = strpos($requestUri,'?')) {
 $requestUri = substr($requestUri, 0, $pos);
 }
-$pathInfo = substr($requestUri, strlen($baseUrl));
-if (null !== $baseUrl && (false === $pathInfo ||''=== $pathInfo)) {
+if (null !== $baseUrl && false === $pathInfo = substr($requestUri, strlen($baseUrl))) {
 return'/';
 } elseif (null === $baseUrl) {
 return $requestUri;
@@ -1279,7 +1258,7 @@ private static function createRequestFromFactory(array $query = array(), array $
 {
 if (self::$requestFactory) {
 $request = call_user_func(self::$requestFactory, $query, $request, $attributes, $cookies, $files, $server, $content);
-if (!$request instanceof self) {
+if (!$request instanceof Request) {
 throw new \LogicException('The Request factory must return an instance of Symfony\Component\HttpFoundation\Request.');
 }
 return $request;
@@ -1394,7 +1373,7 @@ $this->setContent($content);
 $this->setStatusCode($status);
 $this->setProtocolVersion('1.0');
 if (!$this->headers->has('Date')) {
-$this->setDate(\DateTime::createFromFormat('U', time(), new \DateTimeZone('UTC')));
+$this->setDate(new \DateTime(null, new \DateTimeZone('UTC')));
 }
 }
 public static function create($content ='', $status = 200, $headers = array())
@@ -1568,7 +1547,7 @@ return $this;
 }
 public function mustRevalidate()
 {
-return $this->headers->hasCacheControlDirective('must-revalidate') || $this->headers->hasCacheControlDirective('proxy-revalidate');
+return $this->headers->hasCacheControlDirective('must-revalidate') || $this->headers->has('proxy-revalidate');
 }
 public function getDate()
 {
@@ -1812,8 +1791,14 @@ public static function closeOutputBuffers($targetLevel, $flush)
 {
 $status = ob_get_status(true);
 $level = count($status);
-$flags = defined('PHP_OUTPUT_HANDLER_REMOVABLE') ? PHP_OUTPUT_HANDLER_REMOVABLE | ($flush ? PHP_OUTPUT_HANDLER_FLUSHABLE : PHP_OUTPUT_HANDLER_CLEANABLE) : -1;
-while ($level-- > $targetLevel && ($s = $status[$level]) && (!isset($s['del']) ? !isset($s['flags']) || $flags === ($s['flags'] & $flags) : $s['del'])) {
+while ($level-- > $targetLevel
+&& (!empty($status[$level]['del'])
+|| (isset($status[$level]['flags'])
+&& ($status[$level]['flags'] & PHP_OUTPUT_HANDLER_REMOVABLE)
+&& ($status[$level]['flags'] & ($flush ? PHP_OUTPUT_HANDLER_FLUSHABLE : PHP_OUTPUT_HANDLER_CLEANABLE))
+)
+)
+) {
 if ($flush) {
 ob_end_flush();
 } else {
@@ -2363,12 +2348,12 @@ protected $booted = false;
 protected $name;
 protected $startTime;
 protected $loadClassCache;
-const VERSION ='2.7.6-DEV';
-const VERSION_ID = 20706;
-const MAJOR_VERSION = 2;
-const MINOR_VERSION = 7;
-const RELEASE_VERSION = 6;
-const EXTRA_VERSION ='DEV';
+const VERSION ='2.7.1';
+const VERSION_ID ='20701';
+const MAJOR_VERSION ='2';
+const MINOR_VERSION ='7';
+const RELEASE_VERSION ='1';
+const EXTRA_VERSION ='';
 const END_OF_MAINTENANCE ='05/2018';
 const END_OF_LIFE ='05/2019';
 public function __construct($environment, $debug)
@@ -2535,7 +2520,7 @@ public function getRootDir()
 {
 if (null === $this->rootDir) {
 $r = new \ReflectionObject($this);
-$this->rootDir = dirname($r->getFileName());
+$this->rootDir = str_replace('\\','/', dirname($r->getFileName()));
 }
 return $this->rootDir;
 }

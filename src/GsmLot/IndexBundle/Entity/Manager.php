@@ -1,5 +1,8 @@
 <?php
 
+namespace GsmLot\IndexBundle\Entity;
+
+
 use Doctrine\ORM\EntityManager;
 /**
  * 

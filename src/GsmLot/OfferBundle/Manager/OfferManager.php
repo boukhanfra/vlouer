@@ -3,6 +3,7 @@
 namespace GsmLot\OfferBundle\Manager;
 
 use GsmLot\OfferBundle\Entity\Offer;
+use GsmLot\IndexBundle\Entity\Manager;
 
 /**
  * @since 29/10/2015
@@ -10,7 +11,7 @@ use GsmLot\OfferBundle\Entity\Offer;
  * @abstract - Offer Business class
  * @package GsmLot\OfferBundle\Manager
  */
-class OfferManager extends \Manager 
+class OfferManager extends Manager 
 {
 	
 	/**
@@ -23,6 +24,8 @@ class OfferManager extends \Manager
 		try
 		{
 			$offer->setCreatedOn(new \DateTime('now'));
+			$offer->setActive(false);
+			$offer->setDisabled(false);
 			
 			$this->persistAndFlush($offer);
 		}
@@ -74,7 +77,7 @@ class OfferManager extends \Manager
 	 * @param Offer $offer
 	 * @throws Exception
 	 */
-	public function disableOffer(Offer $offer)
+	public function deactivateOffer(Offer $offer)
 	{
 		try 
 		{

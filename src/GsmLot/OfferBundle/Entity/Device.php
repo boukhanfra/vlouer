@@ -23,27 +23,13 @@ class Device
     private $id;
 
     /**
-     * @var string
-     * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Brand")
-     * @ORM\JoinColumn(name="brand_id",referencedColumnName="brand_id")
-     */
-    private $brand;
-
-    /**
-     * @var string
+     * @var Model
      *
      * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Model")
      * @ORM\JoinColumn(name="model_id",referencedColumnName="model_id")
      */
     protected $model;
-    
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\DeviceType")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="type_id")
-     */
-    protected $type;
-    
+
     
     /**
      * @ORM\OneToMany(targetEntity="GsmLot\OfferBundle\Entity\Offer", mappedBy="device")
@@ -143,5 +129,38 @@ class Device
     public function getOffers()
     {
         return $this->offers;
+    }
+    
+    /**
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+    	return $this->model->getName();
+    }
+
+    /**
+     * Add offer
+     *
+     * @param \GsmLot\OfferBundle\Entity\Offer $offer
+     *
+     * @return Device
+     */
+    public function addOffer(\GsmLot\OfferBundle\Entity\Offer $offer)
+    {
+        $this->offers[] = $offer;
+
+        return $this;
+    }
+
+    /**
+     * Remove offer
+     *
+     * @param \GsmLot\OfferBundle\Entity\Offer $offer
+     */
+    public function removeOffer(\GsmLot\OfferBundle\Entity\Offer $offer)
+    {
+        $this->offers->removeElement($offer);
     }
 }
