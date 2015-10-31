@@ -1,3 +1,16 @@
 {% extends '::base.html.twig' %}
-{% block body %}
+{% block contenu %}
+<h3>{{ 'offer.list.title'|trans }}</h3>
+<table>
+  <tr>
+    <th>{{ 'offer.new.brand'|trans }}</th>
+    <th>{{ 'offer.new.model'|trans }}</th>
+  </tr>
+  {% for offer in user.offers %}
+  <tr>
+    <td>{{ offer.brand }}</td>
+    <td>{{ offer.model }}</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

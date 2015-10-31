@@ -25,9 +25,7 @@ class IndexController extends Controller
      * @Template()
      */
     public function aboutAction($_locale)
-    {
-    	//echo $this->get('translator')->trans('index.menu.home');
-    	
+    {   	
     	return   $this->render('GsmLotIndexBundle:Index/About:about.'.$_locale.'.html.twig');
 
     }
