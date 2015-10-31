@@ -54,13 +54,13 @@ class Message
     private $readed;
 
     /**
-     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",inversedBy="messagesReceived")
      * @ORM\JoinColumn(name="receiver_trader_id", referencedColumnName="trader_id")
      */
     protected $receiverTrader;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",inversedBy="messagesSent")
      * @ORM\JoinColumn(name="sender_trader_id", referencedColumnName="trader_id")
      */
     protected $senderTrader;

@@ -30,17 +30,6 @@ class DeviceType
     private $name;
 
 
-
-    /**
-     * @ORM\OneToMany(targetEntity="GsmLot\OfferBundle\Entity\Device", mappedBy="type")
-     */
-    protected $devices;
-    
-    public function __construct()
-    {
-    	$this->devices = new ArrayCollection();
-    }
-    
     /**
      * Get id
      *
@@ -72,41 +61,6 @@ class DeviceType
         return $this->name;
     }
 
-   
-    /**
-     * Get devices
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDevices()
-    {
-        return $this->devices;
-    }
-
-    /**
-     * Add device
-     *
-     * @param \GsmLot\OfferBundle\Entity\Device $device
-     *
-     * @return DeviceType
-     */
-    public function addDevice(\GsmLot\OfferBundle\Entity\Device $device)
-    {
-        $this->devices[] = $device;
-
-        return $this;
-    }
-
-    /**
-     * Remove device
-     *
-     * @param \GsmLot\OfferBundle\Entity\Device $device
-     */
-    public function removeDevice(\GsmLot\OfferBundle\Entity\Device $device)
-    {
-        $this->devices->removeElement($device);
-    }
-    
     /**
      * @return string
      */
