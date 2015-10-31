@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use GsmLot\IndexBundle\Entity\ContactMail;
+use Symfony\Component\HttpFoundation\Request;
 
 class IndexController extends Controller
 {
@@ -33,9 +34,10 @@ class IndexController extends Controller
     }
     
     /**
-     * @Route("/contact",name="index_contact")
+     * @Route("/contact/{_locale}",name="index_contact",defaults={"_locale":"en"},requirements={"_locale":"en|fr|es"})
+     * @Template()
      */
-    public function contactAction()
+    public function contactAction($_locale)
     {
     	$form ='';
     	$mail = new ContactMail();
@@ -60,10 +62,19 @@ class IndexController extends Controller
     		$session->getFlashBag()->set('message','Votre message a été bien envoyé');
     		
     	}
-    	
+    
 
+    	$form = $this->createFormBuilder($mail)
+    	->add('firstName', 'text')
+    	->add('message', 'text')
+    	->add('save', 'submit', array('label' => 'submit mail'))
+    	->getForm();
     	
-    	$this->render('GsmLotIndexBundle:Index:contact.html.twig',array('form'=>$form));
+    	return $this->render('GsmLotIndexBundle:Index/Contact:contact.'.$_locale.'.html.twig', array(
+    			'form' => $form->createView(),
+    	));
+    	
+   
     }
     
 }

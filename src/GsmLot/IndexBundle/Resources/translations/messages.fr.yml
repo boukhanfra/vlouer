@@ -1,2 +1,10 @@
 index.menu.home: Accueil
-index.menu.contactus: Contactez-nous %name%
+index.menu.phones: Téléphones
+index.menu.used: Occasions
+index.menu.econsumer: Informatique/Eléctroniques
+index.menu.aboutus: A propos
+index.menu.contactus: Contactez-nous
+index.boutton.registerbuy: Inscrivez-vous & Achetez
+index.boutton.registersell: Inscrivez-vous & Vendez
+index.titre.buyphones: Acheter Téléphones
+index.titre.sellphones: Vendre Téléphones

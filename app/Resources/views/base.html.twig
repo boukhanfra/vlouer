@@ -11,7 +11,8 @@
 		{% endstylesheets %}
     </head>
     <body>
-    <!--  debut block timezones-->
+    
+   <!--  navbar logo-->
             <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -22,24 +23,27 @@
             <span class="icon-bar"></span>
           </button>
         </div>
+   <!--  end navbar logo-->
+   
+       <!--  debut navbar menus-->
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
           <li><a href="{{ path('index_index',{'_locale': app.request.get('_locale')}) }}">{{ 'index.menu.home'|trans }}</a></li>
             <li>
-              <a href="">Phones</a>
+              <a href="">{{'index.menu.phones'|trans }}</a>
             </li>
             <li>
-              <a href="http://news.bootswatch.com">Used</a>
+              <a href="http://news.bootswatch.com">{{ 'index.menu.used'|trans }}</a>
             </li>
             <li>
-              <a href="http://news.bootswatch.com">E-consumer</a>
+              <a href="http://news.bootswatch.com">{{ 'index.menu.econsumer'|trans }}</a>
             </li>
             <li>
-              <a href="{{ path('index_about',{'_locale': app.request.get('_locale')}) }}">About us</a>
+              <a href="{{ path('index_about',{'_locale': app.request.get('_locale')}) }}">{{ 'index.menu.aboutus'|trans }}</a>
             </li>
            
             <li>
-              <a href="http://news.bootswatch.com">{{ 'index.menu.contactus'|trans({'%name%':'Aziz'}) }}</a>
+              <a href="{{ path('index_contact',{'_locale': app.request.get('_locale')}) }}">{{ 'index.menu.contactus'|trans  }} </a>
             </li>
           </ul>
 
@@ -70,7 +74,8 @@
 
         </div>
       </div>
-    </div> <!--  end block menubar-->
+    </div> 
+    <!--  end block menubar-->
   
   
   <!--  start block timezones-->  
@@ -95,30 +100,49 @@
  	
 <!--  end block timezones-->
 
-    
+
         {% block contenu %}{% endblock %}
         {% block footer %}
-        <footer style="float:left;" class="midnight-blue" id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    &copy; 2015 <a title="Gsmlot website" href="" target="_blank">GsmLot</a>. All Rights Reserved.
-                </div>
-                <div class="col-lg-6">
-                    <span class="pull-right">
-                        <a href="index.php" style="margin-right:8px">Homepage</a>
+            <div class="panel-info">
+  <div class="panel-heading" style="border-color:black;background-color:lightslategrey;border-radius:0px;">
+    <h3 class="panel-title" style="text-align: center;">  &copy; 2015 <a title="Gsmlot website" href="" target="_blank">GsmLot</a>. All Rights Reserved. </h3>
+  </div>
+  <div class="panel-body" style="background:#2e2e2e none repeat scroll 0 0;color:white">
+<div class="row">
+                <div class="col-lg-4">
+                  
+                     <ul>
+                      <li>  <a href="index.php" style="margin-right:8px:;color:white">Homepage</a></li>
                        
                
-                         <a href="contact-us.php"  style="margin-right:8px">Abouts us</a>
+                      <li> <a href="contact-us.php"  style="margin-right:8px;color:white">Abouts us</a></li>
                   
-                          <a href="contact-us.php"  style="margin-right:8px">Contact us</a>
+                       <li>   <a href="contact-us.php"  style="margin-right:8px;color:white">Contact us</a> </li>
                      
-                        <a href="qualite.php">Our conditions</a>
+                     <li>   <a href="qualite.php" style="color:white">Our conditions</a> </li>
                                               
-                    </span>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+       Open : Monday – Friday 10 AM – 8 PM
+       <br/>  <br/>  
+       6175 beaver crossing dr cumming, GA 30040
+     
+                </div>
+                <div class="col-lg-4">    
+            <ul>
+               <li>Phone: +14043962872</li>
+              
+               <li>Email: contact@gsmlot.com</li>
+               
+               <li>Skype: gsmlot.com</li>
+            </ul>
+                 
                 </div>
             </div>
-        </div>
+  </div>
+</div>
+       
     </footer>
     {% endblock %}
  
