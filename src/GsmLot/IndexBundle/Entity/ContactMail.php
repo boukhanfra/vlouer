@@ -74,29 +74,7 @@ class ContactMail
         return $this->id;
     }
 
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return ContactMail
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
 
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
 
     /**
      * Set lastname
@@ -105,9 +83,9 @@ class ContactMail
      *
      * @return ContactMail
      */
-    public function setLastname($lastname)
+    public function setLastName($lastname)
     {
-        $this->lastname = $lastname;
+        $this->lastName = $lastname;
 
         return $this;
     }
@@ -117,9 +95,9 @@ class ContactMail
      *
      * @return string
      */
-    public function getLastname()
+    public function getLastName()
     {
-        return $this->lastname;
+        return $this->lastName;
     }
 
     /**

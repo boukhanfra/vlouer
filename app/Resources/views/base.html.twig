@@ -5,7 +5,7 @@
         <title>{% block title %}GsmLot Website{% endblock %}</title>
 		{% stylesheets 'bundles/gsmlotindex/css/bootstrap.min.css'
 					 'bundles/gsmlotindex/css/custom.min.css'
-					 'bundles/gsmlotindex/css/languages.css' filter ="cssrewrite"
+					 'bundles/gsmlotindex/css/languages.css' filter ="cssrewrite,yui_css"
 	 output="main.css"		%}
 		<link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}
@@ -50,7 +50,11 @@
       <ul class="nav navbar-nav navbar-right">
          
             <li>
-            <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">Login</a>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+               <a href="#" class="btn btn-info" style="line-height:9px;margin-top:3px;">{{ 'index.menu.myspace'|trans }}</a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">Login</a>
+            {% endif %}
             </li>
          
          

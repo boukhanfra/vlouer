@@ -35,7 +35,7 @@ class OfferController extends Controller
     	{
     		$offer->setTrader($this->get('security.token_storage')->getToken()->getUser()->getTrader());
     		
-    		$this->get('gsm_lot_offer.offer_manager')->createOffer($offer);
+    		$this->get('gsm_lot_offer.offer_manager')->createOffer($offer);    		
     	}
     	
     	return $this->render('GsmLotOfferBundle:Offer:create.html.twig',
