@@ -1,2 +1,10 @@
-index.menu.home: Acceuil besbelionia
-index.menu.contactus : Contáctenos %name%
+index.menu.home: Bienvenida
+index.menu.phones: Móviles
+index.menu.used: Usado
+index.menu.econsumer: Electrónica
+index.menu.aboutus: Acerca de
+index.menu.contactus: Contáctenos
+index.boutton.registerbuy: Registro y Strat compra
+index.bouton.registersell: Registro y Strat vender
+index.titre.buyphones: Comprar Móviles
+index.titre.sellphones: Vender Móviles
