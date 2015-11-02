@@ -1,1 +1,21 @@
-offer.new.title: nueva oferta
+EUR: EUR   # FIXME
+GBP: GBP   # FIXME
+USD: USD   # FIXME
+
+offer:
+    brand: offer.brand   # FIXME
+    currency: offer.currency   # FIXME
+    description: offer.description   # FIXME
+    device: offer.device   # FIXME
+
+    list:
+        title: offer.list.title   # FIXME
+
+    model: offer.model   # FIXME
+    norm: offer.norm   # FIXME
+    offerType: offer.offerType   # FIXME
+    physicalStock: offer.physicalStock   # FIXME
+    price: offer.price   # FIXME
+    quantity: offer.quantity   # FIXME
+    submit: offer.submit   # FIXME
+    title: offer.title   # FIXME
