@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new GsmLot\UserBundle\GsmLotUserBundle(),
             new GsmLot\IndexBundle\GsmLotIndexBundle(),
         	new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+        	new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+        	new JMS\TranslationBundle\JMSTranslationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

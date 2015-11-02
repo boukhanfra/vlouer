@@ -1,7 +1,21 @@
-offer.title: New offer
-offer.device: Device
-offer.quantity: Quantity
-offer.price: Price
-offer.description: Description
-offer.physicalStock: Physical stock
-offer.submit: Submit
+EUR: EUR
+GBP: GBP
+USD: USD
+
+offer:
+    brand: Brand
+    currency: Currency
+    description: Description
+    device: Device
+
+    list:
+        title: 'My Offers'
+
+    model: Model
+    norm: Norm
+    offerType: 'Offer type'
+    physicalStock: 'Physical stock'
+    price: Price
+    quantity: Quantity
+    submit: Submit
+    title: 'New offer'

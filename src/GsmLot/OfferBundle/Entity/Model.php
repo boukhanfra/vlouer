@@ -32,14 +32,6 @@ class Model
 	private $name;
 	
 	/**
-	 * @var Norm
-	 *
-	 * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Norm")
-	 * @ORM\JoinColumn(name="norm_id",referencedColumnName="norm_id")
-	 */
-	private $norm;
-	
-	/**
 	 * 
 	 * @var Brand $brand
 	 * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Brand")
@@ -71,24 +63,6 @@ class Model
 	public function setName($name)
 	{
 		$this->name = $name;
-	}
-	
-	
-	/**
-	 * @return Norm
-	 */
-	public function getNorm()
-	{
-		return $this->norm;
-	}
-	
-	/**
-	 * 
-	 * @param Norm $norm
-	 */
-	public function setNorm(Norm $norm)
-	{
-		$this->norm = $norm;
 	}
 	
 

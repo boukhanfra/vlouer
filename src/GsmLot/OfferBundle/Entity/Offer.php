@@ -4,7 +4,6 @@ namespace GsmLot\OfferBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use GsmLot\TraderBundle\Entity\Trader;
-use GsmLot\TraderBundle\Entity\Country;
 
 /**
  * Offer
@@ -47,11 +46,11 @@ class Offer
     private $active;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="qte", type="string", length=255,nullable=false)
+     * @ORM\Column(name="quantity", type="integer", length=15,nullable=false)
      */
-    private $qte;
+    private $quantity;
 
     /**
      * @var decimal
@@ -67,6 +66,13 @@ class Offer
      */
     private $description;
 
+    /**
+     * 
+     * @ORM\Column(name="currency",type="string",length=10,nullable=false)
+     */
+    private $currency;
+    
+    
     /**
      * @var boolean
      *
@@ -88,11 +94,6 @@ class Offer
      */
     protected $trader;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Device", inversedBy="offers")
-     * @ORM\JoinColumn(name="device_id", referencedColumnName="device_id",nullable=false)
-     */
-    protected $device;
     
     /**
      * 
@@ -395,31 +396,6 @@ class Offer
     }
 
     /**
-     * Set country
-     *
-     * @param \AppBundle\Entity\DeviceModel $country
-     *
-     * @return Offer
-     */
-    public function setCountry(Country $country = null)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return \AppBundle\Entity\DeviceModel
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-    
-    
-    /**
      * 
      * @return DateTime
      */
@@ -437,21 +413,6 @@ class Offer
     	$this->updatedOn = $updatedOn;
     }
     
-    /**
-     * @return Device
-     */
-    public function getDevice()
-    {
-    	return $this->device;
-    }
-    
-    /**
-     * @param Device $device
-     */
-    public function setDevice(Device $device)
-    {
-    	$this->device = $device;
-    }
 
     /**
      * Set updatedOn
@@ -636,5 +597,53 @@ class Offer
     public function getOfferType()
     {
         return $this->offerType;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param string $quantity
+     *
+     * @return Offer
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return string
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param string $currency
+     *
+     * @return Offer
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 }
