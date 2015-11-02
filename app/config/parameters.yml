@@ -6,7 +6,7 @@ parameters:
     database_user: root
     database_password: root
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_host: smtp.gmail.com
+    mailer_user: rangtour1@gmail.com
+    mailer_password: hayriad24
     secret: 736922ef9b84163e6b17f1d94eb518ca228229ba

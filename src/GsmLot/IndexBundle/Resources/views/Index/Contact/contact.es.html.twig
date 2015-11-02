@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+{% block contenu %}
+
+     <div class="container" style="padding:10px;">
+        
+ <div class="row">
+     <div class="col-lg-6">             
+  <div class="panel panel-default">
+  <div class="panel-heading">Contact informations</div>
+  <div class="panel-body">
+    
+<b>Address:</b>  6175 beaver crossing dr cumming, GA 30040
+<br/><br/>
+<b>Phone numbers: </b> (1) 404-396-2872
+<br/><br/>
+<b>Email: </b>  info@gsmlot.com
+<br/><br/>
+<b>We are open:</b>   Monday – Friday 10 AM – 8 PM
+  </div>
+</div>    
+           
+      <center>      
+ {% image '@GsmLotIndexBundle/Resources/public/images/login.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="border-radius:7px;width:550px" />
+{% endimage %}
+	</center> 
+
+
+            </div>
+            
+            
+            
+            
+            
+            
+            <div class="col-lg-4" style="text-align: justify">
+     
+  <h2>Contactenaos</h2>
+			
+    <blockquote>
+
+  
+{{ form_start(form) }}
+<div class="form-group" >
+			<label for="control-label" class="inputDefault">Nombre de pila</label>
+			{{ form_widget(form.firstName,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group" >
+			<label for="control-label" class="inputDefault">Apellido</label>
+			{{ form_widget(form.lastName,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+<div class="form-group" >
+			<label for="control-label" class="inputDefault">Correo electrónico</label>
+			{{ form_widget(form.email,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+<div class="form-group" >
+			<label for="control-label" class="inputDefault">Sujeto</label>
+			{{ form_widget(form.objectMail,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group">
+      <label for="textArea" class="inputDefault">Mensaje</label>
+
+{{ form_widget(form.messageMail,{ 'attr' :{ 'rows' : '4'} }) }}    
+ </div>
+ {{ form_row(form._token) }}
+    <div class="row">
+    <div class="col-lg-2 col-lg-offset-3">
+	 <button type="submit" class="btn btn-primary"> Enviar mensaje</button>
+</div>
+
+
+</blockquote>
+        
+            </div>
+            
+     
+     <div class="col-lg-2"></div>
+     
+     </div>
+     
+     </div>
+     
+{% endblock %}
