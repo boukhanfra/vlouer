@@ -43,16 +43,18 @@ class IndexController extends Controller
     {
     	$form ='';
     	$mail = new ContactMail();
+    	$form = $this->createForm(new ContactMailType(),$mail);
+    	$form->handleRequest(Request::createFromGlobals());
     	
-    	if($this->getRequest()->getMethod() == 'POST')
+    	if($form->isValid())
     	{
     		
     		$message = \Swift_Message::newInstance()
-    		->setSubject('')
+    		->setSubject($mail->getObjectMail())
     		->setFrom('contact@gsmlot.com')
-    		->setTo('recipient@example.com')
+    		->setTo($mail->getEmail())
     		->setBody(
-    	    $this->renderView('GsmLotIndexBundle:Index:mail.html.twig'),array('mail'=>$mail),
+    	    $this->renderView('GsmLotIndexBundle:Index/Contact:mail.html.twig',array('mail'=>$mail)),
     				'text/html'
     				);
     		
@@ -66,24 +68,12 @@ class IndexController extends Controller
     	}
     
     	
-    	$form = $this->createForm(new ContactMailType(),$mail);
-    	$form->handleRequest(Request::createFromGlobals());
     	
     	return $this->render('GsmLotIndexBundle:Index/Contact:contact.'.$_locale.'.html.twig', array(
     			'form' => $form->createView(),
     			));
     	
-    	/*
-    	$form = $this->createFormBuilder($mail)
-    	->add('firstName', 'text')
-    	->add('message', 'text')
-    	->add('save', 'submit', array('label' => 'submit mail'))
-    	->getForm();
-    	
-    	return $this->render('GsmLotIndexBundle:Index/Contact:contact.'.$_locale.'.html.twig', array(
-    			'form' => $form->createView(),
-    	));
-    	*/
+  
    
     }
     

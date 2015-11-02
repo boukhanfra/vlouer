@@ -52,9 +52,9 @@ class ContactMail
     /**
      * @var string
      *
-     * @ORM\Column(name="message", type="text")
+     * @ORM\Column(name="messageMail", type="text")
      */
-    private $message;
+    private $messageMail;
 
     /**
      * @var string
@@ -155,9 +155,9 @@ class ContactMail
      *
      * @return ContactMail
      */
-    public function setMessage($message)
+    public function setMessageMail($message)
     {
-        $this->message = $message;
+        $this->messageMail = $message;
 
         return $this;
     }
@@ -167,9 +167,9 @@ class ContactMail
      *
      * @return string
      */
-    public function getMessage()
+    public function getMessageMail()
     {
-        return $this->message;
+        return $this->messageMail;
     }
 
     /**

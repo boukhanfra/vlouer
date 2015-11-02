@@ -33,10 +33,10 @@
               <a href="">{{'index.menu.phones'|trans }}</a>
             </li>
             <li>
-              <a href="http://news.bootswatch.com">{{ 'index.menu.used'|trans }}</a>
+              <a href="">{{ 'index.menu.used'|trans }}</a>
             </li>
             <li>
-              <a href="http://news.bootswatch.com">{{ 'index.menu.econsumer'|trans }}</a>
+              <a href="">{{ 'index.menu.econsumer'|trans }}</a>
             </li>
             <li>
               <a href="{{ path('index_about',{'_locale': app.request.get('_locale')}) }}">{{ 'index.menu.aboutus'|trans }}</a>
@@ -49,13 +49,27 @@
 
       <ul class="nav navbar-nav navbar-right">
          
-            <li>
+         
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-               <a href="#" class="btn btn-info" style="line-height:9px;margin-top:3px;">{{ 'index.menu.myspace'|trans }}</a>
+                           <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">{{ 'index.menu.myspace'|trans }}<span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="my space">
+          
+                <li><a href="">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
+                <li><a href="">{{ 'index.menu.myspaceoffers'|trans }}</a></li>
+                <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_profile_show') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
+    
+              </ul>
+           				  </li>
+               
             {% else %}
+             <li>
                 <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">Login</a>
+             </li>
             {% endif %}
-            </li>
+           
          
          
          <li>
@@ -84,7 +98,7 @@
   
   <!--  start block timezones-->  
     
-        <div class="row" style="margin: 3px 2px 28px 3px">
+        <div class="row" style="margin: 3px 2px 8px 3px">
             <div class="col-lg-6">
             </div>
           
@@ -157,6 +171,28 @@
 		output='main.js'
     %}
         <script src="{{ asset_url }}"></script>
+        <script>
+        $(function(){
+        	  function stripTrailingSlash(str) {
+        	    if(str.substr(-1) == '/') {
+        	      return str.substr(0, str.length - 1);
+        	    }
+        	    return str;
+        	  }
+
+        	  var url = window.location.pathname;  
+        	  var activePage = stripTrailingSlash(url);
+
+        	  $('.nav li a').each(function(){  
+        	    var currentPage = stripTrailingSlash($(this).attr('href'));
+
+        	    if (activePage == currentPage) {
+        	      $(this).parent().addClass('active'); 
+        	    } 
+        	  });
+        	});
+       </script>
+        
     {% endjavascripts %}
 		{% endblock %}
     </body>

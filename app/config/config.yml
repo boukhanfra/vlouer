@@ -7,16 +7,19 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    
 
 fos_user:
     db_driver: orm
     firewall_name: main
     user_class: GsmLot\UserBundle\Entity\User
+    
+
 
 framework:
     #esi:             ~
-    translator:      { fallbacks: ["%locale%"] }
-    default_locale: %locale%
+    translator: { fallbacks: [en] }
+    default_locale:  %locale%
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -47,7 +50,11 @@ assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     write_to : "%kernel.root_dir%/../web"
-    bundles:        [GsmLotIndexBundle]
+    bundles:        
+        # Defaults (all currently registered bundles):
+        - GsmLotIndexBundle
+        - GsmLotUserBundle  
+        - FOSUserBundle       
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -84,4 +91,8 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    spool:     { type: memory }
+    encryption: ssl
+    auth_mode: login
+    spool:
+        type: file
+        path: %kernel.cache_dir%/spool

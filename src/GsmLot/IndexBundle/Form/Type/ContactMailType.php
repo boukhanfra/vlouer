@@ -18,7 +18,9 @@ class ContactMailType extends AbstractType
 				->add('lastName','text')
 				->add('email','email')
 				->add('objectMail','text')
-				->add('message','textarea');
+				->add('messageMail','textarea', array('attr' => array('class' => 'form-control')))
+				
+		;
 	}
 	
 	/**
