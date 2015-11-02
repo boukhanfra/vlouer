@@ -13,12 +13,13 @@ use GsmLot\IndexBundle\Form\Type\ContactMailType;
 class IndexController extends Controller
 {
     /**
-     * @Route("/",name="index_index")
+     * @Route("/{_locale}",name="index_index",defaults={"_locale":"en"},requirements={"_locale":"en|fr|es"})
      * @Template()
      */
-    public function indexAction()
+    public function indexAction($_locale)
     {
-        return  $this->render('GsmLotIndexBundle:Index:index.html.twig');
+        return  
+        $this->render('GsmLotIndexBundle:Index:index.html.twig');
     }
     
     
