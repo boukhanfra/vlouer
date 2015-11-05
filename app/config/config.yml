@@ -13,6 +13,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: GsmLot\UserBundle\Entity\User
+    registration:
+      form:
+        type: trader_user_registration 
     
 
 

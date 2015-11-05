@@ -23,12 +23,12 @@ class IndexController extends Controller
     
     
     /**
-     * @Route("/about/{_locale}",name="index_about",defaults={"_locale":"en"},requirements={"_locale":"en|fr|es"})
+     * @Route("/about",name="index_about")
      * @Template()
      */
-    public function aboutAction($_locale)
+    public function aboutAction(Request $request)
     {
-    	//echo $this->get('translator')->trans('index.menu.home');
+    	$_locale = $request->getLocale();
     	
     	return   $this->render('GsmLotIndexBundle:Index/About:about.'.$_locale.'.html.twig');
 

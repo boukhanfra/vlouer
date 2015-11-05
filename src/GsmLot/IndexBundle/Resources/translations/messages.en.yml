@@ -1,17 +1,23 @@
-index.menu.home: Home
-index.menu.phones: Phones
-index.menu.used: Used
-index.menu.econsumer: E-consumer
-index.menu.aboutus: About us
-index.menu.contactus: Contact us
-index.boutton.registerbuy: Register & Strat Buying
-index.boutton.registersell: Register & Start Selling
-index.titre.buyphones: Buy Phones
-index.titre.sellphones: Sell Phones
-index.menu.myspace: My Space
-index.menu.myspace: Mon Espace
-index.menu.myspaceaddoffer: Add offer
-index.menu.myspaceoffers: My Offers
-index.menu.myspacerequests: My Requests
-index.menu.myspaceprofile: My Profile
-index.menu.myspacelogout : Logout
+index:
+    boutton:
+        registerbuy: 'Register & Strat Buying'
+        registersell: 'Register & Start Selling'
+
+    menu:
+        aboutus: 'About us'
+        contactus: 'Contact us'
+        econsumer: Econsumer
+        home: Home
+        myspace: 'My space'
+        myspaceaddoffer: 'Add offer'
+        myspacelogout: 'Log out'
+        myspaceoffers: 'My offers'
+        myspaceprofile: 'My profile'
+        myspacerequests: 'My requests'
+        phones: 'Phones'
+        used: 'Used'
+        login: 'Log in'
+
+    titre:
+        buyphones: 'Buy Phones'
+        sellphones: 'Sell Phones'

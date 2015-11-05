@@ -9,10 +9,11 @@
 	 output="main.css"		%}
 		<link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}
+	
     </head>
     <body>
     {% set local = app.request.get('_locale') %}
-    <a href="{{ path('offer_list',{'_locale':local}) }}">Lien</a>
+ 
    <!--  navbar logo-->
             <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -57,7 +58,7 @@
               <ul class="dropdown-menu" aria-labelledby="my space">
           
                 <li><a href="">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
-                <li><a href="">{{ 'index.menu.myspaceoffers'|trans }}</a></li>
+                <li><a href="{{ path('offer_list',{'_locale':local}) }}">{{ 'index.menu.myspaceoffers'|trans }}</a></li>
                 <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_profile_show') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
@@ -67,7 +68,8 @@
                
             {% else %}
              <li>
-                <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">Login</a>
+          
+                <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">{{ 'index.menu.login'|trans }}</a>
              </li>
             {% endif %}
            

@@ -25,7 +25,7 @@ class User extends BaseUser
 	/**
 	 * 
 	 * @var Trader
-	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",mappedBy="user")
+	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",cascade={"persist"},mappedBy="user") cascade={"persist"} 
 	 */
 	protected $trader;
 	
