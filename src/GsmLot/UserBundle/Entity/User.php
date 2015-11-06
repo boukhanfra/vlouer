@@ -25,9 +25,14 @@ class User extends BaseUser
 	/**
 	 * 
 	 * @var Trader
-	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",cascade={"persist"},mappedBy="user") cascade={"persist"} 
+	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",cascade={"persist"},mappedBy="user")  
 	 */
 	protected $trader;
+	
+	public function __construct(){
+		
+		parent::__construct();
+	}
 	
 	
 	/**
@@ -46,6 +51,8 @@ class User extends BaseUser
 	public function setTrader(Trader $trader)
 	{
 		$this->trader = $trader;
+		
+		$this->trader->setEmail($this->getEmail());
 	}
 	
 }

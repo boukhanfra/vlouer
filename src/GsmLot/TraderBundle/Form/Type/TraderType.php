@@ -15,16 +15,17 @@ class TraderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('company')
-            ->add('email')
-            ->add('adress')
-            ->add('mobileNumber')
-            ->add('fixedNumber')
-            ->add('faxNumber')
-            ->add('user')
-		    ->add('JobTitle','entity',array('class'=>'GsmLot\TraderBundle\Entity\Jobtitle'))
+            ->add('firstName','text')
+            ->add('lastName','text')
+            ->add('company','text')
+            ->add('email','email')
+            ->add('address','text')
+            ->add('mobileNumber','text')
+            ->add('fixedNumber','text')
+            ->add('faxNumber','text')
+		    ->add('jobTitle','entity',array('class'=>'GsmLot\TraderBundle\Entity\JobTitle'))
+		    ->add('country','entity',array('class'=>'GsmLot\TraderBundle\Entity\Country'))
+		    ->add('city','entity',array('class'=>'GsmLot\TraderBundle\Entity\City'))
 		    
 		    
         ;

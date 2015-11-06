@@ -59,7 +59,7 @@ class Trader
      *
      * @ORM\Column(name="address", type="string", length=255)
      */
-    private $adress;
+    private $address;
 
     /**
      * @var string
@@ -277,28 +277,7 @@ class Trader
         return $this->email;
     }
 
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return Trader
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-    }
-
-    /**
-     * Get address
-     *
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
+   
 
     /**
      * Set mobileNumber
@@ -373,49 +352,29 @@ class Trader
     }
     
     
-    /**
-     * Set country
-     *
-     * @param \AppBundle\Entity\country $country
-     *
-     * @return Trader
-     */
-    public function setCountry(Country $country = null)
-    {
-        $this->country = $country;
 
-        
+    public function setCountry(Country $country )
+    {
+  
     }
 
-    /**
-     * Get country
-     *
-     * @return \AppBundle\Entity\country
-     */
+    
+    
     public function getCountry()
     {
-        return $this->country;
+    	if($this->city)
+        return $this->city->getCountry();
     }
 
-    /**
-     * Set city
-     *
-     * @param \AppBundle\Entity\City $city
-     *
-     * @return Trader
-     */
-    public function setCity(City $city = null)
+ 
+    public function setCity(City $city )
     {
         $this->city = $city;
 
         
     }
 
-    /**
-     * Get city
-     *
-     * @return \AppBundle\Entity\City
-     */
+    
     public function getCity()
     {
         return $this->city;
@@ -456,5 +415,13 @@ class Trader
     {
     	return $this->messagesSent;
     }
+	public function getAddress() {
+		return $this->address;
+	}
+	public function setAddress($address) {
+		$this->address = $address;
+		return $this;
+	}
+	
     
 }
