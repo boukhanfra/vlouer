@@ -1,31 +1,26 @@
-{% extends '::base.html.twig' %}
+{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
-	<h3>{{ 'offer.list.title'|trans }}</h3>
-	<table class="table table-hover" style="font-size: 12px">
-	  <tr>
-	    <th>{{ 'offer.brand'|trans }}</th>
-	    <th>{{ 'offer.model'|trans }}</th>
-	    <th>{{ 'offer.norm'|trans }}</th>
-	    <th>{{ 'offer.quantity'|trans }}</th>
-	    <th>{{ 'offer.price'|trans }}</th>
-	    <th>{{ 'offer.description'|trans }}</th>
-	    <th>{{ 'offer.physicalStock'|trans }}</th>
-	    <th>{{ 'offer.actions'|trans }}</th>
-	  </tr>
-	  {% for offer in pagination %}
-	  <tr>
-	    <td>{{ offer.brand }}</td>
-	    <td>{{ offer.model }}</td>
-	    <td>{{ offer.norm }}</td>
-	    <td>{{ offer.quantity }}</td>
-	    <td>{{ offer.price }}</td>
-	    <td>{{ offer.description|slice(0,20) }}</td>
-	    <td>{{ offer.physicalStock }}</td>
-	    <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
-	  </tr>
-	  {% endfor %}
-	</table>
-	<div class="row" style="text-align: center">
-		<div class="col-sm-12">{{ knp_pagination_render(pagination) }}</div>
-	</div>
+<h3>{{ 'offer.list.title'|trans }}</h3>
+<table class="table">
+  <tr>
+    <th>{{ 'offer.brand'|trans }}</th>
+    <th>{{ 'offer.model'|trans }}</th>
+    <th>{{ 'offer.norm'|trans }}</th>
+    <th>{{ 'offer.quantity'|trans }}</th>
+    <th>{{ 'offer.price'|trans }}</th>
+    <th>{{ 'offer.description'|trans }}</th>
+    <th>{{ 'offer.physicalStock'|trans }}</th>
+  </tr>
+  {% for offer in user.trader.offers %}
+  <tr>
+    <td>{{ offer.brand }}</td>
+    <td>{{ offer.model }}</td>
+    <td>{{ offer.norm }}</td>
+    <td>{{ offer.quantity }}</td>
+    <td>{{ offer.price }}</td>
+    <td>{{ offer.description|slice(0,20) }}</td>
+    <td>{{ offer.physicalStock }}</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}
