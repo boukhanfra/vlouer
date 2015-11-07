@@ -16,6 +16,9 @@ fos_user:
     registration:
       form:
         type: trader_user_registration 
+    profile:
+      form:
+        type: trader_user_profile
     
 
 

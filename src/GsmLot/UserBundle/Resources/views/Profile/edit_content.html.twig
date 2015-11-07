@@ -1,8 +1,94 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+  <div class="container" style="padding:30px">
+         <div class="row">
+            <div class="col-lg-6">
+ {% image '@GsmLotIndexBundle/Resources/public/images/login.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="width:500px;" />
+{% endimage %} 
+            </div>
+          
+             <div class="col-lg-4" style="text-align: justify">
+   <blockquote>
 <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    {{ form_widget(form) }}
+ <div class="form-group" >
+			<label for="control-label" class="inputDefault"> {{ 'form.username'|trans }}</label>
+			{{ form_widget(form.username,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+
+
+<div class="form-group" >
+			{{ form_errors(form.email) }}
+			<label for="control-label" class="inputDefault">{{ 'form.email'|trans }}</label>
+			{{ form_widget(form.email,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+
+
+<div class="form-group" >
+			{{ form_errors(form.current_password) }}
+			<label for="control-label" class="inputDefault">{{ 'form.current_password'|trans }}</label>
+			{{ form_widget(form.current_password,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">First Name</label>
+			{{ form_widget(form.trader.firstName,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">Last Name</label>
+			{{ form_widget(form.trader.lastName,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">Address</label>
+			{{ form_widget(form.trader.address,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">Mobile Number</label>
+			{{ form_widget(form.trader.mobileNumber,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">Office Number</label>
+			{{ form_widget(form.trader.fixedNumber,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">Fax Number</label>
+			{{ form_widget(form.trader.faxNumber,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">Country</label>
+			{{ form_widget(form.trader.country,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">City</label>
+			{{ form_widget(form.trader.city,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+<div class="form-group" >
+	<label for="control-label" class="inputDefault">Company</label>
+			{{ form_widget(form.trader.company,{ 'attr' :{ 'class' : 'form-control'} }) }}
+</div>
+{{ form_widget(form._token) }}
+
+ 
+
+    
+    
     <div>
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
 </form>
+	 </blockquote>
+			</div>
+			
+			 
+		</div>
+    </div>

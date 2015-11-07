@@ -25,7 +25,8 @@ class User extends BaseUser
 	/**
 	 * 
 	 * @var Trader
-	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",cascade={"persist"},mappedBy="user")  
+	 * @ORM\OneToOne(targetEntity="GsmLot\UserBundle\Entity\Trader",inversedBy="trader")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
 	 */
 	protected $trader;
 	
@@ -54,5 +55,13 @@ class User extends BaseUser
 		
 		$this->trader->setEmail($this->getEmail());
 	}
+	public function getId() {
+		return $this->id;
+	}
+	public function setId($id) {
+		$this->id = $id;
+		return $this;
+	}
+	
 	
 }

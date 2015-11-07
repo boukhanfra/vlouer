@@ -87,7 +87,7 @@ class Trader
      * 
      * @var User
      * 
-     * @ORM\OneToOne(targetEntity="GsmLot\UserBundle\Entity\User",inversedBy="trader")
+     * @ORM\OneToOne(targetEntity="GsmLot\UserBundle\Entity\User",inversedBy="trader",cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      */
     protected $user;
@@ -422,6 +422,18 @@ class Trader
 		$this->address = $address;
 		return $this;
 	}
+	public function setId($id) {
+		$this->id = $id;
+		return $this;
+	}
+	public function getUser() {
+		return $this->user;
+	}
+	public function setUser(User $user) {
+		$this->user = $user;
+		return $this;
+	}
+	
 	
     
 }

@@ -12,3 +12,8 @@ services:
           class:  GsmLot\UserBundle\Form\RegistrationType
           tags:
             - { name: form.type, alias: trader_user_registration }
+
+      gsmlot.form.profile:
+          class: GsmLot\UserBundle\Form\ProfileType
+          tags:
+            - { name: form.type, alias: trader_user_profile}
