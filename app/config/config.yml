@@ -54,7 +54,8 @@ assetic:
         # Defaults (all currently registered bundles):
         - GsmLotIndexBundle
         - GsmLotUserBundle  
-        - FOSUserBundle       
+        - FOSUserBundle
+        - GsmLotOfferBundle       
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -96,7 +97,13 @@ swiftmailer:
     spool:
         type: file
         path: %kernel.cache_dir%/spool
+ 
 jms_i18n_routing:
     default_locale: en
     locales: [en,fr,es]
     strategy: prefix_except_default
+
+#Configuration de pagination Bundle
+knp_paginator:
+    template:
+        pagination: ::pagination.html.twig

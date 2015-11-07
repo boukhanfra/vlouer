@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Model
  *
  * @ORM\Table(name="model")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GsmLot\OfferBundle\Repository\ModelRepository")
  */
 class Model 
 {

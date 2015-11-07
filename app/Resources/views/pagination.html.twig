@@ -1,0 +1,41 @@
+{# @author Aziz}
+{# Surcharge de template de pagination #}
+
+{% if pageCount > 1 %}
+	<ul class="pagination">
+    {% if first is defined and current != first %}
+        <li>
+            <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">Début</a>
+        </li>
+    {% endif %}
+
+    {% if previous is defined %}
+        <li>
+            <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        </li>
+    {% endif %}
+
+    {% for page in pagesInRange %}
+        {% if page != current %}
+            <li>
+                <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+            </li>
+        {% else %}
+            <li class="active"><span>{{ page }}</span></li>
+        {% endif %}
+
+    {% endfor %}
+
+    {% if next is defined %}
+        <li>
+            <a href="{{ path(route, query|merge({(pageParameterName): next})) }}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+        </li>
+    {% endif %}
+
+    {% if last is defined and current != last %}
+        <li>
+            <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">Dérnier</a>
+        </li>
+    {% endif %}
+    </ul>
+{% endif %}
