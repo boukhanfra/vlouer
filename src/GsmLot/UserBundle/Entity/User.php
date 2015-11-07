@@ -25,9 +25,15 @@ class User extends BaseUser
 	/**
 	 * 
 	 * @var Trader
-	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",mappedBy="user")
+	 * @ORM\OneToOne(targetEntity="GsmLot\UserBundle\Entity\Trader",inversedBy="trader")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
 	 */
 	protected $trader;
+	
+	public function __construct(){
+		
+		parent::__construct();
+	}
 	
 	
 	/**
@@ -46,6 +52,16 @@ class User extends BaseUser
 	public function setTrader(Trader $trader)
 	{
 		$this->trader = $trader;
+		
+		$this->trader->setEmail($this->getEmail());
 	}
+	public function getId() {
+		return $this->id;
+	}
+	public function setId($id) {
+		$this->id = $id;
+		return $this;
+	}
+	
 	
 }

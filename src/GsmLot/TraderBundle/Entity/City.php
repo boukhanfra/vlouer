@@ -37,39 +37,36 @@ class City
      */
     protected $country;
     
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
+    
+	public function getId() {
+		return $this->id;
+	}
+	public function setId($id) {
+		$this->id = $id;
+		return $this;
+	}
+	public function getName() {
+		return $this->name;
+	}
+	public function setName($name) {
+		$this->name = $name;
+		return $this;
+	}
+	public function getCountry() {
+		return $this->country;
+	}
+	public function setCountry(Country $country) {
+		$this->country = $country;
+		return $this;
+	}
+	
+    public function __toString(){
+    	
+    	return $this->name;
     }
+    
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return City
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
 
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+    
    
 }

@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
     
        
@@ -60,7 +60,7 @@
     </tbody>
     </table>
 
-  		<center>	<a href="#" class="btn btn-success">{{ 'index.boutton.registersell'|trans }}</a> </center>
+  		<center>	<a href={{ path("fos_user_registration_register") }} class="btn btn-success">{{ 'index.boutton.registersell'|trans }}</a> </center>
   			</div>
 	
             <div class="col-lg-6">
@@ -109,7 +109,7 @@
     </table>  
 
 
-  			<center><a href="#" class="btn btn-warning">{{ 'index.boutton.registerbuy'|trans }}</a></center>
+  			<center><a href="{{  path("fos_user_registration_register") }}" class="btn btn-warning">{{ 'index.boutton.registerbuy'|trans }}</a></center>
 
 
  		   </div>
