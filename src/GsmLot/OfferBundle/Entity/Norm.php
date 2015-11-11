@@ -31,6 +31,13 @@ class Norm
 	 */
 	private $name;
 	
+	
+	/**
+	 * @ORM\Column(name="description", type="string", length=255)
+	 * @var string
+	 */
+	private $description;
+	
 	/**
 	 * @return integer
 	 */
@@ -55,6 +62,24 @@ class Norm
 	{
 		$this->name = $name;
 	}
+	
+	/**
+	 * @return string
+	 */
+	public function getDescription()
+	{
+		return $this->description;
+	}
+	
+	/**
+	 * 
+	 * @param string $description
+	 */
+	public function setDescription($description)
+	{
+		$this->description = $description;
+	}
+	
 	
 	/**
 	 * @return string

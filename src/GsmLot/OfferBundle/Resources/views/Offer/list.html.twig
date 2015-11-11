@@ -1,5 +1,11 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
+<div class="alert alert-warning alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	<center><strong>{{ 'offer.warning'|trans }}</strong> {{ 'offer.notactive'|trans }}</center>
+</div>
 <h3>{{ 'offer.list.title'|trans }}</h3>
 <table class="table">
   <tr>
@@ -10,17 +16,30 @@
     <th>{{ 'offer.price'|trans }}</th>
     <th>{{ 'offer.description'|trans }}</th>
     <th>{{ 'offer.physicalStock'|trans }}</th>
+    <th>{{ 'offer.actions'|trans }}</th>
   </tr>
-  {% for offer in user.trader.offers %}
-  <tr>
-    <td>{{ offer.brand }}</td>
+  {% for offer in pagination %}
+  <tr {% if not offer.active %} class="warning"  {% endif %}>
+    <td>{{ offer.model.brand }}</td>
     <td>{{ offer.model }}</td>
     <td>{{ offer.norm }}</td>
     <td>{{ offer.quantity }}</td>
     <td>{{ offer.price }}</td>
     <td>{{ offer.description|slice(0,20) }}</td>
     <td>{{ offer.physicalStock }}</td>
+    <td>
+    <a href="{{ path('offer_update',{'offer_id':offer.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+    {% if offer.active %}
+    <a href="{{ path('offer_deactive',{'offer_id':offer.id}) }}">D</a>
+    {% else %}
+    <a href="{{ path('offer_activate',{'offer_id':offer.id}) }}">A</a>
+    {% endif %}
+    </td>
   </tr>
   {% endfor %}
 </table>
+<div class="row" style="text-align: center">
+	<div class="col-sm-12">{{ knp_pagination_render(pagination) }}</div>
+</div>
+<br/><br/><br/>
 {% endblock %}

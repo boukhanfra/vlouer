@@ -1,6 +1,11 @@
-{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}{% block contenu %}
-<h3>{{ 'offer.title'|trans }}</h3>
-<form method="post" action="">
+{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
+{% block contenu %}
+<h3>
+{% block titre %}
+{{ 'offer.create'|trans }}
+{% endblock %}
+</h3>
+<form method="post" action="{% block action %} {{ path('offer_create') }} {% endblock %}">
 	<div class="form-group">
 		<div class="row">
 			<label for="offerType" class="col-md-2">{{ 'offer.offerType'|trans }}</label>
@@ -56,22 +61,23 @@
 	 <button type="submit" class="btn btn-primary">{{ 'offer.submit'|trans }}</button>
 </form>
 {% endblock %}
-{% block javascripts %}
-
+{% block javascript %}
 {{ parent() }}
 {% javascripts 
 '@GsmLotOfferBundle/Resources/public/js/select2.js' 
-'@PUGXAutocompleterBundle/Resources/public/js/autocompleter-select2.js'
+'@PUGXAutocompleterBundle/Resources/public/js/autocompleter-select2.js' 
 output='main.js' %}
 <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
 <script type="text/javascript">
 $('#new_offer_model').autocompleter({url_list: Routing.generate('model_search'), url_get: Routing.generate('model_get')});
 </script>
-{% endjavascripts %}
-{% stylesheets 'bundles/gsmlotoffer/css/select2.css' 
-output="main.css" filter ="cssrewrite,yui_css" %}
+{% endblock %}
+{% block stylesheet %}
+{{ parent() }}
+{% stylesheets 'bundles/gsmlotoffer/css/select2.css' output="main.css" filter ="cssrewrite,yui_css" %}
 <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
 {% endstylesheets %}
 {% endblock %}

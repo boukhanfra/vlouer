@@ -3,6 +3,7 @@ GBP: GBP
 USD: USD
 
 offer:
+    actions: offer.actions   # FIXME
     brand: Brand
     currency: Currency
     description: Description
@@ -13,6 +14,7 @@ offer:
 
     model: Model
     norm: Norm
+    notactive: offer.notactive   # FIXME
     offerType: 'Offer type'
     physicalStock: 'Physical stock'
     price: Price

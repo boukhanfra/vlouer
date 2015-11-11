@@ -3,6 +3,7 @@ GBP: GBP
 USD: USD
 
 offer:
+    actions: Actions
     brand: Constructeur
     currency: Devise
     description: Description
@@ -13,9 +14,18 @@ offer:
 
     model: Modèle
     norm: 'Norme de construction'
+    notactive: 'Les offres en couleur orange sont désactivées, donc elles ne sont pas visibles sur le site.'
     offerType: 'Type d''offre'
     physicalStock: 'Stock physique'
     price: Prix
     quantity: Quantité
     submit: Valider
     title: 'Mes offres'
+    warning: Avertissement!
+    information: Information!
+    desactivated: 'Votre offre a été bien désactivée'
+    activated: 'Votre offre a été bien activée'
+    created: 'Votre offre a été bien créée'
+    updated: 'Votre offre a été bien mise à jour'
+    create: Créer une offre
+    update: "Mettre à jour l'offre"

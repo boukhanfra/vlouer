@@ -9,9 +9,27 @@ use GsmLot\OfferBundle\Entity\Offer;
 use GsmLot\OfferBundle\Form\Type\OfferType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class OfferController extends Controller
 {
+	
+	
+	private $breadcrumbs;
+	
+	
+	public function setContainer(ContainerInterface $container = null)
+	{
+		$this->container = $container;
+
+		$this->breadcrumbs = $this->get("white_october_breadcrumbs");
+		
+		$this->breadcrumbs->addItem('index.menu.home',$this->get('router')->generate('index_index'));
+		
+		$this->breadcrumbs->addItem('index.menu.myspaceoffers',$this->get('router')->generate('offer_list'));
+		
+	}
+	
     /**
      * @Route("/",name="offer_list")
      * @Template()
@@ -35,6 +53,8 @@ class OfferController extends Controller
      */
     public function createAction(Request $request)
     {  	
+    	$this->breadcrumbs->addItem('offer.create',$this->get('router')->generate('offer_create'));
+    	
     	$offer = new Offer();
     	$form = $this->createForm(new OfferType(),$offer);
     	$form->handleRequest($request);
@@ -42,12 +62,56 @@ class OfferController extends Controller
     	{
     		$offer->setTrader($this->get('security.token_storage')->getToken()->getUser()->getTrader());
     		
-    		$this->get('gsm_lot_offer.offer_manager')->createOffer($offer);    		
+    		$this->get('gsm_lot_offer.offer_manager')->createOffer($offer);
+    		
+    		$this->get('session')->getFlashBag()->add('notice','offer.created');
+    		
+    		return $this->redirectToRoute('offer_list');
     	}
     	
     	return $this->render('GsmLotOfferBundle:Offer:create.html.twig',
     			array('form'=>$form->createView()));
     }
+    
+    
+    /**
+     * @Route("/update/{offer_id}",name="offer_update")
+     * @Template()
+     */
+    public function updateAction(Request $request)
+    {        	
+    	$offer = $this->get('gsm_lot_offer.offer_manager')->getOffer($request->get('offer_id'));
+    	
+    	$user = $this->get('security.token_storage')->getToken()->getUser();
+    	
+    	if($offer)
+    	{
+    		if($offer->getTrader()->getUser()->getId() == $user->getId())
+    		{
+    			$this->breadcrumbs->addItem('offer.update',$this->get('router')->generate('offer_update',array('offer_id'=> $offer->getId())));
+    			 
+    			
+    			$form = $this->createForm(new OfferType(),$offer);
+    			
+    			$form->handleRequest($request);
+    			
+    			if($form->isValid())
+    			{
+    				$offer->setTrader($this->get('security.token_storage')->getToken()->getUser()->getTrader());
+    			
+    				$this->get('gsm_lot_offer.offer_manager')->updateOffer($offer);
+    				
+    				$this->get('session')->getFlashBag()->add('notice','offer.updated');
+    				
+    				return $this->redirectToRoute('offer_list');
+    			}
+    			
+    			return $this->render('GsmLotOfferBundle:Offer:update.html.twig',
+    					array('form'=>$form->createView()));		
+    		}
+    	} 	
+    }
+   
         
     /**
      * @Route("/searchModel",name="model_search",options={"expose":"true"})
@@ -55,7 +119,7 @@ class OfferController extends Controller
      */
     public function searchModelAction(Request $request)
     {
-    	$q = $request->get('term');
+    	$q = $request->get('q');
     	
     	$results = $this->get('gsm_lot_offer.offer_manager')->searchModel($q);
     	
@@ -70,28 +134,56 @@ class OfferController extends Controller
      */
     public function getModelAction($id)
     {
-    	$model = $this->get('gms_lot_offer.offer_manager')->getModel($id);
+    	$model = $this->get('gsm_lot_offer.offer_manager')->getModel($id);
     	
     	return new Response($model->getName());
     }
     
     
     /**
-     * @Route("/disable")
+     * @Route("/active/{offer_id}",name="offer_activate")
      * @Template()
      */
-    public function disableAction()
+    public function activateAction($offer_id)
     {
+    	$offer = $this->get('gsm_lot_offer.offer_manager')->getOffer($offer_id);
     	
+    	$user = $this->get('security.token_storage')->getToken()->getUser();
+    	
+    	if($offer)
+    	{
+    		if($offer->getTrader()->getUser()->getId() == $user->getId())
+    		{
+    			$this->get('gsm_lot_offer.offer_manager')->activateOffer($offer);
+    			
+    			$this->get('session')->getFlashBag()->add('notice','offer.activated');
+    			
+    			return $this->redirectToRoute('offer_list');
+    		}
+    	}
     }
+    
     
     /**
-     * @Route("/remove")
+     * @Route("/deactive/{offer_id}",name="offer_deactive")
      * @Template()
      */
-    public function removeAction()
+    public function deativateAction($offer_id)
     {
-    	
-    }
-    
+    	$offer = $this->get('gsm_lot_offer.offer_manager')->getOffer($offer_id);
+    	 
+    	$user = $this->get('security.token_storage')->getToken()->getUser();
+    	 
+    	if($offer)
+    	{
+    		if($offer->getTrader()->getUser()->getId() == $user->getId())
+    		{
+    			$this->get('gsm_lot_offer.offer_manager')->deactivateOffer($offer);
+    			
+    			$this->get('session')->getFlashBag()->add('notice','offer.desactivated');
+    			
+    			return $this->redirectToRoute('offer_list');
+    		}
+    	}
+    }    
 }

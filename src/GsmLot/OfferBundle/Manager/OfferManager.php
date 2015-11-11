@@ -5,6 +5,7 @@ namespace GsmLot\OfferBundle\Manager;
 use GsmLot\OfferBundle\Entity\Offer;
 use GsmLot\IndexBundle\Entity\Manager;
 use GsmLot\OfferBundle\Entity\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @since 29/10/2015
@@ -25,6 +26,8 @@ class OfferManager extends Manager
 		try
 		{
 			$offer->setCreatedOn(new \DateTime('now'));
+			$offer->setDeviceType($this->em->getRepository('GsmLotOfferBundle:DeviceType')->find(1));
+			$offer->setModel($this->em->getRepository('GsmLotOfferBundle:Model')->find(1));
 			$offer->setActive(false);
 			$offer->setDisabled(false);
 			
@@ -211,4 +214,78 @@ class OfferManager extends Manager
 			throw $e;
 		}
 	}
+	
+	
+	/**
+	 * @abstract Business - get offer by id
+	 * @param  $id
+	 * @throws Exception
+	 * @return Offer
+	 */
+	public function getOffer($id)
+	{
+		try
+		{
+			return $this->em->getRepository('GsmLotOfferBundle:Offer')->find($id);
+		}
+		
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	
+	/**
+	 * @abstract Business - get number of offers grouped by brand name
+	 * @throws Exception
+	 * @return ArrayCollection
+	 */
+	public function getMobileOffersBrand($type)
+	{
+		try
+		{
+			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getNumberMobileOfferBrand($type);
+			
+			return $list_count_offer;
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	/**
+	 * @abstract Business - get number of offers grouped by norm
+	 * @return ArrayCollection
+	 * @throws Exception
+	 */
+	public function getMobileOffersNorm($type)
+	{
+		try
+		{
+			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getNumberMobileOfferNorm($type);
+			
+			return $list_count_offer;
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	public function getMobileOffersCountry($type)
+	{
+		try
+		{
+			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getNumberMobileOfferCountry($type);
+				
+			return $list_count_offer;
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
 }
