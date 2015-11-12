@@ -1,9 +1,14 @@
-{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}{% block contenu %}
-<h3>{{ 'offer.title'|trans }}</h3>
-<form method="post" action="">
+{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
+{% block contenu %}
+<h3>
+{% block titre %}
+{{ 'offer.create'|trans }}
+{% endblock %}
+</h3>
+<form method="post" action="{% block action %} {{ path('offer_create') }} {% endblock %}">
 	<div class="form-group">
 		<div class="row">
-			<label for="offerType" class="col-md-1">{{ 'offer.offerType'|trans }}</label>
+			<label for="offerType" class="col-md-2">{{ 'offer.offerType'|trans }}</label>
 			{{ form_widget(form.offerType,{ 'attr' :{ 'class' : 'col-md-2'} }) }}
 		</div>
 	</div>
@@ -12,47 +17,67 @@
 	</div>
 	<div class="form-group">
 		<div class="row">
-			<label for="device" class="col-md-3">{{ 'offer.norm'|trans }}</label>
-			{{ form_widget(form.norm,{ 'attr' :{ 'class' : 'col-md-3'} }) }}
+			<label for="device" class="col-md-2">{{ 'offer.norm'|trans }}</label>
+			{{ form_widget(form.norm,{ 'attr' :{ 'class' : 'col-md-2'} }) }}
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="row">
-			<label for="device" class="col-md-3">{{ 'offer.device'|trans }}</label>
-			{{ form_widget(form.model,{ 'attr' :{ 'class' : 'col-md-3'} }) }}
+			<label for="device" class="col-md-2">{{ 'offer.device'|trans }}</label>
+			{{ form_widget(form.model,{ 'attr' :{ 'class' : 'col-md-2'} }) }}
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="row">
-			<label for="device" class="col-md-3">{{ 'offer.currency'|trans }}</label>
-			{{ form_widget(form.currency,{ 'attr' :{ 'class' : 'col-md-3'} }) }}
+			<label for="device" class="col-md-2">{{ 'offer.currency'|trans }}</label>
+			{{ form_widget(form.currency,{ 'attr' :{ 'class' : 'col-md-2'} }) }}
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="row">
-			<label for="quantity" class="col-md-3">{{ 'offer.quantity'|trans }}</label>
-			{{ form_widget(form.quantity,{ 'attr' :{ 'class' : 'col-md-3'} }) }}
+			<label for="quantity" class="col-md-2">{{ 'offer.quantity'|trans }}</label>
+			{{ form_widget(form.quantity,{ 'attr' :{ 'class' : 'col-md-2'} }) }}
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="row">
-			<label for="price" class="col-md-3">{{ 'offer.price'|trans }}</label>
-			{{ form_widget(form.price,{ 'attr' :{ 'class' : 'col-md-3'} }) }}
+			<label for="price" class="col-md-2">{{ 'offer.price'|trans }}</label>
+			{{ form_widget(form.price,{ 'attr' :{ 'class' : 'col-md-2'} }) }}
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="row">
-			<label for="description" class="col-md-3">{{ 'offer.description'|trans }}</label>
-			{{ form_widget(form.description,{ 'attr' :{ 'class' : 'col-md-3'} }) }}
+			<label for="description" class="col-md-2">{{ 'offer.description'|trans }}</label>
+			{{ form_widget(form.description,{ 'attr' :{ 'class' : 'col-md-2'} }) }}
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="row">
-			<label for="Physical Stock" class="col-md-3">{{ 'offer.physicalStock'|trans }}</label>
-			{{ form_widget(form.physicalStock,{ 'attr' :{ 'class' : 'col-md-3'} }) }}
+			<label for="Physical Stock" class="col-md-2">{{ 'offer.physicalStock'|trans }}</label>
+			{{ form_widget(form.physicalStock,{ 'attr' :{ 'class' : 'col-md-2'} }) }}
 		</div>
 	</div>
 	{{ form_row(form._token) }}
 	 <button type="submit" class="btn btn-primary">{{ 'offer.submit'|trans }}</button>
 </form>
+{% endblock %}
+{% block javascript %}
+{{ parent() }}
+{% javascripts 
+'@GsmLotOfferBundle/Resources/public/js/select2.js' 
+'@PUGXAutocompleterBundle/Resources/public/js/autocompleter-select2.js' 
+output='main.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+<script type="text/javascript">
+$('#new_offer_model').autocompleter({url_list: Routing.generate('model_search'), url_get: Routing.generate('model_get')});
+</script>
+{% endblock %}
+{% block stylesheet %}
+{{ parent() }}
+{% stylesheets 'bundles/gsmlotoffer/css/select2.css' output="main.css" filter ="cssrewrite,yui_css" %}
+<link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
 {% endblock %}

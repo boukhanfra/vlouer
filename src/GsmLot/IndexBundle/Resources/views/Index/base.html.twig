@@ -3,12 +3,17 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}GsmLot Website{% endblock %}</title>
-		{% stylesheets 'bundles/gsmlotindex/css/bootstrap.min.css'
-					 'bundles/gsmlotindex/css/custom.min.css'
-					 'bundles/gsmlotindex/css/languages.css' filter ="cssrewrite,yui_css"
+        {% block stylesheet %}
+		{% stylesheets 
+		'bundles/gsmlotindex/css/bootstrap.min.css'
+		'bundles/gsmlotindex/css/font-awesome/css/font-awesome.css'
+		'bundles/gsmlotindex/css/custom.min.css'
+		'bundles/gsmlotindex/css/languages.css' 
+		filter ="cssrewrite,yui_css"
 	 output="main.css"		%}
 		<link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}
+		{% endblock %}
 	
     </head>
     <body>
@@ -18,7 +23,7 @@
             <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="{{ path('index_index',{'_locale': local}) }}" class="navbar-brand">GsmLot</a>
+          <a href="{{ path('index_index') }}" class="navbar-brand">GsmLot</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -30,9 +35,9 @@
        <!--  debut navbar menus-->
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
-          <li><a href="{{ path('index_index',{'_locale': local}) }}">{{ 'index.menu.home'|trans }}</a></li>
+          <li><a href="{{ path('index_index') }}">{{ 'index.menu.home'|trans }}</a></li>
             <li>
-              <a href="">{{'index.menu.phones'|trans }}</a>
+              <a href="{{ path('offer_mobile') }}">{{'index.menu.phones'|trans }}</a>
             </li>
             <li>
               <a href="">{{ 'index.menu.used'|trans }}</a>
@@ -57,8 +62,8 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">{{ 'index.menu.myspace'|trans }}<span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="my space">
           
-                <li><a href="">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
-                <li><a href="{{ path('offer_list',{'_locale':local}) }}">{{ 'index.menu.myspaceoffers'|trans }}</a></li>
+                <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
+                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span class="badge">{{ app.user.trader.offers|length }}</span></a></li>
                 <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_profile_show') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
@@ -77,7 +82,8 @@
          
          <li>
          <div class="btn-group" style="margin-top:3px">
-  			<a href="{{ path(app.request.attributes.get('_route'),{'_locale': local }) }}" class="btn btn-primary"><span class="lang-sm lang-lbl" lang="{{ local }}"></span></a>
+  			<a href="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" 
+  			class="btn btn-primary"><span class="lang-sm lang-lbl" lang="{{ local }}"></span></a>
   	    	<a aria-expanded="true" href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
   			<ul class="dropdown-menu">
   			{% if local == '' %}
@@ -86,7 +92,9 @@
   			{% set lang = {'anglais':'en','francais':'fr','espagnol': 'es'} %}
   			{% for l in lang %}
   			{% if l != local %}
-  			   <li><a href="{{ path(app.request.attributes.get('_route'),{'_locale': l}) }}"><span class="lang-sm lang-lbl" lang="{{ l }}"></span></a></li>
+  			   <li><a href="{{ path(app.request.attributes.get('_route'), 
+       							 app.request.attributes.get('_route_params'))|replace({(local):(l)}) }}">
+       							 <span class="lang-sm lang-lbl" lang="{{ l }}"></span></a></li>
   			{% endif %}
   			{% endfor %}
 
@@ -101,11 +109,9 @@
       </div>
     </div> 
     <!--  end block menubar-->
-  
-  
   <!--  start block timezones-->  
     
-        <div class="row" style="margin: 3px 2px 8px 3px">
+        <div class="row" style="margin: 3px 2px 8px 3px;border-bottom:1px solid #d9d9d9;height: 30px">
             <div class="col-lg-6">
             </div>
           
@@ -121,12 +127,33 @@
         
         </div>
         
-
- 	
 <!--  end block timezones-->
-
-
-        {% block contenu %}{% endblock %}
+{{ wo_render_breadcrumbs() }}
+        <div class="container">
+	        <div class="col-md-10">
+				{% for flashMessage in app.session.flashbag.get('notice') %}
+				<div class="alert alert-info">
+					<center>
+						<strong>{{ 'offer.information'|trans }}</strong>
+						{{ flashMessage|trans }}
+					</center>
+				</div>
+				{% endfor %} 
+				{% for flashMessage in
+				app.session.flashbag.get('error') %}
+				<div class="alert alert-danger">
+					<center>
+						<strong>{{ flashMessage }}</strong>
+					</center>
+				</div>
+				{% endfor %}
+	        
+			{% block contenu %}
+	        {% endblock %}
+	        </div>
+	        <div class="col-md-2">
+	        </div>
+        </div>
         {% block footer %}
             <div class="panel-info">
   <div class="panel-heading" style="border-color:black;background-color:lightslategrey;border-radius:0px;">
@@ -171,14 +198,16 @@
     </footer>
     {% endblock %}
  
-        {% block javascripts %}
+        {% block javascript %}
     {% javascripts '@GsmLotIndexBundle/Resources/public/js/jquery-1.10.2.min.js'
 					'@GsmLotIndexBundle/Resources/public/js/boostrap.min.js'
 					'@GsmLotIndexBundle/Resources/public/js/custom.min.js'
 		output='main.js'
     %}
         <script src="{{ asset_url }}"></script>
-        <script>
+        
+    {% endjavascripts %}
+            <script>
         $(function(){
         	  function stripTrailingSlash(str) {
         	    if(str.substr(-1) == '/') {
@@ -199,8 +228,11 @@
         	  });
         	});
        </script>
-        
-    {% endjavascripts %}
+       <script type="text/javascript">
+		if($('.alert-info').length > 0){
+			$('.alert-info').fadeOut(10000)
+		}
+	</script>
 		{% endblock %}
     </body>
 </html>

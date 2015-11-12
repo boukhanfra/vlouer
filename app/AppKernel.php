@@ -26,6 +26,9 @@ class AppKernel extends Kernel
         	new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         	new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
         	new JMS\TranslationBundle\JMSTranslationBundle(),
+        	new PUGX\AutocompleterBundle\PUGXAutocompleterBundle(),
+        	new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+        	new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

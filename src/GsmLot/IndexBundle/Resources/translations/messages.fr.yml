@@ -19,5 +19,10 @@ index:
         login: 'Se connecter'
 
     titre:
-        buyphones: 'Acheter Téléphones'
-        sellphones: 'Vendre Téléphones'
+        buyphones: 'Acheter des téléphones'
+        sellphones: 'Vendre des Téléphones'
+        searchoffer: 'Chercher par marque'
+        specification: 'Spécification'
+        country: 'Localisation'
+        bourse: 'Parquet de bourse'
+        total_offer_buy: 'Toutes les offres'

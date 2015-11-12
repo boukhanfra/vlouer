@@ -1,74 +1,86 @@
+# Desc: /js/routing.{_format}
+fos_js_routing_js: '/js/routing.{_format}'   # FIXME
+
 # Desc: /profile/change-password
-fos_user_change_password: /profile/change-password   # FIXME
+fos_user_change_password: /profile/change-password
 
 # Desc: /profile/edit
-fos_user_profile_edit: /profile/edit   # FIXME
+fos_user_profile_edit: /profile/edit
 
 # Desc: /profile/
-fos_user_profile_show: /profile/   # FIXME
+fos_user_profile_show: /profile/
 
 # Desc: /register/check-email
-fos_user_registration_check_email: /register/check-email   # FIXME
+fos_user_registration_check_email: /register/check-email
 
 # Desc: /register/confirm/{token}
-fos_user_registration_confirm: '/register/confirm/{token}'   # FIXME
+fos_user_registration_confirm: '/register/confirm/{token}'
 
 # Desc: /register/confirmed
-fos_user_registration_confirmed: /register/confirmed   # FIXME
+fos_user_registration_confirmed: /register/confirmed
 
 # Desc: /register/
-fos_user_registration_register: /register/   # FIXME
+fos_user_registration_register: /register/
 
 # Desc: /resetting/check-email
-fos_user_resetting_check_email: /resetting/check-email   # FIXME
+fos_user_resetting_check_email: /resetting/check-email
 
 # Desc: /resetting/request
-fos_user_resetting_request: /resetting/request   # FIXME
+fos_user_resetting_request: /resetting/request
 
 # Desc: /resetting/reset/{token}
-fos_user_resetting_reset: '/resetting/reset/{token}'   # FIXME
+fos_user_resetting_reset: '/resetting/reset/{token}'
 
 # Desc: /resetting/send-email
-fos_user_resetting_send_email: /resetting/send-email   # FIXME
+fos_user_resetting_send_email: /resetting/send-email
 
 # Desc: /login_check
-fos_user_security_check: /login_check   # FIXME
+fos_user_security_check: /login_check
 
 # Desc: /login
-fos_user_security_login: /login   # FIXME
+fos_user_security_login: /login
 
 # Desc: /logout
-fos_user_security_logout: /logout   # FIXME
+fos_user_security_logout: /logout
 
 # Desc: /mailbox/
-gsmlot_mailbox_mailbox_index: /mailbox/   # FIXME
-
-# Desc: /offer/disable
-gsmlot_offer_offer_disable: /offer/disable   # FIXME
-
-# Desc: /offer/remove
-gsmlot_offer_offer_remove: /offer/remove   # FIXME
+gsmlot_mailbox_mailbox_index: /mailbox/
 
 # Desc: /subscription/hello/{name}
-gsmlot_subscription_subscription_index: '/subscription/hello/{name}'   # FIXME
+gsmlot_subscription_subscription_index: '/subscription/hello/{name}'
 
 # Desc: /trader/hello/{name}
-gsmlot_trader_trader_index: '/trader/hello/{name}'   # FIXME
+gsmlot_trader_trader_index: '/trader/hello/{name}'
 
-# Desc: /user/hello/{name}
-gsmlot_user_userbundle_index: '/user/hello/{name}'   # FIXME
+# Desc: /user/{id}
+gsmlot_user_user_index: '/user/{id}'   # FIXME
 
-# Desc: /about/{_locale}
-index_about: '/about/{_locale}'   # FIXME
+# Desc: /about
+index_about: '/about/{_locale}'
 
 # Desc: /contact/{_locale}
-index_contact: '/contact/{_locale}'   # FIXME
+index_contact: '/contact/{_locale}'
 
-# Desc: /
-index_index: /   # FIXME
+# Desc: /{_locale}
+index_index: /
+
+# Desc: /offer/getModel
+model_get: /offer/getModel   # FIXME
+
+# Desc: /offer/searchModel
+model_search: /offer/searchModel   # FIXME
+
+# Desc: /offer/active/{offer_id}
+offer_activate: '/offer/active/{offer_id}'   # FIXME
 
 # Desc: /offer/create
-offer_create: /offer/create   # FIXME
+offer_create: /offer/create
+
+# Desc: /offer/deactive/{offer_id}
+offer_deactive: '/offer/deactive/{offer_id}'   # FIXME
 
 # Desc: /offer/
-offer_list: /offer/   # FIXME
+offer_list: /offer/
+
+# Desc: /offer/update/{offer_id}
+offer_update: '/offer/update/{offer_id}'   # FIXME

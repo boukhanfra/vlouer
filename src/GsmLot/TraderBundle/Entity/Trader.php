@@ -435,5 +435,12 @@ class Trader
 	}
 	
 	
+	/**
+	 * @return User
+	 */
+	public function getUser()
+	{
+		return $this->user;
+	}
     
 }

@@ -9,7 +9,7 @@ use GsmLot\TraderBundle\Entity\Trader;
  * Offer
  *
  * @ORM\Table(name="offer")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="GsmLot\OfferBundle\Repository\OfferRepository")
  */
 class Offer
 {
@@ -22,6 +22,7 @@ class Offer
      */
     private $id;
 
+    
 
     /**
      * @var \DateTime
@@ -115,18 +116,18 @@ class Offer
      */
     protected $model;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Brand")
-     * @ORM\JoinColumn(name="brand_id",referencedColumnName="brand_id",nullable=false)
-     */
-    protected $brand;
-    
     
     /**
      * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\OfferType")
      * @ORM\JoinColumn(name="offer_type_id",referencedColumnName="offer_type_id",nullable=false)
      */
     protected  $offerType;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\OfferState")
+     * @ORM\JoinColumn(name="offer_state_id",referencedColumnName="offer_state_id",nullable=false)
+     */
+    protected $offerState;
     
     /**
      * Get id
@@ -551,29 +552,6 @@ class Offer
         $this->brand->removeElement($brand);
     }
 
-    /**
-     * Get brand
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \GsmLot\OfferBundle\Entity\Brand $brand
-     *
-     * @return Offer
-     */
-    public function setBrand(\GsmLot\OfferBundle\Entity\Brand $brand = null)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
 
     /**
      * Set offerType
@@ -645,5 +623,22 @@ class Offer
     public function getCurrency()
     {
         return $this->currency;
+    }
+    
+    /**
+     * @return OfferState
+     */
+    public function getOfferState()
+    {
+    	return $this->offerState;
+    }
+    
+    /**
+     * 
+     * @param OfferState $offerState
+     */
+    public function setOfferState($offerState)
+    {
+    	$this->offerState = $offerState;
     }
 }
