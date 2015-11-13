@@ -63,9 +63,10 @@
               <ul class="dropdown-menu" aria-labelledby="my space">
           
                 <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
-                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span class="badge">{{ app.user.trader.offers|length }}</span></a></li>
+                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span class="badge">
+                {% if app.user.trader.offers is defined%}{{ app.user.trader.offers|length }} {% else %} 0 {% endif %}</span></a></li>
                 <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
-                <li><a href="{{ path('fos_user_profile_show') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
     
               </ul>
@@ -129,7 +130,10 @@
         
 <!--  end block timezones-->
 {{ wo_render_breadcrumbs() }}
-        <div class="container">
+<div class="container"  style="padding:30px;"  >
+   {% block contenu %}
+        
+        	
 	        <div class="col-md-10">
 				{% for flashMessage in app.session.flashbag.get('notice') %}
 				<div class="alert alert-info">
@@ -147,13 +151,17 @@
 					</center>
 				</div>
 				{% endfor %}
+	       
+		
+		
 	        
-			{% block contenu %}
-	        {% endblock %}
 	        </div>
 	        <div class="col-md-2">
 	        </div>
+	  {% endblock %}       
         </div>
+
+        
         {% block footer %}
             <div class="panel-info">
   <div class="panel-heading" style="border-color:black;background-color:lightslategrey;border-radius:0px;">

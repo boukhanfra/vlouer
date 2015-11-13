@@ -47,12 +47,6 @@ class Trader
      */
     private $company;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=50)
-     */
-    private $email;
 
     /**
      * @var string
@@ -87,7 +81,7 @@ class Trader
      * 
      * @var User
      * 
-     * @ORM\OneToOne(targetEntity="GsmLot\UserBundle\Entity\User",inversedBy="trader",cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="GsmLot\UserBundle\Entity\User",inversedBy="trader")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      */
     protected $user;
@@ -253,30 +247,6 @@ class Trader
         return $this->jobTitle;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Trader
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
    
 
     /**
@@ -422,16 +392,11 @@ class Trader
 		$this->address = $address;
 		return $this;
 	}
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
-	public function getUser() {
-		return $this->user;
-	}
+
+
 	public function setUser(User $user) {
 		$this->user = $user;
-		return $this;
+		//return $this;
 	}
 	
 	

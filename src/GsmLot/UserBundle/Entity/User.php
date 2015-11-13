@@ -25,13 +25,15 @@ class User extends BaseUser
 	/**
 	 * 
 	 * @var Trader
-	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",mappedBy="user")  
+	 * @ORM\OneToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader",mappedBy="user", cascade={"persist"})  
 	 */
 	protected $trader;
 	
 	public function __construct(){
 		
 		parent::__construct();
+		
+		$this->trader = new Trader();
 	}
 	
 	
