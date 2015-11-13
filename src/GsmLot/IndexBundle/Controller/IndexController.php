@@ -56,11 +56,12 @@ class IndexController extends Controller
     }
     
     /**
-     * @Route("/contact/{_locale}",name="index_contact",defaults={"_locale":"en"},requirements={"_locale":"en|fr|es"})
+     * @Route("/contact",name="index_contact",defaults={"_locale":"en"},requirements={"_locale":"en|fr|es"})
      * @Template()
      */
-    public function contactAction($_locale)
+    public function contactAction(Request $request)
     {
+    	$_locale = $request->getLocale();
     	$form ='';
     	$mail = new ContactMail();
     	$form = $this->createForm(new ContactMailType(),$mail);
@@ -78,22 +79,18 @@ class IndexController extends Controller
     				'text/html'
     				);
     		
-    		
+    
     		$this->get('mailer')->send($message);
-    		
-    		$session = $this->get('session');
-    		 
-    		$session->getFlashBag()->set('message','Votre message a été bien envoyé');
+    		    		 
+    		$this->get('session')->getFlashBag()->add('success','index.contact.successmessage');
     		
     	}
     
-    	
-    	
+   
     	return $this->render('GsmLotIndexBundle:Index/Contact:contact.'.$_locale.'.html.twig', array(
     			'form' => $form->createView(),
     			));
-    	
-  
+    
    
     }
  

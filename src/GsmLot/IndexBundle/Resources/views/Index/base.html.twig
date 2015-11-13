@@ -46,11 +46,11 @@
               <a href="">{{ 'index.menu.econsumer'|trans }}</a>
             </li>
             <li>
-              <a href="{{ path('index_about',{'_local': local}) }}">{{ 'index.menu.aboutus'|trans }}</a>
+              <a href="{{ path('index_about') }}">{{ 'index.menu.aboutus'|trans }}</a>
             </li>
            
             <li>
-              <a href="{{ path('index_contact',{'_local': local}) }}">{{ 'index.menu.contactus'|trans  }} </a>
+              <a href="{{ path('index_contact') }}">{{ 'index.menu.contactus'|trans  }} </a>
             </li>
           </ul>
 
@@ -131,18 +131,19 @@
 <!--  end block timezones-->
 {{ wo_render_breadcrumbs() }}
 <div class="container"  style="padding:30px;"  >
-   {% block contenu %}
-        
-        	
-	        <div class="col-md-10">
+		<div class="row">
+         <div class="col-md-10">
+         
 				{% for flashMessage in app.session.flashbag.get('notice') %}
 				<div class="alert alert-info">
 					<center>
 						<strong>{{ 'offer.information'|trans }}</strong>
 						{{ flashMessage|trans }}
+						
 					</center>
 				</div>
 				{% endfor %} 
+				
 				{% for flashMessage in
 				app.session.flashbag.get('error') %}
 				<div class="alert alert-danger">
@@ -151,15 +152,27 @@
 					</center>
 				</div>
 				{% endfor %}
-	       
-		
-		
+			  {% for flashMessage in app.session.flashbag.get('success') %}
+				<div class="alert alert-success">
+					<center>
+						<strong>{{ 'index.contact.success'|trans }} :</strong>
+						{{ flashMessage|trans  }}
+						
+					</center>
+				</div>
+				{% endfor %} 
+	      
+	     </div>
 	        
-	        </div>
-	        <div class="col-md-2">
-	        </div>
-	  {% endblock %}       
+	     <div class="col-md-2">
+	      </div>
         </div>
+
+   {% block contenu %}
+        
+        	
+   {% endblock %}       
+ </div>
 
         
         {% block footer %}
