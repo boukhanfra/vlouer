@@ -25,8 +25,12 @@ class IndexController extends Controller
 		$this->breadcrumbs = $this->get("white_october_breadcrumbs");
 	
 		$this->breadcrumbs->addItem('index.menu.home',$this->get('router')->generate('index_index'));
+<<<<<<< HEAD
 	
 	
+=======
+		
+>>>>>>> refs/remotes/origin/aziz
 	}
 	
 	
@@ -95,29 +99,5 @@ class IndexController extends Controller
     
    
     }
- 
-    
-    /**
-     * @Route("/mobile",name="offer_mobile")
-     * @Template()
-     */
-    public function offerMobileAction()
-    {	 
-    	$list_buy_brand = $this->get('gsm_lot_offer.offer_manager')->getMobileOffersBrand('buy');
-    	$list_buy_norm = $this->get('gsm_lot_offer.offer_manager')->getMobileOffersNorm('buy');
-    	$list_buy_country = $this->get('gsm_lot_offer.offer_manager')->getMobileOffersCountry('buy');
-    	
-    	$list_sell_brand = $this->get('gsm_lot_offer.offer_manager')->getMobileOffersBrand('sell');
-    	$list_sell_norm = $this->get('gsm_lot_offer.offer_manager')->getMobileOffersNorm('sell');
-    	$list_sell_country = $this->get('gsm_lot_offer.offer_manager')->getMobileOffersCountry('sell');
-    	 
-    	return $this->render('GsmLotOfferBundle:Offer:offer_category.html.twig',
-    			array('list_buy_brand'=>$list_buy_brand,
-    				  'list_buy_norm'=>$list_buy_norm,
-    				  'list_buy_country'=>$list_buy_country,
-    				  'list_sell_brand'=>$list_sell_brand,
-    				  'list_sell_norm'=>$list_sell_norm,
-    				  'list_sell_country'=>$list_sell_country,
-    			));
-    }
+   
 }
