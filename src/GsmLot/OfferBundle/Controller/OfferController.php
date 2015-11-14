@@ -60,6 +60,7 @@ class OfferController extends Controller
     	$form->handleRequest($request);
     	if($form->isValid())
     	{
+    	
     		$offer->setTrader($this->get('security.token_storage')->getToken()->getUser()->getTrader());
     		
     		$this->get('gsm_lot_offer.offer_manager')->createOffer($offer);
@@ -119,14 +120,14 @@ class OfferController extends Controller
      */
     public function searchModelAction(Request $request)
     {
-    	$q = $request->get('q');
+    	$q = $request->get('term');
     	
     	$results = $this->get('gsm_lot_offer.offer_manager')->searchModel($q);
     	
     	return $this->render('GsmLotOfferBundle:Offer:model.html.twig',
     			array('results'=>$results));
     }
-    
+     
     
     /**
      * @Route("/getModel",name="model_get",options={"expose":"true"})

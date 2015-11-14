@@ -1,8 +1,13 @@
 gsm_lot_index:
-    resource: "@GsmLotIndexBundle/Controller/"
+    resource: GsmLot\IndexBundle\Controller\IndexController
     type:     annotation
     prefix:   /
 
+gsm_lot_index_mobile:
+    resource: GsmLot\IndexBundle\Controller\OfferFrontController
+    type:     annotation
+    prefix:   /mobile
+    
 gsm_lot_user:
     resource: "@GsmLotUserBundle/Controller/"
     type:     annotation

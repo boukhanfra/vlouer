@@ -1,3 +1,7 @@
+pagination:
+    first: 'Début'
+    last: 'Dernier'
+
 index:
     boutton:
         registerbuy: 'Inscrivez-vous & Achetez'
@@ -22,7 +26,9 @@ index:
         buyphones: 'Acheter des téléphones'
         sellphones: 'Vendre des Téléphones'
         searchoffer: 'Chercher par marque'
+        searchmodel: 'Chercher par modèle'
         specification: 'Spécification'
         country: 'Localisation'
         bourse: 'Parquet de bourse'
         total_offer_buy: 'Toutes les offres'
+        offer_gros: 'Offres en gros'

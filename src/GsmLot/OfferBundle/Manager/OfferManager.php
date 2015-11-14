@@ -27,7 +27,7 @@ class OfferManager extends Manager
 		{
 			$offer->setCreatedOn(new \DateTime('now'));
 			$offer->setDeviceType($this->em->getRepository('GsmLotOfferBundle:DeviceType')->find(1));
-			$offer->setModel($this->em->getRepository('GsmLotOfferBundle:Model')->find(1));
+			//$offer->setModel($this->em->getRepository('GsmLotOfferBundle:Model')->find(1));
 			$offer->setActive(false);
 			$offer->setDisabled(false);
 			
@@ -206,7 +206,7 @@ class OfferManager extends Manager
 	{
 		try
 		{
-			return $this->em->getRepository('GsmLotOfferBundle:Model')->get($id);
+			return $this->em->getRepository('GsmLotOfferBundle:Model')->find($id);
 		}
 		
 		catch(\Exception $e)
@@ -274,6 +274,11 @@ class OfferManager extends Manager
 		}
 	}
 	
+	/**
+	 * @abstract Business - get number offers grouped by country
+	 * @param string $type
+	 * @throws Exception
+	 */
 	public function getMobileOffersCountry($type)
 	{
 		try
@@ -281,6 +286,50 @@ class OfferManager extends Manager
 			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getNumberMobileOfferCountry($type);
 				
 			return $list_count_offer;
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	
+	/**
+	 * @abstract Business -get number of offers grouped by model
+	 * @param string $type
+	 * @param integer $brand_id
+	 * @throws Exception
+	 */
+	public function getMobileOffersModel($type,$brand_id)
+	{
+		try
+		{
+			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getNumberMobileOfferModel($type,$brand_id);
+			
+			return $list_count_offer;
+				
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	
+	/**
+	 * Business - get list of offers filtered by brand
+	 * @param string $type
+	 * @param integer $brand_id
+	 * @throws Exception
+	 */
+	public function getMobileOfferBrand($type,$brand_id)
+	{
+		try
+		{
+			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getMobileOfferByBrand($type,$brand_id);
+				
+			return $list_count_offer;
+		
 		}
 		catch(\Exception $e)
 		{

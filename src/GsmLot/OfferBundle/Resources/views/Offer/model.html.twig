@@ -1,4 +1,4 @@
 [{% for model in results -%}
-    {{ {id: model.id, text: model.brand.name ~ ' ' ~ model.name}|json_encode|raw }}
+    {{ {id: model.id, label: model.brand.name ~ ' ' ~ model.name,value:model.brand.name ~ ' ' ~ model.name}|json_encode|raw }}
     {%- if not loop.last %},{% endif -%}
 {%- endfor %}]

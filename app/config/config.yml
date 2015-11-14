@@ -117,7 +117,7 @@ swiftmailer:
 jms_i18n_routing:
     default_locale: %locale%
     locales: [en,fr,es]
-    strategy: prefix
+    strategy: prefix_except_default
 
 #Configuration de pagination Bundle
 knp_paginator:
