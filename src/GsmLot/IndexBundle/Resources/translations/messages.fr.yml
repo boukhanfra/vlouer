@@ -31,10 +31,7 @@ index:
         country: 'Localisation'
         bourse: 'Parquet de bourse'
         total_offer_buy: 'Toutes les offres'
-<<<<<<< HEAD
     contact:
         successmessage: 'Votre message a été envoyé'
         success: 'success'
-=======
         offer_gros: 'Offres en gros'
->>>>>>> refs/remotes/origin/aziz
