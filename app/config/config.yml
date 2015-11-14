@@ -15,10 +15,23 @@ fos_user:
     user_class: GsmLot\UserBundle\Entity\User
     registration:
       form:
-        type: trader_user_registration 
+        type: trader_user_registration  
+      confirmation:
+        enabled: true
+        from-email:
+          address: admin@gsmlot.com
+          sender_name: Youssef GsmLot-Administrator
+    resetting:
+      email:
+        from-email:
+          address: admin@gsmlot.com
+          sender_name: Youssef GsmLot Administrator
+          
+        
     profile:
       form:
         type: trader_user_profile
+        
     
 white_october_breadcrumbs:
     separatorClass:     'separator'

@@ -1,8 +1,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<ul class="breadcrumb">
+  <li><a href="{{ path ('fos_user_security_login') }}"> Login</a></li>
+  <li class="active">{{  'registration.submit' | trans }}</li>
+</ul>
 
-
-  <div class="container" style="padding:30px">
          <div class="row">
             <div class="col-lg-6">
  {% image '@GsmLotIndexBundle/Resources/public/images/login.jpg' %}
@@ -96,4 +98,3 @@
      </blockquote>
      		</div>
      	</div>
-    </div>

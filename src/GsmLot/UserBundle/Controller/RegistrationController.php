@@ -14,12 +14,18 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use GsmLot\TraderBundle\Entity\Trader;
 use GsmLot\UserBundle\Entity\User;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class RegistrationController extends BaseController{
 	
+	private $breadcrumbs;
 	
+	
+
 	public function registerAction(Request $request)
 	{
+		
+		
 		/** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
 		$formFactory = $this->get('fos_user.registration.form.factory');
 		/** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */

@@ -1,7 +1,25 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
+{% extends "GsmLotIndexBundle:Index:base.html.twig" %}
+{% block contenu %}
 {% trans_default_domain 'FOSUserBundle' %}
+<ul class="breadcrumb">
+  <li><a href="{{ path ('fos_user_security_login') }}"> Login</a></li>
+  <li class="active">{{  'registration.submit' | trans }}</li>
+</ul>
 
-{% block fos_user_content %}
+         <div class="row">
+            <div class="col-lg-6">
+ {% image '@GsmLotIndexBundle/Resources/public/images/login.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="width:500px;" />
+{% endimage %} 
+            </div>
+            
+            <div class="col-lg-4" style="text-align: justify">
+             <blockquote>
+            <h2>{{'layout.register'|trans }}</h2>
+
+
     <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
-{% endblock fos_user_content %}
+    		</blockquote>
+    		</div>
+    	 </div>
+{% endblock contenu %}

@@ -26,7 +26,6 @@ class IndexController extends Controller
 	
 		$this->breadcrumbs->addItem('index.menu.home',$this->get('router')->generate('index_index'));
 	
-		$this->breadcrumbs->addItem('index.menu.phones',$this->get('router')->generate('offer_mobile'));
 	
 	}
 	
@@ -50,6 +49,8 @@ class IndexController extends Controller
     public function aboutAction(Request $request)
     {
     	$_locale = $request->getLocale();
+    	$this->breadcrumbs->addItem('index.menu.aboutus',$this->get('router')->generate('index_about'));
+    	 
     	
     	return   $this->render('GsmLotIndexBundle:Index/About:about.'.$_locale.'.html.twig');
 
@@ -61,6 +62,7 @@ class IndexController extends Controller
      */
     public function contactAction(Request $request)
     {
+    	$this->breadcrumbs->addItem('index.menu.contactus',$this->get('router')->generate('index_contact'));
     	$_locale = $request->getLocale();
     	$form ='';
     	$mail = new ContactMail();
