@@ -21,9 +21,13 @@
  
    <!--  navbar logo-->
             <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+      <div style="padding-right:25px">
         <div class="navbar-header">
-          <a href="{{ path('index_index') }}" class="navbar-brand">GsmLot</a>
+          <a href="{{ path('index_index') }}" class="">
+  {% image '@GsmLotIndexBundle/Resources/public/images/logo.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot logo" style="width:140px;padding:3px 3px 3px 3px;" />
+{% endimage %} 
+          </a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -59,7 +63,7 @@
          
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">{{ 'index.menu.myspace'|trans }}<span class="caret"></span></a>
+              <a class="dropdown-toggle btn-success" data-toggle="dropdown" href="#" id="themes">{{ 'index.menu.myspace'|trans }}<span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="my space">
           
                 <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>

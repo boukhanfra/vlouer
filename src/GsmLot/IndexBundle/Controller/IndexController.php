@@ -24,7 +24,6 @@ class IndexController extends Controller
 	
 		$this->breadcrumbs = $this->get("white_october_breadcrumbs");
 	
-		$this->breadcrumbs->addItem('index.menu.home',$this->get('router')->generate('index_index'));
 	
 	
 	}
