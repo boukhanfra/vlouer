@@ -7,7 +7,12 @@ gsm_lot_index_mobile:
     resource: GsmLot\IndexBundle\Controller\OfferFrontController
     type:     annotation
     prefix:   /mobile
-    
+
+gms_lot_offer_model:
+    resource: GsmLot\OfferBundle\Controller\ModelController
+    type: annotation
+    prefix: /model
+
 gsm_lot_user:
     resource: "@GsmLotUserBundle/Controller/"
     type:     annotation

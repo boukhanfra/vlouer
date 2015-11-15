@@ -34,3 +34,8 @@ offer:
     view_offers: 'Liste des offres'
     pcs: 'Pièces'
     details: 'Détails'
+    created_on: 'Créée le'
+    created_by: 'Créée par'
+    localisation: 'Localisation'
+    yes: 'Oui'
+    no: 'Non'

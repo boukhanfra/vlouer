@@ -3,26 +3,6 @@
 <div class="row">
 	<h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
 </div>
-
-{% set vars = {'list' : list_model,
-				'param':'model_id',
-				'route' : 'offer_mobile_model',
-				'type'	: app.request.get('type'),
-				'titre':'index.titre.searchmodel'} %}
-{% include 'GsmLotIndexBundle:Offer:grouped_offer.html.twig' with vars %}
-
-{% set vars = {'list' : list_buy_country,'param':'country_id',
-				'route' : 'offer_mobile_country',
-				'type'	: app.request.get('type'),
-				'titre':'index.titre.country'} %}
-{% include 'GsmLotIndexBundle:Offer:grouped_offer.html.twig' with vars %}
-
-{% set vars = {'list' : list_buy_norm,'param':'norm_id',
-				'route' : 'offer_mobile_norm',
-				'type'	: app.request.get('type'),
-				'titre':'index.titre.specification'} %}
-{% include 'GsmLotIndexBundle:Offer:grouped_offer.html.twig' with vars %}
-<br/>
 <h5>{{ 'offer.view_offers'|trans }} ({{ list_offer|length }})</h5>
 <hr/>
 {% for offer in list_offer %}
@@ -78,7 +58,7 @@ output="main.js" %}
 $('#{{ offer.id }}').popover(
 		{	
 			html:true,
-			content:{% include 'GsmLotIndexBundle:Offer:popup.html.twig' with {'offer':offer} %}
+			content: {% include 'GsmLotIndexBundle:Offer:popup.html.twig' with {'offer':offer} %}
 		}
 		);
 </script>

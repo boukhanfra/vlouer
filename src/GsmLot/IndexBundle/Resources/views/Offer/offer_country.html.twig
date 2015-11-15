@@ -4,20 +4,20 @@
 	<h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
 </div>
 
-{% set vars = {'list' : list_model,
-				'param':'model_id',
-				'route' : 'offer_mobile_model',
+{% set vars = {'list' : list_city,
+				'param':'city_id',
+				'route' : 'offer_mobile_city',
 				'type'	: app.request.get('type'),
 				'titre':'index.titre.searchmodel'} %}
 {% include 'GsmLotIndexBundle:Offer:grouped_offer.html.twig' with vars %}
 
-{% set vars = {'list' : list_buy_country,'param':'country_id',
-				'route' : 'offer_mobile_country',
+{% set vars = {'list' : list_brand,'param':'brand_id',
+				'route' : 'offer_mobile_brand',
 				'type'	: app.request.get('type'),
-				'titre':'index.titre.country'} %}
+				'titre':'index.titre.brand'} %}
 {% include 'GsmLotIndexBundle:Offer:grouped_offer.html.twig' with vars %}
 
-{% set vars = {'list' : list_buy_norm,'param':'norm_id',
+{% set vars = {'list' : list_norm,'param':'norm_id',
 				'route' : 'offer_mobile_norm',
 				'type'	: app.request.get('type'),
 				'titre':'index.titre.specification'} %}
