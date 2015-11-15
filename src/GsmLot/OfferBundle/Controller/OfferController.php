@@ -108,7 +108,8 @@ class OfferController extends Controller
     			return $this->render('GsmLotOfferBundle:Offer:update.html.twig',
     					array('form'=>$form->createView()));		
     		}
-    	} 	
+    	}
+    }
   
     
     /**
