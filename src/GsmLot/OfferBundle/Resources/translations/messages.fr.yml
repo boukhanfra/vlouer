@@ -29,3 +29,11 @@ offer:
     updated: 'Votre offre a été bien mise à jour'
     create: Créer une offre
     update: "Mettre à jour l'offre"
+    view_offers: 'Liste des offres'
+    pcs: 'Pièces'
+    details: 'Détails'
+    created_on: 'Créée le'
+    created_by: 'Créée par'
+    localisation: 'Localisation'
+    yes: 'Oui'
+    no: 'Non'

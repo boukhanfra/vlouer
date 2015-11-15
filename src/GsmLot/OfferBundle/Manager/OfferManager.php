@@ -4,8 +4,8 @@ namespace GsmLot\OfferBundle\Manager;
 
 use GsmLot\OfferBundle\Entity\Offer;
 use GsmLot\IndexBundle\Entity\Manager;
-use GsmLot\OfferBundle\Entity\Model;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * @since 29/10/2015
@@ -15,6 +15,16 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class OfferManager extends Manager 
 {
+	
+	/**
+	 * @abstract get repository for Offer Entity (Internal use)
+	 * @return EntityRepository
+	 */
+	private function getRepository()
+	{
+		return $this->em->getRepository('GsmLotOfferBundle:Offer');
+	}
+	
 	
 	/**
 	 * @abstract Business - create offer function
@@ -27,9 +37,8 @@ class OfferManager extends Manager
 		{
 			$offer->setCreatedOn(new \DateTime('now'));
 			$offer->setDeviceType($this->em->getRepository('GsmLotOfferBundle:DeviceType')->find(1));
-			$offer->setModel($this->em->getRepository('GsmLotOfferBundle:Model')->find(1));
 			$offer->setActive(false);
-			$offer->setDisabled(false);
+			$offer->setEnable(true);
 			
 			$this->persistAndFlush($offer);
 		}
@@ -135,11 +144,11 @@ class OfferManager extends Manager
 	{
 		try
 		{
-			if(!$offer->isDisabled())
+			if($offer->isEnabled())
 			{
 				$offer->setUpdateOn(new \DateTime('now'));
 				
-				$offer->setDisabled(true);
+				$offer->setEnable(false);
 				
 				$this->persistAndFlush($offer);
 			}
@@ -159,11 +168,11 @@ class OfferManager extends Manager
 	{
 		try
 		{
-			if($offer->isDisabled())
+			if(!$offer->isEnabled())
 			{
 				$offer->setUpdateOn(new \DateTime('now'));
 				
-				$offer->setDisabled(false);
+				$offer->setEnable(true);
 				
 				$this->persistAndFlush($offer);
 			}
@@ -173,48 +182,6 @@ class OfferManager extends Manager
 			throw $e;	
 		}
 	}
-	
-	
-	/**
-	 * @abstract Business - Search a mode of device by name
-	 * @param string $model
-	 * @return Model
-	 * @throws Exception
-	 */
-	public function searchModel($model)
-	{
-		try
-		{
-			$results = $this->em->getRepository('GsmLotOfferBundle:Model')->findModelLike($model);
-			
-			return $results;
-		}
-		catch(\Exception $e)
-		{
-			throw $e;
-		}
-	}
-	
-	
-	/**
-	 * @abstract Bussiness - get a model by id
-	 * @param integer $id
-	 * @throws Exception
-	 * @return Model
-	 */
-	public function getModel($id)
-	{
-		try
-		{
-			return $this->em->getRepository('GsmLotOfferBundle:Model')->get($id);
-		}
-		
-		catch(\Exception $e)
-		{
-			throw $e;
-		}
-	}
-	
 	
 	/**
 	 * @abstract Business - get offer by id
@@ -226,7 +193,7 @@ class OfferManager extends Manager
 	{
 		try
 		{
-			return $this->em->getRepository('GsmLotOfferBundle:Offer')->find($id);
+			return $this->getRepository()->find($id);
 		}
 		
 		catch(\Exception $e)
@@ -241,11 +208,11 @@ class OfferManager extends Manager
 	 * @throws Exception
 	 * @return ArrayCollection
 	 */
-	public function getMobileOffersBrand($type)
+	public function getMobileGroupedOffersBrand($params)
 	{
 		try
 		{
-			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getNumberMobileOfferBrand($type);
+			$list_count_offer = $this->getRepository()->getNumberMobileOfferBrand($params);
 			
 			return $list_count_offer;
 		}
@@ -260,11 +227,11 @@ class OfferManager extends Manager
 	 * @return ArrayCollection
 	 * @throws Exception
 	 */
-	public function getMobileOffersNorm($type)
+	public function getMobileGroupedOffersNorm($params)
 	{
 		try
 		{
-			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getNumberMobileOfferNorm($type);
+			$list_count_offer = $this->getRepository()->getNumberMobileOfferNorm($params);
 			
 			return $list_count_offer;
 		}
@@ -274,11 +241,17 @@ class OfferManager extends Manager
 		}
 	}
 	
-	public function getMobileOffersCountry($type)
+	/**
+	 * @abstract Business - get number offers grouped by country
+	 * @param string $type
+	 * @throws Exception
+	 */
+	public function getMobileGroupedOffersCountry($params)
 	{
 		try
 		{
-			$list_count_offer = $this->em->getRepository('GsmLotOfferBundle:Offer')->getNumberMobileOfferCountry($type);
+			return $this->em->getRepository('GsmLotOfferBundle:Model')->get($id);
+			$list_count_offer = $this->getRepository()->getNumberMobileOfferCountry($params);
 				
 			return $list_count_offer;
 		}
@@ -288,4 +261,151 @@ class OfferManager extends Manager
 		}
 	}
 	
+	
+	/**
+	 * @abstract Business -get number of offers grouped by model
+	 * @param string $type
+	 * @param integer $brand_id
+	 * @throws Exception
+	 */
+	public function getMobileGroupedOffersModel($type,$brand_id)
+	{
+		try
+		{
+			$list_count_offer = $this->getRepository()->getNumberMobileOfferModel($type,$brand_id);
+			
+			return $list_count_offer;
+				
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	
+	/**
+	 * @abstract Business - get list of offers filtered by brand
+	 * @param string $type
+	 * @param integer $brand_id
+	 * @throws Exception
+	 */
+	public function getMobileOfferBrand($type,$brand_id)
+	{
+		try
+		{
+			$list_count_offer = $this->getRepository()->getMobileOfferByBrand($type,$brand_id);
+				
+			return $list_count_offer;
+		
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	
+	/**
+	 * @abstract Business - get number of offers grouped by city
+	 * @param string $type
+	 * @param integer $country_id
+	 * @throws Exception
+	 */
+	public function getMobileGroupedOfferCity($type,$country_id)
+	{
+		try
+		{
+			$list_count_offer = $this->getRepository()->getNumberMobileOfferCity($type,$country_id);
+			
+			return $list_count_offer;
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	
+	/**
+	 * @abstract Business - get list of offers filtered by country
+	 * @param string $type
+	 * @param integer $country_id
+	 * @throws \Exception
+	 */
+	public function getMobileOfferCountry($type,$country_id)
+	{
+		try
+		{
+			$list_count_offer = $this->getRepository()->getMobileOfferByCountry($type,$country_id);
+			
+			return $list_count_offer;
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	/**
+	 * @abstract Business - get list of offers filtered by norm
+	 * @param string $type
+	 * @param integer $country_id
+	 * @throws \Exception
+	 */
+	public function getMobileOfferNorm($type,$norm_id)
+	{
+		try
+		{
+			$list_count_offer = $this->getRepository()->getMobileOfferByNorm($type,$norm_id);
+				
+			return $list_count_offer;
+		}
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	/**
+	 * @abstract Business - get list of offers filtered by model
+	 * @param string $type
+	 * @param integer $model_id
+	 * @throws Exception
+	 */
+	public function getMobileOfferModel($type,$model_id)
+	{
+		try
+		{
+			$list_count_offer = $this->getRepository()->getMobileOfferByModel($type,$model_id);
+			
+			return $list_count_offer;
+		}
+		
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	/**
+	 * @abstract Business - get list of offers filtered by model
+	 * @param string $type
+	 * @param integer $model_id
+	 * @throws Exception
+	 */
+	public function getMobileOfferCity($type,$ctiy_id)
+	{
+		try
+		{
+			$list_count_offer = $this->getRepository()->getMobileOfferByCity($type,$ctiy_id);
+				
+			return $list_count_offer;
+		}
+	
+		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
 }

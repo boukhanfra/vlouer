@@ -85,9 +85,9 @@ class Offer
     /**
      * @var boolean
      *
-     * @ORM\Column(name="disabled", type="boolean",nullable=false)
+     * @ORM\Column(name="enable", type="boolean",nullable=false)
      */
-    private $disabled;
+    private $enable;
 
     /**
      * @ORM\ManyToOne(targetEntity="GsmLot\TraderBundle\Entity\Trader", inversedBy="offers")
@@ -325,27 +325,27 @@ class Offer
     }
 
     /**
-     * Set disabled
+     * Set enable
      *
-     * @param boolean $disabled
+     * @param boolean $enable
      *
      * @return Offer
      */
-    public function setDisabled($disabled)
+    public function setEnable($enable)
     {
-        $this->disabled = $disabled;
+        $this->enable = $enable;
 
         return $this;
     }
 
     /**
-     * Is disabled
+     * Is enabled
      *
      * @return boolean
      */
-    public function isDisabled()
+    public function isEnabled()
     {
-        return $this->disabled;
+        return $this->enable;
     }
 
     /**
