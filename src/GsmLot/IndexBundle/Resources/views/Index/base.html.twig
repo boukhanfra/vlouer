@@ -5,7 +5,7 @@
         <title>{% block title %}GsmLot Website{% endblock %}</title>
         {% block stylesheet %}
 		{% stylesheets 
-		'bundles/gsmlotindex/css/bootstrap.min.css'
+		'bundles/gsmlotindex/css/bootstrap.css'
 		'bundles/gsmlotindex/css/font-awesome/css/font-awesome.css'
 		'bundles/gsmlotindex/css/custom.min.css'
 		'bundles/gsmlotindex/css/languages.css' 
@@ -18,7 +18,6 @@
     </head>
     <body>
     {% set local = app.request.get('_locale') %}
- 
    <!--  navbar logo-->
             <div class="navbar navbar-default navbar-fixed-top">
       <div style="padding-right:25px">
@@ -82,23 +81,19 @@
                 <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">{{ 'index.menu.login'|trans }}</a>
              </li>
             {% endif %}
-           
-         
-         
-         <li>
+  			<li><div class="col-sm-1"></div></li>         
+           <li>
          <div class="btn-group" style="margin-top:3px">
   			<a href="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" 
   			class="btn btn-primary"><span class="lang-sm lang-lbl" lang="{{ local }}"></span></a>
   	    	<a aria-expanded="true" href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
   			<ul class="dropdown-menu">
-  			{% if local == '' %}
-  			{% set local = 'en' %}
-  			{% endif %}
   			{% set lang = {'anglais':'en','francais':'fr','espagnol': 'es'} %}
   			{% for l in lang %}
   			{% if l != local %}
+  			{% set params =  app.request.attributes.get('_route_params')|merge({'_locale':(l)}) %}
   			   <li><a href="{{ path(app.request.attributes.get('_route'), 
-       							 app.request.attributes.get('_route_params'))|replace({(local):(l)}) }}">
+       							params) }}">
        							 <span class="lang-sm lang-lbl" lang="{{ l }}"></span></a></li>
   			{% endif %}
   			{% endfor %}
@@ -131,9 +126,10 @@
         
 <!--  end block timezones-->
 {{ wo_render_breadcrumbs() }}
-<div class="container"  style="padding:30px;"  >
+<div class="container"  style="padding-top:30px;padding-bottom:30px"  >
 		<div class="row">
-         <div class="col-md-10">
+		   <div class="col-md-2"></div>
+         <div class="col-md-8">
          
 				{% for flashMessage in app.session.flashbag.get('notice') %}
 				<div class="alert alert-info">
@@ -173,8 +169,8 @@
         
         	
    {% endblock %}       
- </div>
 
+ </div>
         
         {% block footer %}
             <div class="panel-info">
@@ -224,7 +220,7 @@
     {% javascripts '@GsmLotIndexBundle/Resources/public/js/jquery-1.10.2.min.js'
 					'@GsmLotIndexBundle/Resources/public/js/boostrap.min.js'
 					'@GsmLotIndexBundle/Resources/public/js/custom.min.js'
-		output='main.js'
+		output='main.js' filter="yui_js"
     %}
         <script src="{{ asset_url }}"></script>
         

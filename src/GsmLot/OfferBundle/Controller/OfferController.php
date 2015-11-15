@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use GsmLot\OfferBundle\Entity\Offer;
 use GsmLot\OfferBundle\Form\Type\OfferType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class OfferController extends Controller
@@ -109,36 +108,9 @@ class OfferController extends Controller
     			return $this->render('GsmLotOfferBundle:Offer:update.html.twig',
     					array('form'=>$form->createView()));		
     		}
-    	} 	
+    	}
     }
-   
-        
-    /**
-     * @Route("/searchModel",name="model_search",options={"expose":"true"})
-     * @param Request $request
-     */
-    public function searchModelAction(Request $request)
-    {
-    	$q = $request->get('q');
-    	
-    	$results = $this->get('gsm_lot_offer.offer_manager')->searchModel($q);
-    	
-    	return $this->render('GsmLotOfferBundle:Offer:model.html.twig',
-    			array('results'=>$results));
-    }
-    
-    
-    /**
-     * @Route("/getModel",name="model_get",options={"expose":"true"})
-     * @param integer $id
-     */
-    public function getModelAction($id)
-    {
-    	$model = $this->get('gsm_lot_offer.offer_manager')->getModel($id);
-    	
-    	return new Response($model->getName());
-    }
-    
+  
     
     /**
      * @Route("/active/{offer_id}",name="offer_activate")
