@@ -122,9 +122,10 @@
         
 <!--  end block timezones-->
 {{ wo_render_breadcrumbs() }}
-<div class="container"  style="padding:30px;"  >
+<div class="container"  style="padding-top:30px;padding-bottom:30px"  >
 		<div class="row">
-         <div class="col-md-10">
+		   <div class="col-md-2"></div>
+         <div class="col-md-8">
          
 				{% for flashMessage in app.session.flashbag.get('notice') %}
 				<div class="alert alert-info">
@@ -164,8 +165,8 @@
         
         	
    {% endblock %}       
- </div>
 
+ </div>
         
         {% block footer %}
             <div class="panel-info">
