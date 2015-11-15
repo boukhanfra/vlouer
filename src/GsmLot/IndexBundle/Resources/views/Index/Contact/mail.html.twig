@@ -1,13 +1,5 @@
 {% block contenu %}
-You have recieved a new email from : <b>{{ mail.email }}</b>
-<br/>
-
-<b>Subject: </b> {{ mail.objectMail  }}
-
-<br/>
-
-<b>Message: </b>  <br/>
-{{ mail.messageMail  }}
-
+voici un nouveau email:
+{{ mail.objectMail  }}
 {% endblock contenu %}
 

@@ -60,7 +60,7 @@ class OfferRepository extends EntityRepository
 
 	/**
 	 * @return ArrayCollection
-	 * @abstract querty to return number of offers grouped by country
+	 * @abstract query to return number of offers grouped offers by country
 	 */
 	public function getNumberMobileOfferCountry($params)
 	{
@@ -237,4 +237,5 @@ class OfferRepository extends EntityRepository
 		->getQuery()->getResult();
 		
 	}
+	
 }

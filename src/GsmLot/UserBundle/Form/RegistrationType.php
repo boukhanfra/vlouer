@@ -4,7 +4,6 @@ namespace GsmLot\UserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use GsmLot\TraderBundle\Form\Type\TraderType;
-use GsmLot\TraderBundle\Entity\Trader;
 
 class RegistrationType extends AbstractType
 {

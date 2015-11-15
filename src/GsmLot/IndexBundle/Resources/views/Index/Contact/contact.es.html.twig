@@ -1,40 +1,43 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
 
+     <div class="container" style="padding:10px;">
         
  <div class="row">
-     <div class="col-lg-7">             
+     <div class="col-lg-6">             
   <div class="panel panel-default">
-  <div class="panel-heading">información de contacto</div>
+  <div class="panel-heading">Contact informations</div>
   <div class="panel-body">
-  
-<b>Dirección:</b> 6175 travesía castor Cumming dr, GA 30040
-<br/><br/>
-<b>Números de teléfono :</b> ( 1 ) 404-396-2872
-<br/><br/>
-<b>Email:</b> info@gsmlot.com
-<br/><br/>
-<b>Estamos abiertos :</b> Lunes - Viernes 10 a.m.-8 p.m.
     
-</div>
+<b>Address:</b>  6175 beaver crossing dr cumming, GA 30040
+<br/><br/>
+<b>Phone numbers: </b> (1) 404-396-2872
+<br/><br/>
+<b>Email: </b>  info@gsmlot.com
+<br/><br/>
+<b>We are open:</b>   Monday – Friday 10 AM – 8 PM
+  </div>
 </div>    
            
       <center>      
- {% image '@GsmLotIndexBundle/Resources/public/images/contact.jpg' %}
+ {% image '@GsmLotIndexBundle/Resources/public/images/login.jpg' %}
     <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="border-radius:7px;width:550px" />
 {% endimage %}
 	</center> 
 
 
-      </div>
-                   
+            </div>
             
             
-       <div class="col-lg-4" style="text-align: justify">
+            
+            
+            
+            
+            <div class="col-lg-4" style="text-align: justify">
      
- 		 <h2>Contactenaos</h2>
-				
-   			 <blockquote>
+  <h2>Contactenaos</h2>
+			
+    <blockquote>
 
   
 {{ form_start(form) }}
@@ -73,10 +76,10 @@
             </div>
             
      
-     <div class="col-lg-1"></div>
+     <div class="col-lg-2"></div>
      
      </div>
      
-  
+     </div>
      
 {% endblock %}

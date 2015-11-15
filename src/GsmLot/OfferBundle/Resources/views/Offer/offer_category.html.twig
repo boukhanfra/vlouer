@@ -1,0 +1,74 @@
+{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
+{% block contenu %}
+{% set nombre = 0 %}
+{% for brand in list_buy_brand %}
+	{% set nombre = nombre + brand.number %}
+{% endfor %}
+<div class="row">
+	<h2>{{ 'index.titre.bourse'|trans }}</h2><br/>
+</div>
+{% set nombre = 0 %}
+{% for brand in list_buy_brand %}
+	{% set nombre = nombre + brand.number %}
+{% endfor %}
+<div class="row">
+	<h4>{{ 'index.titre.buyphones'|trans }}
+		<small>
+			<a href="#">{{ 'index.titre.total_offer_buy'|trans }} ({{ nombre }})</a>
+		</small>
+	</h4>
+</div>
+<div class="row">
+	<strong>{{ 'index.titre.searchoffer'|trans }}:</strong>
+	{% for brand in list_buy_brand %}
+	<a href="{{ path('offer_mobile_brand',{'brand_id':brand.id}) }}">{{ brand.name }}</a> <span class="badge">{{ brand.number }}</span>&nbsp;&nbsp;
+	{% endfor %}
+</div>
+<br/>
+<div class="row">
+	<strong>{{ 'index.titre.country'|trans }}:</strong>
+	{% for country in list_buy_country %}
+	<a href="{{ path('offer_mobile_country',{'country_id':country.id}) }}">{{ country.name }}</a> <span class="badge">{{ country.number }}</span>&nbsp;&nbsp;
+	{% endfor %}
+</div>
+<br/>
+<div class="row">
+	<strong>{{ 'index.titre.specification'|trans }}:</strong>
+	{% for norm in list_buy_norm %}
+	<a href="#">{{ norm.name }}</a> <span class="badge">{{ norm.number }}</span>&nbsp;&nbsp;
+	{% endfor %}
+</div>
+<br/>
+{% set nombre = 0 %}
+{% for brand in list_sell_brand %}
+	{% set nombre = nombre + brand.number %}
+{% endfor %}
+<div class="row">
+	<h4>{{ 'index.titre.sellphones'|trans }}
+		<small>
+			<a href="#">{{ 'index.titre.total_offer_buy'|trans }} ({{ nombre }})</a>
+		</small>
+	</h4>
+</div>
+<div class="row">
+	<strong>{{ 'index.titre.searchoffer'|trans }}:</strong>
+	{% for brand in list_sell_brand %}
+	<a href="#">{{ brand.name }}</a> <span class="badge">{{ brand.number }}</span>&nbsp;&nbsp;
+	{% endfor %}
+</div>
+<br/>
+<div class="row">
+	<strong>{{ 'index.titre.country'|trans }}:</strong>
+	{% for norm in list_sell_country %}
+	<a href="#">{{ norm.name }}</a> <span class="badge">{{ norm.number }}</span>&nbsp;&nbsp;
+	{% endfor %}
+</div>
+<br/><br/>
+<div class="row">
+	<strong>{{ 'index.titre.specification'|trans }}:</strong>
+	{% for norm in list_sell_norm %}
+	<a href="#">{{ norm.name }}</a> <span class="badge">{{ norm.number }}</span>&nbsp;&nbsp;
+	{% endfor %}
+</div>
+<br/>
+{% endblock %}

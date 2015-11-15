@@ -14,14 +14,12 @@ class UserController extends Controller
      */
     public function indexAction($id)
     {
-     
-     // $user = $this->getDoctrine()->getRepository('GsmLotUserBundle:User')->find($id);
+       $user = $this->getDoctrine()->getRepository('GsmLotUserBundle:User')->find($id);
        
-     // echo $user->getTrader()->getFirstName();
-     
-     // echo $user->getTrader()->getId();
+       echo $user->getTrader()->getFirstName();
+       echo $user->getTrader()->getCity();
        
-     // l'association ça marche daba khassek deconnecta o3awed tconnecta par ce que l'objet f session oma3endoch l'associationok
+       //l'association ça marche daba khassek deconnecta o3awed tconnecta par ce que l'objet f session oma3endoch l'associationok
        
        exit();
     }

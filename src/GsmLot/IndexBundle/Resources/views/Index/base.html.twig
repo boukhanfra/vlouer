@@ -45,11 +45,11 @@
               <a href="">{{ 'index.menu.econsumer'|trans }}</a>
             </li>
             <li>
-              <a href="{{ path('index_about') }}">{{ 'index.menu.aboutus'|trans }}</a>
+              <a href="{{ path('index_about',{'_local': local}) }}">{{ 'index.menu.aboutus'|trans }}</a>
             </li>
            
             <li>
-              <a href="{{ path('index_contact') }}">{{ 'index.menu.contactus'|trans  }} </a>
+              <a href="{{ path('index_contact',{'_local': local}) }}">{{ 'index.menu.contactus'|trans  }} </a>
             </li>
           </ul>
 
@@ -62,10 +62,9 @@
               <ul class="dropdown-menu" aria-labelledby="my space">
           
                 <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
-                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span class="badge">
-                {% if app.user.trader.offers is defined%}{{ app.user.trader.offers|length }} {% else %} 0 {% endif %}</span></a></li>
+                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span class="badge">{{ app.user.trader.offers|length }}</span></a></li>
                 <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
-                <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_profile_show') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
     
               </ul>
@@ -96,14 +95,17 @@
 
   			</ul>
 		</div>
-         </li> 
+         </li>
+
+      
        </ul>
+
         </div>
       </div>
     </div> 
     <!--  end block menubar-->
-    
   <!--  start block timezones-->  
+    
         <div class="row" style="margin: 3px 2px 8px 3px;border-bottom:1px solid #d9d9d9;height: 30px">
             <div class="col-lg-6">
             </div>
@@ -122,21 +124,16 @@
         
 <!--  end block timezones-->
 {{ wo_render_breadcrumbs() }}
-<div class="container"  style="padding-top:30px;padding-bottom:30px"  >
-		<div class="row">
-		   <div class="col-md-2"></div>
-         <div class="col-md-8">
-         
+        <div class="container">
+	        <div class="col-md-10">
 				{% for flashMessage in app.session.flashbag.get('notice') %}
 				<div class="alert alert-info">
 					<center>
 						<strong>{{ 'offer.information'|trans }}</strong>
 						{{ flashMessage|trans }}
-						
 					</center>
 				</div>
 				{% endfor %} 
-				
 				{% for flashMessage in
 				app.session.flashbag.get('error') %}
 				<div class="alert alert-danger">
@@ -145,29 +142,13 @@
 					</center>
 				</div>
 				{% endfor %}
-			  {% for flashMessage in app.session.flashbag.get('success') %}
-				<div class="alert alert-success">
-					<center>
-						<strong>{{ 'index.contact.success'|trans }} :</strong>
-						{{ flashMessage|trans  }}
-						
-					</center>
-				</div>
-				{% endfor %} 
-	      
-	     </div>
 	        
-	     <div class="col-md-2">
-	      </div>
+			{% block contenu %}
+	        {% endblock %}
+	        </div>
+	        <div class="col-md-2">
+	        </div>
         </div>
-
-   {% block contenu %}
-        
-        	
-   {% endblock %}       
-
- </div>
-        
         {% block footer %}
             <div class="panel-info">
   <div class="panel-heading" style="border-color:black;background-color:lightslategrey;border-radius:0px;">

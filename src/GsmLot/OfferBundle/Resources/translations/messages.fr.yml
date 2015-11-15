@@ -13,13 +13,15 @@ offer:
         title: 'Liste des mes offres'
 
     model: Modèle
-    norm: 'Norme de construction'
+    norm: 'Norme'
     notactive: 'Les offres en couleur orange sont désactivées, donc elles ne sont pas visibles sur le site.'
     offerType: 'Type d''offre'
+    offerState: 'Statut du métriel'
     physicalStock: 'Stock physique'
     price: Prix
     quantity: Quantité
-    submit: Valider
+    submit: Enregistrer
+    reset: Annuler
     title: 'Mes offres'
     warning: Avertissement!
     information: Information!

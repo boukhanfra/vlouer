@@ -24,7 +24,8 @@ class IndexController extends Controller
 	
 		$this->breadcrumbs = $this->get("white_october_breadcrumbs");
 	
-
+		$this->breadcrumbs->addItem('index.menu.home',$this->get('router')->generate('index_index'));
+		
 	}
 	
 	
@@ -47,21 +48,17 @@ class IndexController extends Controller
     public function aboutAction(Request $request)
     {
     	$_locale = $request->getLocale();
-    	$this->breadcrumbs->addItem('index.menu.aboutus',$this->get('router')->generate('index_about'));
-    	 
     	
     	return   $this->render('GsmLotIndexBundle:Index/About:about.'.$_locale.'.html.twig');
 
     }
     
     /**
-     * @Route("/contact",name="index_contact",defaults={"_locale":"en"},requirements={"_locale":"en|fr|es"})
+     * @Route("/contact/{_locale}",name="index_contact",defaults={"_locale":"en"},requirements={"_locale":"en|fr|es"})
      * @Template()
      */
-    public function contactAction(Request $request)
+    public function contactAction($_locale)
     {
-    	$this->breadcrumbs->addItem('index.menu.contactus',$this->get('router')->generate('index_contact'));
-    	$_locale = $request->getLocale();
     	$form ='';
     	$mail = new ContactMail();
     	$form = $this->createForm(new ContactMailType(),$mail);
@@ -79,18 +76,22 @@ class IndexController extends Controller
     				'text/html'
     				);
     		
-    
+    		
     		$this->get('mailer')->send($message);
-    		    		 
-    		$this->get('session')->getFlashBag()->add('success','index.contact.successmessage');
+    		
+    		$session = $this->get('session');
+    		 
+    		$session->getFlashBag()->set('message','Votre message a été bien envoyé');
     		
     	}
     
-   
+    	
+    	
     	return $this->render('GsmLotIndexBundle:Index/Contact:contact.'.$_locale.'.html.twig', array(
     			'form' => $form->createView(),
     			));
-    
+    	
+  
    
     }
    
