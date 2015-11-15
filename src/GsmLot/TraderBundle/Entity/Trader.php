@@ -47,6 +47,12 @@ class Trader
      */
     private $company;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50)
+     */
+    private $email;
 
     /**
      * @var string
@@ -247,6 +253,30 @@ class Trader
         return $this->jobTitle;
     }
 
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Trader
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
    
 
     /**
@@ -392,13 +422,6 @@ class Trader
 		$this->address = $address;
 		return $this;
 	}
-
-
-	public function setUser(User $user) {
-		$this->user = $user;
-		//return $this;
-	}
-	
 	
 	/**
 	 * @return User

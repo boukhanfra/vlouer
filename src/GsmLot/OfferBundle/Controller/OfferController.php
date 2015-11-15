@@ -59,6 +59,7 @@ class OfferController extends Controller
     	$form->handleRequest($request);
     	if($form->isValid())
     	{
+    	
     		$offer->setTrader($this->get('security.token_storage')->getToken()->getUser()->getTrader());
     		
     		$this->get('gsm_lot_offer.offer_manager')->createOffer($offer);
@@ -108,9 +109,8 @@ class OfferController extends Controller
     			return $this->render('GsmLotOfferBundle:Offer:update.html.twig',
     					array('form'=>$form->createView()));		
     		}
-    	}
+    	} 	
     }
-  
     
     /**
      * @Route("/active/{offer_id}",name="offer_activate")

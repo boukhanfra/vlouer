@@ -1,5 +1,5 @@
-{% extends "GsmLotIndexBundle:Index:base.html.twig" %}
+{% extends "FOSUserBundle::layout.html.twig" %}
 
-{% block contenu %}
+{% block fos_user_content %}
 {% include "FOSUserBundle:Profile:show_content.html.twig" %}
-{% endblock contenu %}
+{% endblock fos_user_content %}

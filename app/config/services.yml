@@ -17,4 +17,3 @@ services:
           class: GsmLot\UserBundle\Form\ProfileType
           tags:
             - { name: form.type, alias: trader_user_profile}
-            

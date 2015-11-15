@@ -5,7 +5,7 @@
 	<ul class="pagination">
     {% if first is defined and current != first %}
         <li>
-            <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">Début</a>
+            <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">{{ 'pagination.first'|trans }}</a>
         </li>
     {% endif %}
 
@@ -34,7 +34,7 @@
 
     {% if last is defined and current != last %}
         <li>
-            <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">Dérnier</a>
+            <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">{{ 'pagination.last'|trans }}</a>
         </li>
     {% endif %}
     </ul>

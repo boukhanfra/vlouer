@@ -21,7 +21,3 @@ index:
     titre:
         buyphones: 'Buy Phones'
         sellphones: 'Sell Phones'
-
-    contact:
-        successmessage: 'Your message has been sent'
-        success: 'success'

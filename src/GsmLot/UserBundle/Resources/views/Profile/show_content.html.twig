@@ -1,24 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-  <div class="container" style="padding:30px">
-         <div class="row">
-            <div class="col-lg-5">
- {% image '@GsmLotIndexBundle/Resources/public/images/myspace.jpg' %}
-    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="width:400px;" />
-{% endimage %} 
-            </div>
-          
-             <div class="col-lg-6" style="text-align: justify;font-size:10px;">
-                <blockquote>
 <div class="fos_user_user_show">
-<h2> Vos compte :  </h2>
-
     <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
 </div>
-
-			    </blockquote>
-			  </div>
-			  
-			</div>
-    </div>  
