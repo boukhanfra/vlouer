@@ -2,8 +2,9 @@
 /app/cache/*
 /app/logs/*
 /web/bundles/*
+/web/*
 /app/config/parameters.yml
 /vendor/
 .project
 .buildpath
-.settings.*
+.settings*
