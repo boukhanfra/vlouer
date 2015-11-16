@@ -10,7 +10,7 @@ index:
     menu:
         aboutus: 'A propos de nous'   # FIXME
         contactus: 'Contactez-nous'   # FIXME
-        econsumer: 'Informatique/Eléctronique'   # FIXME
+        econsumer: 'Eléctronique'   # FIXME
         home: 'Accueil'   # FIXME
         myspace: 'Mon Espace'  # FIXME
         myspaceaddoffer: 'Ajouter une offre'   # FIXME
@@ -32,3 +32,4 @@ index:
         bourse: 'Parquet de bourse'
         total_offer_buy: 'Toutes les offres'
         offer_gros: 'Offres en gros'
+        msg: 'Votre message à été bien envoyé'

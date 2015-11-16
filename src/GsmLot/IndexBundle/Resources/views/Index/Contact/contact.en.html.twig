@@ -1,15 +1,39 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
 
-     <div class="container" style="padding:25px;">
-         <div class="row">
-            <div class="col-lg-6">
- {% image '@GsmLotIndexBundle/Resources/public/images/about1.jpg' %}
-    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="width:500px;" />
-{% endimage %} 
+    <div class="container" style="padding:10px;">
+        
+ <div class="row">
+     <div class="col-lg-6">             
+  <div class="panel panel-default">
+  <div class="panel-heading">Contact informations</div>
+  <div class="panel-body">
+
+    
+<b>Address:</b>  6175 beaver crossing dr cumming, GA 30040
+<br/><br/>
+<b>Phone numbers: </b> (1) 404-396-2872
+<br/><br/>
+<b>Email: </b>  info@gsmlot.com
+<br/><br/>
+<b>We are open:</b>   Monday – Friday 10 AM – 8 PM
+  </div>
+</div>    
+
+
+
+           
+      <center>      
+ {% image '@GsmLotIndexBundle/Resources/public/images/contact.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="border-radius:7px;width:550px" />
+{% endimage %}
+	</center> 
+
+
             </div>
             
             <div class="col-lg-4" style="text-align: justify">
+            <h2>Contact us</h2>
     <blockquote>
   
 {{ form_start(form) }}

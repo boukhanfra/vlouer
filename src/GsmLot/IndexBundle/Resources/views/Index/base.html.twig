@@ -68,7 +68,7 @@
                 <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
                 <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span class="badge">{{ app.user.trader.offers|length }}</span></a></li>
                 <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
-                <li><a href="{{ path('fos_user_profile_show') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
     
               </ul>
@@ -143,6 +143,14 @@
 				<div class="alert alert-danger">
 					<center>
 						<strong>{{ flashMessage }}</strong>
+					</center>
+				</div>
+				{% endfor %}
+				{% for flashMessage in
+				app.session.flashbag.get('success') %}
+				<div class="alert alert-success">
+					<center>
+						<strong>{{ flashMessage|trans }}</strong>
 					</center>
 				</div>
 				{% endfor %}
