@@ -441,4 +441,108 @@ class Trader
 		$this->user = $user;
 	}
     
+
+    /**
+     * Add messagesReceived
+     *
+     * @param \GsmLot\MailBoxBundle\Entity\Message $messagesReceived
+     *
+     * @return Trader
+     */
+    public function addMessagesReceived(\GsmLot\MailBoxBundle\Entity\Message $messagesReceived)
+    {
+        $this->messagesReceived[] = $messagesReceived;
+
+        return $this;
+    }
+
+    /**
+     * Remove messagesReceived
+     *
+     * @param \GsmLot\MailBoxBundle\Entity\Message $messagesReceived
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeMessagesReceived(\GsmLot\MailBoxBundle\Entity\Message $messagesReceived)
+    {
+        return $this->messagesReceived->removeElement($messagesReceived);
+    }
+
+    /**
+     * Add messagesSent
+     *
+     * @param \GsmLot\MailBoxBundle\Entity\Message $messagesSent
+     *
+     * @return Trader
+     */
+    public function addMessagesSent(\GsmLot\MailBoxBundle\Entity\Message $messagesSent)
+    {
+        $this->messagesSent[] = $messagesSent;
+
+        return $this;
+    }
+
+    /**
+     * Remove messagesSent
+     *
+     * @param \GsmLot\MailBoxBundle\Entity\Message $messagesSent
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeMessagesSent(\GsmLot\MailBoxBundle\Entity\Message $messagesSent)
+    {
+        return $this->messagesSent->removeElement($messagesSent);
+    }
+
+    /**
+     * Add offer
+     *
+     * @param \GsmLot\OfferBundle\Entity\Offer $offer
+     *
+     * @return Trader
+     */
+    public function addOffer(\GsmLot\OfferBundle\Entity\Offer $offer)
+    {
+        $this->offers[] = $offer;
+
+        return $this;
+    }
+
+    /**
+     * Remove offer
+     *
+     * @param \GsmLot\OfferBundle\Entity\Offer $offer
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeOffer(\GsmLot\OfferBundle\Entity\Offer $offer)
+    {
+        return $this->offers->removeElement($offer);
+    }
+
+    /**
+     * Add subscription
+     *
+     * @param \GsmLot\SubscriptionBundle\Entity\Subscription $subscription
+     *
+     * @return Trader
+     */
+    public function addSubscription(\GsmLot\SubscriptionBundle\Entity\Subscription $subscription)
+    {
+        $this->subscriptions[] = $subscription;
+
+        return $this;
+    }
+
+    /**
+     * Remove subscription
+     *
+     * @param \GsmLot\SubscriptionBundle\Entity\Subscription $subscription
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeSubscription(\GsmLot\SubscriptionBundle\Entity\Subscription $subscription)
+    {
+        return $this->subscriptions->removeElement($subscription);
+    }
 }

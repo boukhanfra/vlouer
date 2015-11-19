@@ -69,7 +69,7 @@ class IndexController extends Controller
     		
     		$message = \Swift_Message::newInstance()
     		->setSubject($mail->getObjectMail())
-    		->setFrom('contact@gsmlot.com')
+    		->setFrom('admin@gsmlot.com')
     		->setTo($mail->getEmail())
     		->setBody(
     	    $this->renderView('GsmLotIndexBundle:Index/Contact:mail.html.twig',array('mail'=>$mail)),

@@ -9,8 +9,8 @@
 		'bundles/gsmlotindex/css/font-awesome/css/font-awesome.css'
 		'bundles/gsmlotindex/css/custom.min.css'
 		'bundles/gsmlotindex/css/languages.css' 
-		filter ="cssrewrite,yui_css"
-	 output="main.css"		%}
+		filter ="cssrewrite"
+	 			%}
 		<link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}
 		{% endblock %}
@@ -209,7 +209,6 @@
     {% javascripts '@GsmLotIndexBundle/Resources/public/js/jquery-1.10.2.min.js'
 					'@GsmLotIndexBundle/Resources/public/js/boostrap.min.js'
 					'@GsmLotIndexBundle/Resources/public/js/custom.min.js'
-		output='main.js' filter="yui_js"
     %}
         <script src="{{ asset_url }}"></script>
         

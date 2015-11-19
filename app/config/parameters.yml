@@ -1,12 +1,12 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: localhost
+    database_host: Localhost
     database_port: 3306
     database_name: gsmlot
     database_user: root
     database_password: soundous
     mailer_transport: smtp
-    mailer_host: smtp.gmail.com
-    mailer_user: rangtour1@gmail.com
-    mailer_password: hayriad24
+    mailer_host: smtpout.secureserver.net
+    mailer_user: admin@gsmlot.com 
+    mailer_password: Redondo92015
     secret: 736922ef9b84163e6b17f1d94eb518ca228229ba

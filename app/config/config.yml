@@ -17,7 +17,7 @@ fos_user:
       confirmation:
         enabled: true
         from_email:
-          address: registration@gsmlot.com
+          address: admin@gsmlot.com
           sender_name: gsmLot Admin
       form:
         type: trader_user_registration
@@ -79,10 +79,10 @@ assetic:
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
-        yui_js:
-            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"
-        yui_css:
-            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"
+         # yui_js:
+             # jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"
+          #yui_css:
+              #jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"
 
 # Doctrine Configuration
 doctrine:
@@ -112,12 +112,12 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-
+    sender_address: admin@gsmlot.com
     encryption: ssl
     auth_mode: login
     spool:
         type: file
-        path: %kernel.cache_dir%/spool
+        path: %kernel.cache_dir%/swiftmailer/spool
  
 
 jms_i18n_routing:
