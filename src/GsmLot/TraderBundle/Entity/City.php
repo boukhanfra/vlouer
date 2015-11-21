@@ -93,11 +93,11 @@ class City
 		$this->countryCode = $countryCode;
 		return $this;
 	}
-	public function getDistricT() {
+	public function getDistrict() {
 		return $this->districT;
 	}
-	public function setDistricT($districT) {
-		$this->districT = $districT;
+	public function setDistrict($district) {
+		$this->districT = $district;
 		return $this;
 	}
 	public function getPopulation() {

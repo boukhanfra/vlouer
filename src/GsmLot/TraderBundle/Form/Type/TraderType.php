@@ -26,8 +26,7 @@ class TraderType extends AbstractType
 		    ->add('jobTitle','entity',array('class'=>'GsmLot\TraderBundle\Entity\JobTitle'))
 		    ->add('country','entity',array('class'=>'GsmLot\TraderBundle\Entity\Country'))
 		    ->add('city','entity',array('class'=>'GsmLot\TraderBundle\Entity\City'))
-		    
-		    
+		       
         ;
     }
     

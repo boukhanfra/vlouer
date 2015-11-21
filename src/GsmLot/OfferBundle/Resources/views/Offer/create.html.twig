@@ -81,8 +81,7 @@
 {{ parent() }}
 {% javascripts 
 '@GsmLotOfferBundle/Resources/public/js/jquery-ui.js' 
-'@PUGXAutocompleterBundle/Resources/public/js/autocompleter-jqueryui.js' 
-output='main.js' %}
+'@PUGXAutocompleterBundle/Resources/public/js/autocompleter-jqueryui.js'  %}
 <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
@@ -93,7 +92,7 @@ $('#new_offer_model').autocompleter({url_list: Routing.generate('model_search'),
 {% endblock %}
 {% block stylesheet %}
 {{ parent() }}
-{% stylesheets 'bundles/gsmlotoffer/css/jquery-ui.css' output="main.css" filter ="cssrewrite,yui_css" %}
+{% stylesheets 'bundles/gsmlotoffer/css/jquery-ui.css' filter ="cssrewrite" %}
 <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
 {% endstylesheets %}
 {% endblock %}

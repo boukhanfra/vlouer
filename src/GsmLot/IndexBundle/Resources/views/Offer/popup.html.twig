@@ -3,7 +3,7 @@
 '<strong>{{ 'offer.created_by'|trans }} :</strong> {{ offer.trader.user.username }}<br/>'+
 '<strong>{{ 'offer.norm'|trans }} : </strong> {{ offer.norm.description }}<br/>'+
 '<strong>{{ 'offer.localisation'|trans }} : </strong> {{ offer.trader.city.country }}<br/>'+
-'<strong>{{ 'offer.description'|trans }}: </strong><p class="text-justify">{{ offer.description }}</p>'+
+'<strong>{{ 'offer.description'|trans }}: </strong><p class="text-justify">{{ offer.description|replace({'\r\n':'<br/>','\n':'<br/>'})}}</p>'+
 '<strong>{{ 'offer.quantity'|trans }}: </strong>{{ offer.quantity }} Pcs<br/>'+
 '<strong>{{ 'offer.price'|trans }}: </strong>{{ offer.price }}<br/>'+
 '<strong>{{ 'offer.physicalStock'|trans }} : </strong>'+

@@ -9,6 +9,7 @@ use GsmLot\IndexBundle\Entity\ContactMail;
 use Symfony\Component\HttpFoundation\Request;
 use GsmLot\IndexBundle\Form\Type\ContactMailType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class IndexController extends Controller
@@ -94,5 +95,7 @@ class IndexController extends Controller
   
    
     }
+  
+
    
 }

@@ -1,8 +1,28 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<div class="container" style="padding:30px">
+         <div class="row">
+            <div class="col-lg-6">
+ {% image '@GsmLotIndexBundle/Resources/public/images/register.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="width:500px;" />
+{% endimage %} 
+            </div>
+            
+            <div class="col-lg-4" style="text-align: justify">
 
 <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
-    {{ form_widget(form) }}
+        
+
+
+<div class="form-group" >
+			{{ form_widget(form)}}
+</div>
+
+
+{{ form_widget(form._token) }}
     <div>
-        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+        <input type="submit"  class="btn btn-primary" id="_submit" name="_submit" value="{{ 'resetting.reset.submit'|trans }}" />
     </div>
 </form>
+		  </div>
+		</div>
+</div>
