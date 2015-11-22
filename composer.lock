@@ -4,12 +4,12 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d21f489a77d667c57115c13a45e19a1b",
-    "content-hash": "5daa74345fdc1f02ff4b22ccf5759b21",
+    "hash": "96f428afd90a67e879775635f67d4c41",
+    "content-hash": "63c57129e1d935c2554c1c9bb427cfea",
     "packages": [
         {
             "name": "coresphere/console-bundle",
-            "version": "dev-master",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CoreSphere/ConsoleBundle.git",
