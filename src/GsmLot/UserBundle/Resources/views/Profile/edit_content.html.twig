@@ -65,12 +65,12 @@
 
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">Country</label>
-			{{ form_widget(form.trader.country,{ 'attr' :{ 'class' : 'form-control'} }) }}
+			{{ form_widget(form.trader.country,{ 'attr' :{ 'class' : 'form-control','onchange':'showCitiesEdit();'} }) }}
 </div>
 
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">City</label>
-			{{ form_widget(form.trader.city,{ 'attr' :{ 'class' : 'form-control'} }) }}
+			{{ form_widget(form.trader.city,{ 'attr' :{'class' : 'form-control'} }) }}
 </div>
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">Company</label>

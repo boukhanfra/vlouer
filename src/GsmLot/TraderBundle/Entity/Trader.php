@@ -143,6 +143,7 @@ class Trader
     	$this->subscriptions = new ArrayCollection();
     	$this->messagesReceived = new ArrayCollection();
     	$this->messagesSent = new ArrayCollection();
+    	
     }
     
     

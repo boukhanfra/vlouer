@@ -162,6 +162,8 @@
 	        </div>
         </div>
         {% block footer %}
+        
+        <footer>
             <div class="panel-info">
   <div class="panel-heading" style="border-color:black;background-color:lightslategrey;border-radius:0px;">
     <h3 class="panel-title" style="text-align: center;">  &copy; 2015 <a title="Gsmlot website" href="" target="_blank">GsmLot</a>. All Rights Reserved. </h3>
@@ -169,16 +171,12 @@
   <div class="panel-body" style="background:#2e2e2e none repeat scroll 0 0;color:white">
 <div class="row">
                 <div class="col-lg-4">
-                  
-                     <ul>
-                      <li>  <a href="index.php" style="margin-right:8px:;color:white">Homepage</a></li>
-                       
-               
+                  <ul>
+                    
+                      <li> <a href="index.php" style="margin-right:8px:;color:white"> Homepage</a></li>
                       <li> <a href="contact-us.php"  style="margin-right:8px;color:white">Abouts us</a></li>
-                  
-                       <li>   <a href="contact-us.php"  style="margin-right:8px;color:white">Contact us</a> </li>
-                     
-                     <li>   <a href="qualite.php" style="color:white">Our conditions</a> </li>
+                      <li> <a href="contact-us.php"  style="margin-right:8px;color:white">Contact us</a> </li>
+                      <li> <a href="qualite.php" style="color:white">Our conditions</a> </li>
                                               
                     </ul>
                 </div>
@@ -242,7 +240,7 @@
 		}
 	</script>
 	
-	  <script type="text/javascript">
+	<script type="text/javascript">
   function showCities(){
         var id_country = $('#fos_user_registration_form_trader_country').val();
           $.ajax({
@@ -259,6 +257,23 @@
             }
           });
       }
+  function showCitiesEdit(){
+      var id_country = $('#fos_user_profile_form_trader_country').val();
+        $.ajax({
+          url: "{{ path('show_cities') }}",
+          type: 'POST',
+          data: {'id_country': id_country},
+          dataType: 'json',
+          success: function(json){ // quand la réponse de la requete arrive
+             // alert('ca marche  : '+ id_country);
+            $('#fos_user_profile_form_trader_city').html('');
+            $.each(json, function(index, value) { // et  boucle sur la réponse contenu dans la variable passé à la function du success "json"
+            $('#fos_user_profile_form_trader_city').append('<option value="'+ value.id +'">'+ value.nom +'</option>');
+            });
+          }
+        });
+    }
+  
     </script>
 
 		{% endblock %}

@@ -529,5 +529,19 @@ class Country
     public function getCities()
     {
         return $this->cities;
+        
     }
+	public function getPopulation() {
+		return $this->population;
+	}
+	public function setPopulation($population) {
+		$this->population = $population;
+		return $this;
+	}
+	public function setCities(City $cities) {
+		$this->cities = $cities;
+		return $this;
+	}
+	
+    
 }
