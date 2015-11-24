@@ -15,5 +15,6 @@ services:
 
       gsmlot.form.profile:
           class: GsmLot\UserBundle\Form\ProfileType
+          arguments: ["@security.token_storage"]
           tags:
             - { name: form.type, alias: trader_user_profile}
