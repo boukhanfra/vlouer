@@ -8,8 +8,8 @@ index:
         registersell: 'Inscrivez-vous & Vendez'
 
     menu:
-        aboutus: 'A propos de nous'   # FIXME
-        contactus: 'Contactez-nous'   # FIXME
+        aboutus: 'A propos'   # FIXME
+        contactus: 'Contact'   # FIXME
         econsumer: 'Eléctronique'   # FIXME
         home: 'Accueil'   # FIXME
         myspace: 'Mon Espace'  # FIXME
@@ -19,7 +19,7 @@ index:
         myspaceprofile: 'Mon profile'   # FIXME
         myspacerequests: 'Mes demandes'   # FIXME
         phones: 'Téléphones'   # FIXME
-        used: 'Bonne occasions'  # FIXME
+        used: 'Occasions'  # FIXME
         login: 'Se connecter'
 
     titre:
