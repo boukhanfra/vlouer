@@ -92,7 +92,7 @@ $('#new_offer_model').autocompleter({url_list: Routing.generate('model_search'),
 {% endblock %}
 {% block stylesheet %}
 {{ parent() }}
-{% stylesheets 'bundles/gsmlotoffer/css/jquery-ui.css' output="main.css" filter ="cssrewrite" %}
+{% stylesheets 'bundles/gsmlotoffer/css/jquery-ui.css' filter ="cssrewrite" %}
 <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
 {% endstylesheets %}
 {% endblock %}

@@ -1,9 +1,27 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
+{% block contenu %}
+<div class="container" style="padding:10px">
+         <div class="row">
+            <div class="col-xs-6">
+ {% image '@GsmLotIndexBundle/Resources/public/images/register.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" class="img-responsive" />
+{% endimage %} 
+            </div>
+            
+            <div class="col-xs-5" style="text-align: justify">
+            <h3>Check your emails:</h3>
+      <blockquote>
+
 <p>
 {{ 'resetting.check_email'|trans({'%email%': email}) }}
 </p>
+		</blockquote>
+		</div>
+		
+		
+		</div>
+</div>
 {% endblock %}

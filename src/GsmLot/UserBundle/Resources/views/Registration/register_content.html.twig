@@ -1,19 +1,17 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container" style="padding:30px">
-         <div class="row">
-            <div class="col-lg-6">
- {% image '@GsmLotIndexBundle/Resources/public/images/register.jpg' %}
-    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="width:500px;" />
-{% endimage %} 
-            </div>
-            
-            <div class="col-lg-4" style="text-align: justify">
-            <h2>{{'layout.register'|trans }}</h2>
-    <blockquote>
-<form action="{{ path('fos_user_registration_register') }}"
- {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+<div class="container" style="padding:10px">
 
+ <div class="row">   <h2>{{'layout.register'|trans }}</h2> </div>
+         <div class="row">
+<form action="{{ path('fos_user_registration_register') }}"
+ {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">    
+ 
+ {{ form_errors(form) }}
+ 
+    {{ form_widget(form._token) }}   
+          
+      <div class="col-xs-4" style="text-align: justify">
 
 <div class="form-group" >
 			<label for="control-label" class="inputDefault"> {{ 'form.username'|trans }}</label>
@@ -52,6 +50,9 @@
 	<label for="control-label" class="inputDefault">Address</label>
 			{{ form_widget(form.trader.address,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
+		</div>
+
+   <div class="col-xs-4">
 
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">Mobile Number</label>
@@ -65,12 +66,12 @@
 
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">Fax Number</label>
-			{{ form_widget(form.trader.faxNumber,{ 'attr' :{ 'class' : 'form-control'} }) }}
+			{{ form_widget(form.trader.faxNumber,{ 'attr' :{ 'class' : 'form-control' }}) }}
 </div>
 
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">Country</label>
-			{{ form_widget(form.trader.country,{ 'attr' :{ 'class' : 'form-control'} }) }}
+			{{ form_widget(form.trader.country,{ 'attr' :{ 'class' : 'form-control', 'onchange':'showCities();'} }) }}
 </div>
 
 <div class="form-group" >
@@ -81,17 +82,27 @@
 	<label for="control-label" class="inputDefault">Company</label>
 			{{ form_widget(form.trader.company,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
-{{ form_widget(form._token) }}
+<div class="form-group" >
+	<label for="control-label" class="inputDefault"></label>
+</div>
 
-
-
-    
+  
     <div>
-        <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+     <center>  <input type="submit"  class="btn btn-primary" style="width:160px" value="{{ 'registration.submit'|trans }}" /></center> 
     </div>
+    
+       </div>
+       
 </form>
 
-     </blockquote>
-     		</div>
-     	</div>
-    </div>
+
+            <div class="col-xs-4">
+ {% image '@GsmLotIndexBundle/Resources/public/images/register.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" class="img-responsive" style="border-radius:4px" />
+{% endimage %} 
+            </div>
+          
+
+     </div>
+   </div>
+  

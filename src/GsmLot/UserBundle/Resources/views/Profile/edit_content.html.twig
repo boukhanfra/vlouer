@@ -1,15 +1,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-  <div class="container" style="padding:30px">
+  <div class="container" style="padding:10px">
          <div class="row">
-            <div class="col-lg-6">
- {% image '@GsmLotIndexBundle/Resources/public/images/myspace.jpg' %}
-    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="width:500px;" />
-{% endimage %} 
-            </div>
-          
-             <div class="col-lg-4" style="text-align: justify">
-   <blockquote>
+      
+             <div class="col-xs-4" style="text-align: justify">
+
 <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
  <div class="form-group" >
 			<label for="control-label" class="inputDefault"> {{ 'form.username'|trans }}</label>
@@ -48,6 +43,10 @@
 			{{ form_widget(form.trader.address,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
+	</div>
+	
+	<div class="col-xs-4" style="text-align: justify">
+	
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">Mobile Number</label>
 			{{ form_widget(form.trader.mobileNumber,{ 'attr' :{ 'class' : 'form-control'} }) }}
@@ -65,17 +64,18 @@
 
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">Country</label>
-			{{ form_widget(form.trader.country,{ 'attr' :{ 'class' : 'form-control'} }) }}
+			{{ form_widget(form.trader.country,{ 'attr' :{ 'class' : 'form-control','onchange':'showCitiesEdit();'} }) }}
 </div>
 
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">City</label>
-			{{ form_widget(form.trader.city,{ 'attr' :{ 'class' : 'form-control'} }) }}
+			{{ form_widget(form.trader.city,{ 'attr' :{'class' : 'form-control'} }) }}
 </div>
 <div class="form-group" >
 	<label for="control-label" class="inputDefault">Company</label>
 			{{ form_widget(form.trader.company,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
+
 {{ form_widget(form._token) }}
 
  
@@ -86,9 +86,13 @@
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
 </form>
-	 </blockquote>
+	
 			</div>
 			
-			 
+		   <div class="col-xs-4">
+ {% image '@GsmLotIndexBundle/Resources/public/images/myspace.jpg' %}
+    <img src="{{ asset_url }}" alt="gsmlot phones exchange" class="img-responsive" style="border-radius:3px;" />
+{% endimage %} 
+            </div> 
 		</div>
     </div>

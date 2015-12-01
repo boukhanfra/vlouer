@@ -9,6 +9,7 @@ use GsmLot\IndexBundle\Entity\ContactMail;
 use Symfony\Component\HttpFoundation\Request;
 use GsmLot\IndexBundle\Form\Type\ContactMailType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class IndexController extends Controller
@@ -69,8 +70,8 @@ class IndexController extends Controller
     		
     		$message = \Swift_Message::newInstance()
     		->setSubject($mail->getObjectMail())
-    		->setFrom('admin@gsmlot.com')
-    		->setTo($mail->getEmail())
+    		->setFrom($mail->getEmail())
+    		->setTo('admin@gsmlot.com')
     		->setBody(
     	    $this->renderView('GsmLotIndexBundle:Index/Contact:mail.html.twig',array('mail'=>$mail)),
     				'text/html'
@@ -94,5 +95,7 @@ class IndexController extends Controller
   
    
     }
+  
+
    
 }

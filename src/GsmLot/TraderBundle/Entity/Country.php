@@ -115,8 +115,19 @@ class Country
      * 
      * @return string
      */
-    public function __toString(){
+    public function __toString()
+    {
     	 
     	return $this->name;
     }
+    /**
+     * Get cities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+    
 }

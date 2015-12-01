@@ -50,7 +50,7 @@ class Trader
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=50)
+     * @ORM\Column(name="email", type="string", length=50,nullable=true)
      */
     private $email;
 
@@ -64,21 +64,21 @@ class Trader
     /**
      * @var string
      *
-     * @ORM\Column(name="mobile_number", type="string", length=14)
+     * @ORM\Column(name="mobile_number", type="string", length=74)
      */
     private $mobileNumber;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="land_mobile_number", type="string", length=14)
+     * @ORM\Column(name="land_mobile_number", type="string", length=74, nullable=true)
      */
     private $fixedNumber;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="fax_number", type="string", length=255)
+     * @ORM\Column(name="fax_number", type="string", length=255, nullable=true)
      */
     private $faxNumber;
     
@@ -143,6 +143,7 @@ class Trader
     	$this->subscriptions = new ArrayCollection();
     	$this->messagesReceived = new ArrayCollection();
     	$this->messagesSent = new ArrayCollection();
+    	
     }
     
     
