@@ -18,7 +18,7 @@ class ModelController extends Controller
 	{
 		$q = $request->get('term');
 		 
-		$results = $this->get('gms_lot_offer.model_manager')->searchModel($q);
+		$results = $this->get('gsm_lot_offer.model_manager')->searchModel($q);
 		 
 		return $this->render('GsmLotOfferBundle:Offer:model.html.twig',
 				array('results'=>$results));
@@ -31,7 +31,7 @@ class ModelController extends Controller
 	 */
 	public function getModelAction($id)
 	{
-		$model = $this->get('gms_lot_offer.model_manager')->getModel($id);
+		$model = $this->get('gsm_lot_offer.model_manager')->getModel($id);
 		 
 		return new Response($model->getName());
 	}

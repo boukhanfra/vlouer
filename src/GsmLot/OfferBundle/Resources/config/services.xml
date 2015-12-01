@@ -6,7 +6,7 @@
         <service id="gsm_lot_offer.offer_manager" class="GsmLot\OfferBundle\Manager\OfferManager">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
-        <service id="gms_lot_offer.model_manager" class="GsmLot\OfferBundle\Manager\ModelManager">
+        <service id="gsm_lot_offer.model_manager" class="GsmLot\OfferBundle\Manager\ModelManager">
         	<argument type="service" id="doctrine.orm.entity_manager"></argument>
         </service>
     </services>

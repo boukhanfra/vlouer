@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use GsmLot\IndexBundle\Form\Type\FilterType;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class OfferFrontController extends Controller 
@@ -34,28 +36,25 @@ class OfferFrontController extends Controller
 	 * @Route("/",name="offer_mobile")
 	 * @Template()
 	 */
-	public function offerMobileAction()
+	public function offerMobileAction(Request $request)
 	{
-		$list_buy_brand = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersBrand(array('type'=>'buy'));
-		$list_buy_norm = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersNorm(array('type'=>'buy'));
-		$list_buy_country = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersCountry(array('type'=>'buy'));
-		 
-		$list_sell_brand = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersBrand(array('type'=>'buy'));
-		$list_sell_norm = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersNorm(array('type'=>'buy'));
-		$list_sell_country = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersCountry(array('type'=>'buy'));
-	
-		return $this->render('GsmLotIndexBundle:Offer:offer_1.html.twig',
-				array('list_buy_brand'=>$list_buy_brand,
-						'list_buy_norm'=>$list_buy_norm,
-						'list_buy_country'=>$list_buy_country,
-						'list_sell_brand'=>$list_sell_brand,
-						'list_sell_norm'=>$list_sell_norm,
-						'list_sell_country'=>$list_sell_country,
-				));
+		$form = $this->createForm(new FilterType());
+		
+		$form->handleRequest($request);
+		
+		$list_offer = $this->get('gsm_lot_offer.offer_manager')->offerList($form->getData());
+		
+		$paginator = $this->get('knp_paginator');
+		
+		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),1);
+		
+		
+		return $this->render('GsmLotIndexBundle:Offer:offer.html.twig',
+				array('list_offer'=>$pagination,'form'=>$form->createView()));
 	}
 	
 	/**
-	 * @Route("/brand/{brand_id}/{type}",name="offer_mobile_brand")
+	 * @Route("/brand/{type}/{brand_id}",name="offer_mobile_brand",defaults={"brand_id"=null})
 	 * @Template()
 	 * @param Request $request
 	 */
@@ -88,7 +87,7 @@ class OfferFrontController extends Controller
 	}
 	
 	/**
-	 * @Route("/country/{country_id}/{type}",name="offer_mobile_country")
+	 * @Route("/country/{country_id}/{type}",name="offer_mobile_country",defaults={"country_id"= null})
 	 * @Template()
 	 * @param Request $request
 	 */
@@ -107,8 +106,15 @@ class OfferFrontController extends Controller
 		
 		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
 		
-		$list_brand = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersBrand($request->get('type'));
-		$list_norm = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersNorm($request->get('type'));
+		$list_brand = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersBrand(
+				array('type'=>$request->get('type'),
+					  'country_id' => $request->get('country_id')
+				));
+		$list_norm = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersNorm(
+				array(
+				'type' => $request->get('type'),
+				'country_id' => $request->get('country_id')
+				));
 		
 		return $this->render('GsmLotIndexBundle:Offer:offer_country.html.twig',array(
 				'list_offer' => $pagination,
@@ -170,5 +176,55 @@ class OfferFrontController extends Controller
 		));
 	}
 	
+	
+	/**
+	 * @Route("/getModel/{brand_id}",name="brand_load_model",options={"expose"= true})
+	 * @Template()
+	 * @param Request $request
+	 */
+	public function getModelsAction(Request $request)
+	{
+		if ($request->isXmlHttpRequest()) 
+		{
+		
+			$models = $this->get ( 'gsm_lot_offer.model_manager' )->getModelsByBrand($request->get('brand_id' ));
+		
+			$content = '<option></option>';
+		
+			foreach ( $models as $model ) 
+			{
+		
+				$content .= '<option value ="' . $model->getId() . '">' . $model . '</option>';
+			}
+		
+			return new Response( $content, 200 );
+		}
+	}
+	
+	
+	/**
+	 * @Route("/getCity/{country_id}",name="country_load_city",options={"expose"= true})
+	 * @Template()
+	 * @param Request $request
+	 */
+	public function getCitiesAction(Request $request)
+	{
+		if ($request->isXmlHttpRequest())
+		{
+		
+			$cities = $this->get ('gsm_lot_trader.city_manager')->getCitiesByCountry($request->get('country_id'));
+		
+			$content = '<option></option>';
+		
+			foreach ( $cities as $city )
+			{
+		
+				$content .= '<option value ="' . $city->getId() . '">' . $city . '</option>';
+			}
+		
+			return new Response( $content, 200 );
+		}
+	}
+	 
 	
 }

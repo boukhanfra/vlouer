@@ -1,3 +1,6 @@
+pagination:
+    first: 'First'
+    last: 'Last'
 index:
     boutton:
         registerbuy: 'Register & Strat Buying'

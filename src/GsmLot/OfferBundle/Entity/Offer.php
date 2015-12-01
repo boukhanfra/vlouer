@@ -347,6 +347,16 @@ class Offer
     {
         return $this->enable;
     }
+    
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnable()
+    {
+    	return $this->enable;
+    }
 
     /**
      * Set modificationDate

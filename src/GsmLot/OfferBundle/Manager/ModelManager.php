@@ -3,6 +3,7 @@
 namespace GsmLot\OfferBundle\Manager;
 
 use GsmLot\IndexBundle\Entity\Manager;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * 
@@ -56,6 +57,25 @@ class ModelManager extends Manager
 		}
 	
 		catch(\Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	
+	/**
+	 * @abstract Business - get models by brand_id
+	 * @param integer $brand_id
+	 * @return ArrayCollection
+	 * @throws Exception
+	 */
+	public function getModelsByBrand($brand_id)
+	{
+		try
+		{
+			return $this->getRepository()->findBy(array('brand'=>$brand_id));
+		}
+		catch(Exception $e)
 		{
 			throw $e;
 		}

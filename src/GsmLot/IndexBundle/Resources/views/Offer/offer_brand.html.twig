@@ -1,9 +1,5 @@
-{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
-{% block contenu %}
-<div class="row">
-	<h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
-</div>
-
+{% extends 'GsmLotIndexBundle:Offer:offer_2.html.twig' %}
+{% block offer_filter %}
 {% set vars = {'list' : list_model,
 				'param':'model_id',
 				'route' : 'offer_mobile_model',
@@ -22,65 +18,4 @@
 				'type'	: app.request.get('type'),
 				'titre':'index.titre.specification'} %}
 {% include 'GsmLotIndexBundle:Offer:grouped_offer.html.twig' with vars %}
-<br/>
-<h5>{{ 'offer.view_offers'|trans }} ({{ list_offer|length }})</h5>
-<hr/>
-{% for offer in list_offer %}
-<div class="row">
-	<div class="col-md-6"></div>
-	<div class="col-md-6">
-		({{ offer.norm.description }}) {{ offer.model.brand }} {{ offer.model }}
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-6">
-		{{ offer.trader.firstName }} {{ offer.trader.lastName }}
-	</div>
-	<div class="col-md-4">
-	{{ offer.currency }} {{ offer.price }}
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-6">
-		{{ offer.trader.city.country }}
-	</div>
-	<div class="col-md-4">
-		{{ offer.quantity }} {{ 'offer.pcs'|trans }}
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-6"></div>
-	<div class="col-md-6">
-		<div class="col-md-10"></div>
-		<div class="col-md-1">
-			<a href="#" id="{{ offer.id }}" data-trigger="focus" data-toggle="popover" title="{{ offer.model }}"
-			>{{ 'offer.details'|trans }}</a>
-			</div>
-		</div>
-</div>
-<hr/>
-{% endfor %}
-<div class="row" style="text-align: center">
-	<div class="col-sm-12">{{ knp_pagination_render(list_offer) }}</div>
-</div>
-{% endblock %}
-{% block javascript %}
-{{ parent() }}
-{% javascripts 
-		'@GsmLotOfferBundle/Resources/public/js/tooltip.js'
-		'@GsmLotOfferBundle/Resources/public/js/popover.js'
-		filter="yui_js"
-output="main.js" %}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-{% for offer in list_offer %}
-<script type="text/javascript">
-$('#{{ offer.id }}').popover(
-		{	
-			html:true,
-			content:{% include 'GsmLotIndexBundle:Offer:popup.html.twig' with {'offer':offer} %}
-		}
-		);
-</script>
-{% endfor %}
 {% endblock %}

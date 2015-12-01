@@ -1,6 +1,6 @@
 <div class="row">
 	<strong>{{ (titre)|trans }}:</strong>
 	{% for object in list %}
-	<a href="{{ path((route),{(param):object.id,'type':(type)}) }}">{{ object.name }}</a> <span class="badge">{{ object.number }}</span>&nbsp;&nbsp;
+	<a href="{{ path((route),app.request.attributes.get('_route_params')|merge({(param):object.id,'type':(type)})) }}">{{ object.name }}</a> <span class="badge">{{ object.number }}</span>&nbsp;&nbsp;
 	{% endfor %}
 </div>

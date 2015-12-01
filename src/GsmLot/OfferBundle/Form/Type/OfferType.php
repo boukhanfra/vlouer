@@ -17,11 +17,14 @@ class OfferType extends AbstractType
 	{
 		$builder->add('offerType','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferType',
 												 'multiple'=>false,
-												 'expanded'=>true
+												 'expanded'=>true,
+												 'label' => false,
+												 'data_class'=> 'GsmLot\OfferBundle\Entity\OfferType'
 		))
 				->add('offerState','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferState',
 													'multiple'=>false,
-													'expanded'=>true
+													'expanded'=>true,
+													'data_class'=> 'GsmLot\OfferBundle\Entity\OfferState'
 				))
 				->add('model','autocomplete',array('class'=>'GsmLotOfferBundle:Model','required'=>false))
 				->add('norm','entity',array('class'=>'GsmLot\OfferBundle\Entity\Norm'))

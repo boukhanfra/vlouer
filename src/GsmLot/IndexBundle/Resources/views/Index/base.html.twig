@@ -5,12 +5,12 @@
         <title>{% block title %}GsmLot Website{% endblock %}</title>
         {% block stylesheet %}
 		{% stylesheets 
-		'bundles/gsmlotindex/css/bootstrap.css'
+		'bundles/gsmlotindex/css/boostrap/bootstrap.css'
 		'bundles/gsmlotindex/css/font-awesome/css/font-awesome.css'
 		'bundles/gsmlotindex/css/custom.min.css'
 		'bundles/gsmlotindex/css/languages.css' 
 		filter ="cssrewrite"
-	 			%}
+	 	%}
 		<link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}
 		{% endblock %}
@@ -61,22 +61,42 @@
          
          
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                           <li class="dropdown">
+            {% if is_granted("ROLE_ADMIN") %}
+             <li class="dropdown">
+              <a class="dropdown-toggle btn-success" data-toggle="dropdown" href="#" id="themes">Admin space<span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="my space">
+          
+                <li><a href="{{ path('offer_admin_list') }}">Unvalide offers</a></li>
+                <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
+    
+              </ul>
+            </li>           
+            {% else %}
+            <li class="dropdown">
               <a class="dropdown-toggle btn-success" data-toggle="dropdown" href="#" id="themes">{{ 'index.menu.myspace'|trans }}<span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="my space">
           
                 <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
-                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span class="badge">{{ app.user.trader.offers|length }}</span></a></li>
+                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} 
+                		<span class="badge">
+                			{% if app.user.trader.offers is defined %}
+                				{{ app.user.trader.offers|length }}
+                			{% else %}
+                				0
+                			{% endif %}
+                		</span>
+                	</a>
+                </li>
                 <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
     
               </ul>
-           				  </li>
-               
+            </li>
+            {% endif %}
             {% else %}
              <li>
-          
                 <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">{{ 'index.menu.login'|trans }}</a>
              </li>
             {% endif %}

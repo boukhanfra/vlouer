@@ -1,5 +1,6 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
+{% if not is_granted("ROLE_ADMIN") %}
 <div class="alert alert-warning alert-dismissible" role="alert">
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
@@ -7,6 +8,9 @@
 	<center><strong>{{ 'offer.warning'|trans }}</strong> {{ 'offer.notactive'|trans }}</center>
 </div>
 <h3>{{ 'offer.list.title'|trans }}</h3>
+{% else %}
+<h3>Unvalide offers</h3>
+{% endif %}
 <table class="table">
   <tr>
     <th>{{ 'offer.brand'|trans }}</th>
@@ -18,7 +22,14 @@
     <th>{{ 'offer.actions'|trans }}</th>
   </tr>
   {% for offer in pagination %}
-  <tr {% if not offer.active %} class="warning"  {% endif %}>
+  <tr
+  {% if not is_granted("ROLE_ADMIN") %} 
+  {% if not offer.active %} class="warning"  {% endif %}
+  {% else %}
+  {% if not offer.enable  %} class="warning" {% endif %}
+ 
+  {% endif %}
+  >
     <td>{{ offer.model.brand }}</td>
     <td>{{ offer.model }}</td>
     <td>{{ offer.norm }}</td>
@@ -26,11 +37,21 @@
     <td>{{ offer.price }}</td>
     <td>{{ offer.description|slice(0,20) }}</td>
     <td>
+    {% if not is_granted("ROLE_ADMIN") %}
     <a href="{{ path('offer_update',{'offer_id':offer.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
     {% if offer.active %}
-    <a href="{{ path('offer_deactive',{'offer_id':offer.id}) }}">D</a>
+    <a href="{{ path('offer_deactive',{'offer_id':offer.id}) }}">
+    	<span class="glyphicon glyphicon-remove-circle" title="{{ 'offer.deactivate'|trans }}"></span>
+    </a>
     {% else %}
-    <a href="{{ path('offer_activate',{'offer_id':offer.id}) }}">A</a>
+    <a href="{{ path('offer_activate',{'offer_id':offer.id}) }}">
+    	<span class="glyphicon glyphicon-ok-circle" title="{{ 'offer.activate'|trans }}"></span>
+    </a>
+    {% endif %}
+    {% else %}
+    <a href="{{ path('offer_enable',{ 'offer_id': offer.id}) }}">
+    	<span class="glyphicon glyphicon-ok" title="Validate"></span>
+    </a>
     {% endif %}
     </td>
   </tr>

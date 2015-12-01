@@ -3,6 +3,9 @@
 <div class="row">
 	<h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
 </div>
+{% block offer_filter %}
+{% endblock %}
+<br/>
 <h5>{{ 'offer.view_offers'|trans }} ({{ list_offer|length }})</h5>
 <hr/>
 {% for offer in list_offer %}
@@ -22,7 +25,7 @@
 </div>
 <div class="row">
 	<div class="col-md-6">
-		{{ offer.trader.city.country }}
+	 <span class="lang-sm" title="{{ offer.trader.city.country }}" lang="{{ offer.trader.city.country.code }}"></span>
 	</div>
 	<div class="col-md-4">
 		{{ offer.quantity }} {{ 'offer.pcs'|trans }}
@@ -57,7 +60,7 @@
 $('#{{ offer.id }}').popover(
 		{	
 			html:true,
-			content: {% include 'GsmLotIndexBundle:Offer:popup.html.twig' with {'offer':offer} %}
+			content:{% include 'GsmLotIndexBundle:Offer:popup.html.twig' with {'offer':offer} %}
 		}
 		);
 </script>

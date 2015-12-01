@@ -1,11 +1,10 @@
-'<strong>{{ 'offer.brand'|trans }}/{{ 'offer.model'|trans }} : </strong>{{ offer.model.brand }}/{{ offer.model }}<br/>'+
 '<strong>{{ 'offer.created_on'|trans }} :</strong> {{ offer.createdOn|date("d/m/Y H:i:s") }}<br/>'+
 '<strong>{{ 'offer.created_by'|trans }} :</strong> {{ offer.trader.user.username }}<br/>'+
 '<strong>{{ 'offer.norm'|trans }} : </strong> {{ offer.norm.description }}<br/>'+
 '<strong>{{ 'offer.localisation'|trans }} : </strong> {{ offer.trader.city.country }}<br/>'+
 '<strong>{{ 'offer.description'|trans }}: </strong><p class="text-justify">{{ offer.description }}</p>'+
 '<strong>{{ 'offer.quantity'|trans }}: </strong>{{ offer.quantity }} Pcs<br/>'+
-'<strong>{{ 'offer.price'|trans }}: </strong>{{ offer.price }}<br/>'+
+'<strong>{{ 'offer.price'|trans }}: </strong>{{ offer.price }} {{ offer.currency }}<br/>'+
 '<strong>{{ 'offer.physicalStock'|trans }} : </strong>'+
 '{% if offer.physicalStock == 1 %}{{ 'offer.yes'|trans }}{% else %}{{ 'offer.no'|trans }}{% endif %}<br/>'+
 '<br/><button type="button" class="btn btn-primary btn-sm">Contacter</button>'

@@ -26,6 +26,36 @@ class OfferManager extends Manager
 	}
 	
 	
+	
+	public function offerList($params)
+	{
+		try
+		{
+			return $this->getRepository()->offerFilter($params);
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
+	/**
+	 * @abstract Business - return disbaled offer for administrator validation
+	 * @return ArrayCollection
+	 * @throws Exception
+	 */
+	public function disbledOfferForAdmin()
+	{
+		try
+		{
+			return $this->getRepository()->getDisabledOffer();
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
+	
 	/**
 	 * @abstract Business - create offer function
 	 * @param Offer $offer
@@ -311,11 +341,11 @@ class OfferManager extends Manager
 	 * @param integer $country_id
 	 * @throws Exception
 	 */
-	public function getMobileGroupedOfferCity($type,$country_id)
+	public function getMobileGroupedOfferCity($params)
 	{
 		try
 		{
-			$list_count_offer = $this->getRepository()->getNumberMobileOfferCity($type,$country_id);
+			$list_count_offer = $this->getRepository()->getNumberMobileOfferCity($params);
 			
 			return $list_count_offer;
 		}

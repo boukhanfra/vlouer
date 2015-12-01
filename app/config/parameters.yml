@@ -4,7 +4,7 @@ parameters:
     database_port: 3306
     database_name: gsmlot
     database_user: root
-    database_password: soundous
+    database_password: root
     mailer_transport: smtp
     mailer_host: smtpout.secureserver.net
     mailer_user: admin@gsmlot.com 
