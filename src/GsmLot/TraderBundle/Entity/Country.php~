@@ -1,0 +1,147 @@
+<?php
+
+namespace GsmLot\TraderBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\FloatType;
+
+/**
+ * country
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Country
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="country_id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Name", type="string", length=150)
+     */
+    private $name;
+    
+    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Continent", type="string", length=150)
+     */
+    private $continent;
+    
+    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Region", type="string", length=150)
+     */
+    private $region;
+    
+    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SurfaceArea", type="float", length=150)
+     */
+    private $surfaceArea;
+    
+
+    /**
+     * @var FloatType
+     *
+     * @ORM\Column(name="IndepYear", type="integer", length=150)
+     */
+    private $indepYear;
+    
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LifeExpectancy", type="float", length=150)
+     */
+    private $lifeExpectancy;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GNP", type="float", length=150)
+     */
+    private $gnp;
+    
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="GNPOld", type="float", length=150)
+     */
+    private $gnpOld;
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LocalName", type="string", length=150)
+     */
+    private $localName;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GovernmentForm", type="string", length=150)
+     */
+    private $governmentForm;
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="HeadOfState", type="string", length=150)
+     */
+    private $headOfState;
+    
+    
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Capital", type="integer", length=150)
+     */
+    private $capital;
+    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Code", type="string", length=150)
+     */
+    private $code;
+    
+ 
+    /**
+     * 
+     * @var City
+     * 
+     * @ORM\OneToMany(targetEntity="GsmLot\TraderBundle\Entity\City",mappedBy="country")
+     */
+    protected $cities;
+   
+    
+    
+    
+    
+    public function __toString(){
+    	 
+    	return $this->name;
+    }
+}

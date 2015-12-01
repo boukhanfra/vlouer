@@ -40,18 +40,26 @@ class TraderType extends AbstractType
             ->add('fixedNumber','text')
             ->add('faxNumber','text')
 		    ->add('jobTitle','entity',array('class'=>'GsmLot\TraderBundle\Entity\JobTitle'))
-		    ->add('country','entity',array('class'=>'GsmLot\TraderBundle\Entity\Country'))
-		    ->setMethod('get')       
-        ;
+		    ->add('country','entity',array('class'=>'GsmLot\TraderBundle\Entity\Country')) ;
         
 		    $countryId=$this->countryId;
 		    
+		    if(is_null($countryId))
+		    {
+		    $builder->add('city','entity',array('class'=>'GsmLot\TraderBundle\Entity\City')) ;
+		    	
+		    
+		    }
+		    
+		    else {
 		    $formUpdate  = function(FormInterface $form) use ( $countryId ) 
 		    {
+		    	
+
 		    	$options =array(
 		    			'class' => 'GsmLot\TraderBundle\Entity\City',
 		    			'query_builder' => function(EntityRepository $er ) use ( $countryId ) {
-		    			return $er->createQueryBuilder('w')
+		    			return  $er->createQueryBuilder('w')
 		    			->orderBy('w.name', 'ASC')
 		    			->where('w.country = :country_id')
 		    			->setParameter('country_id', $countryId);
@@ -64,8 +72,9 @@ class TraderType extends AbstractType
 		 $builder->addEventListener(FormEvents::PRE_SET_DATA,function(FormEvent $event)use($formUpdate)
 		 {
 				$formUpdate($event->getForm());
-		   });
-    
+		 });    
+		 
+		    }
     }
     
     /**

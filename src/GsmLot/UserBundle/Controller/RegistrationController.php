@@ -48,6 +48,8 @@ class RegistrationController extends BaseController{
 		$form->setData($user);
 	
 		$form->handleRequest($request);
+		
+	//	echo 'city '.$request->request->get('fos_user_registration_form[trader][company]');
 	
 		if ($form->isValid()) {
 			$event = new FormEvent($form, $request);
@@ -64,6 +66,7 @@ class RegistrationController extends BaseController{
 	
 			return $response;
 		}
+	
 	
 		return $this->render('GsmLotUserBundle:Registration:register.html.twig', array(
 				'form' => $form->createView(),
