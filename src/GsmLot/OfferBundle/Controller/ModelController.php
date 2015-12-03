@@ -13,6 +13,7 @@ class ModelController extends Controller
 	/**
 	 * @Route("/searchModel",name="model_search",options={"expose":"true"})
 	 * @param Request $request
+	 * @return Response
 	 */
 	public function searchModelAction(Request $request)
 	{
@@ -28,6 +29,7 @@ class ModelController extends Controller
 	/**
 	 * @Route("/getModel",name="model_get",options={"expose":"true"})
 	 * @param integer $id
+	 * @return Response
 	 */
 	public function getModelAction($id)
 	{

@@ -73,7 +73,7 @@ class Model
      *
      * @return Model
      */
-    public function setBrand(\GsmLot\OfferBundle\Entity\Brand $brand = null)
+    public function setBrand(Brand $brand = null)
     {
         $this->brand = $brand;
 

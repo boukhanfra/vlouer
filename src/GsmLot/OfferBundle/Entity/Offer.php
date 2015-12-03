@@ -54,7 +54,7 @@ class Offer
     private $quantity;
 
     /**
-     * @var decimal
+     * @var float
      *
      * @ORM\Column(name="price", type="decimal",precision=16,scale=2,nullable=false)
      */
@@ -140,30 +140,6 @@ class Offer
     }
 
     /**
-     * Set typeOffer
-     *
-     * @param string $typeOffer
-     *
-     * @return Offer
-     */
-    public function setTypeOffer($typeOffer)
-    {
-        $this->typeOffer = $typeOffer;
-
-        return $this;
-    }
-
-    /**
-     * Get typeOffer
-     *
-     * @return string
-     */
-    public function getTypeOffer()
-    {
-        return $this->typeOffer;
-    }
-
-    /**
      * Set createdOn
      *
      * @param \DateTime $createdOn
@@ -204,29 +180,6 @@ class Offer
         return $this->active;
     }
 
-    /**
-     * Set qte
-     *
-     * @param string $qte
-     *
-     * @return Offer
-     */
-    public function setQte($qte)
-    {
-        $this->qte = $qte;
-
-        return $this;
-    }
-
-    /**
-     * Get qte
-     *
-     * @return string
-     */
-    public function getQte()
-    {
-        return $this->qte;
-    }
 
     /**
      * Set price
@@ -301,30 +254,6 @@ class Offer
     }
 
     /**
-     * Set used
-     *
-     * @param boolean $used
-     *
-     * @return Offer
-     */
-    public function setUsed($used)
-    {
-        $this->used = $used;
-
-        return $this;
-    }
-
-    /**
-     * Get used
-     *
-     * @return boolean
-     */
-    public function getUsed()
-    {
-        return $this->used;
-    }
-
-    /**
      * Set enable
      *
      * @param boolean $enable
@@ -358,34 +287,11 @@ class Offer
     	return $this->enable;
     }
 
-    /**
-     * Set modificationDate
-     *
-     * @param \DateTime $modificationDate
-     *
-     * @return Offer
-     */
-    public function setModificationDate($modificationDate)
-    {
-        $this->modificationDate = $modificationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get modificationDate
-     *
-     * @return \DateTime
-     */
-    public function getModificationDate()
-    {
-        return $this->modificationDate;
-    }
 
     /**
      * Set trader
      *
-     * @param \AppBundle\Entity\Trader $trader
+     * @param Trader $trader
      *
      * @return Offer
      */
@@ -399,7 +305,7 @@ class Offer
     /**
      * Get trader
      *
-     * @return \AppBundle\Entity\Trader
+     * @return Trader
      */
     public function getTrader()
     {
@@ -408,7 +314,7 @@ class Offer
 
     /**
      * 
-     * @return DateTime
+     * @return \DateTime
      */
     public function getUpdatedOn()
     {
@@ -449,15 +355,6 @@ class Offer
         return $this->active;
     }
 
-    /**
-     * Get disabled
-     *
-     * @return bool
-     */
-    public function getDisabled()
-    {
-        return $this->disabled;
-    }
 
     /**
      * Set norm
@@ -466,7 +363,7 @@ class Offer
      *
      * @return Offer
      */
-    public function setNorm(\GsmLot\OfferBundle\Entity\Norm $norm = null)
+    public function setNorm(Norm $norm = null)
     {
         $this->norm = $norm;
 
@@ -490,7 +387,7 @@ class Offer
      *
      * @return Offer
      */
-    public function setDeviceType(\GsmLot\OfferBundle\Entity\DeviceType $deviceType = null)
+    public function setDeviceType(DeviceType $deviceType = null)
     {
         $this->deviceType = $deviceType;
 
@@ -514,7 +411,7 @@ class Offer
      *
      * @return Offer
      */
-    public function setModel(\GsmLot\OfferBundle\Entity\Model $model = null)
+    public function setModel(Model $model = null)
     {
         $this->model = $model;
 
@@ -530,38 +427,6 @@ class Offer
     {
         return $this->model;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->brand = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add brand
-     *
-     * @param \GsmLot\OfferBundle\Entity\Brand $brand
-     *
-     * @return Offer
-     */
-    public function addBrand(\GsmLot\OfferBundle\Entity\Brand $brand)
-    {
-        $this->brand[] = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Remove brand
-     *
-     * @param \GsmLot\OfferBundle\Entity\Brand $brand
-     */
-    public function removeBrand(\GsmLot\OfferBundle\Entity\Brand $brand)
-    {
-        $this->brand->removeElement($brand);
-    }
-
 
     /**
      * Set offerType
@@ -570,7 +435,7 @@ class Offer
      *
      * @return Offer
      */
-    public function setOfferType(\GsmLot\OfferBundle\Entity\OfferType $offerType = null)
+    public function setOfferType(OfferType $offerType = null)
     {
         $this->offerType = $offerType;
 

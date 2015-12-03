@@ -16,8 +16,12 @@ class OfferFrontController extends Controller
 	
 	
 	private $breadcrumbs;
-	
-	
+
+
+	/**
+	 * @param ContainerInterface|null $container
+	 * @abstract Initialisation du controleur
+	 */
 	public function setContainer(ContainerInterface $container = null)
 	{
 		$this->container = $container;
@@ -46,7 +50,7 @@ class OfferFrontController extends Controller
 		
 		$paginator = $this->get('knp_paginator');
 		
-		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),1);
+		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
 		
 		
 		return $this->render('GsmLotIndexBundle:Offer:offer.html.twig',

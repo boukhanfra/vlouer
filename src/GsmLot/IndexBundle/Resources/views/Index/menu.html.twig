@@ -1,100 +1,107 @@
-   <div class="row">
-        <div class="navbar navbar-default navbar-fixed-top">
-   
-    <!--  debut  logo-->
-       <div class="navbar-header">
-       <div class="col-lg-1"></div>
-       <div class="col-lg-2">
-          <a href="{{ path('index_index') }}" class="">
-  {% image '@GsmLotIndexBundle/Resources/public/images/logo.jpg' %}
-    <img src="{{ asset_url }}" alt="gsmlot logo"  style="width:140px;padding:3px 0px 0px 3px;" />
-{% endimage %} 
-          </a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-       </div>
-       </div>
-   <!--  end  logo-->
-   
-       <!--  debut navbar menus-->
+<div class="row">
+    <div class="navbar navbar-default navbar-fixed-top">
+
+        <!--  debut  logo-->
+        <div class="navbar-header">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+                <a href="{{ path('index_index') }}" class="">
+                    {% image '@GsmLotIndexBundle/Resources/public/images/logo.jpg' %}
+                    <img src="{{ asset_url }}" alt="gsmlot logo" style="width:140px;padding:3px 0px 0px 3px;"/>
+                    {% endimage %}
+                </a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+        </div>
+        <!--  end  logo-->
+
+        <!--  debut navbar menus-->
         <div class="navbar-collapse collapse" id="navbar-main">
-        <div class="col-lg-6">
-          <ul class="nav navbar-nav">
-          <li><a href="{{ path('index_index') }}">{{ 'index.menu.home'|trans }}</a></li>
-            <li>
-              <a href="{{ path('offer_mobile') }}">{{'index.menu.phones'|trans }}</a>
-            </li>
-            <li>
-              <a href="">{{ 'index.menu.used'|trans }}</a>
-            </li>
-            <li>
-              <a href="">{{ 'index.menu.econsumer'|trans }}</a>
-            </li>
-            <li>
-              <a href="{{ path('index_about') }}">{{ 'index.menu.aboutus'|trans }}</a>
-            </li>
-           
-            <li>
-              <a href="{{ path('index_contact') }}">{{ 'index.menu.contactus'|trans  }} </a>
-            </li>
-          </ul>
-	    </div>
-	    
-	    
-	   			<div class="col-lg-3">
-      <ul class="nav navbar-nav navbar-right">
+            <div class="col-lg-6">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('index_index') }}">{{ 'index.menu.home'|trans }}</a></li>
+                    <li>
+                        <a href="{{ path('offer_mobile') }}">{{ 'index.menu.phones'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ 'index.menu.used'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ 'index.menu.econsumer'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('index_about') }}">{{ 'index.menu.aboutus'|trans }}</a>
+                    </li>
 
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-              <li class="dropdown">
-              <a class="dropdown-toggle btn-success" data-toggle="dropdown" href="#" id="themes">{{ 'index.menu.myspace'|trans }}<span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="my space">
-          
-                <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a></li>
-                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span class="badge">{{ app.user.trader.offers|length }}</span></a></li>
-                <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
-                <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a></li>
-                <li><a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a></li>
-    
-              </ul>
-           	</li>
-               
-            {% else %}
-             <li>
-          
-                <a href="{{ path('fos_user_security_login') }}" class="btn btn-info" style="line-height:9px;margin-top:3px;">{{ 'index.menu.login'|trans }}</a>
-             </li>
-            {% endif %}
-  			          
-          
-           <li>
-         <div class="btn-group" style="margin-top:3px">
-  			<a href="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" 
-  			class="btn btn-primary"><span class="lang-sm lang-lbl" lang="{{ local }}"></span></a>
-  	    	<a aria-expanded="true" href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-  			<ul class="dropdown-menu">
-  			{% set lang = {'anglais':'en','francais':'fr','espagnol': 'es'} %}
-  			{% for l in lang %}
-  			{% if l != local %}
-  			{% set params =  app.request.attributes.get('_route_params')|merge({'_locale':(l)}) %}
-  			   <li><a href="{{ path(app.request.attributes.get('_route'), 
-       							params) }}">
-       							 <span class="lang-sm lang-lbl" lang="{{ l }}"></span></a></li>
-  			{% endif %}
-  			{% endfor %}
+                    <li>
+                        <a href="{{ path('index_contact') }}">{{ 'index.menu.contactus'|trans }} </a>
+                    </li>
+                </ul>
+            </div>
 
-  			</ul>
-		</div>
-         </li>
 
-      
-     </ul> <!--  end ul navbar right --> 
-    </div>
-      
-      </div>  <!--  end navbar collapse--> 
-         
-     
-      </div> <!--  end navbar--> 
-    </div> <!--  end row-->
+            <div class="col-lg-3">
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle btn-success" data-toggle="dropdown" href="#"
+                               id="themes">{{ 'index.menu.myspace'|trans }}<span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="my space">
+
+                                <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a>
+                                </li>
+                                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span
+                                                class="badge">{{ app.user.trader.offers|length }}</span></a></li>
+                                <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
+                                <li>
+                                    <a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    {% else %}
+                        <li>
+
+                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-info"
+                               style="line-height:9px;margin-top:3px;">{{ 'index.menu.login'|trans }}</a>
+                        </li>
+                    {% endif %}
+
+
+                    <li>
+                        <div class="btn-group" style="margin-top:3px">
+                            <a href="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"
+                               class="btn btn-primary"><span class="lang-sm lang-lbl" lang="{{ local }}"></span></a>
+                            <a aria-expanded="true" href="#" class="btn btn-primary dropdown-toggle"
+                               data-toggle="dropdown"><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {% set lang = {'anglais':'en','francais':'fr','espagnol': 'es'} %}
+                                {% for l in lang %}
+                                    {% if l != local %}
+                                        {% set params =  app.request.attributes.get('_route_params')|merge({'_locale':(l)}) %}
+                                        <li><a href="{{ path(app.request.attributes.get('_route'),
+                                            params) }}">
+                                                <span class="lang-sm lang-lbl" lang="{{ l }}"></span></a></li>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul> <!--  end ul navbar right -->
+            </div>
+
+        </div>  <!--  end navbar collapse-->
+
+
+    </div> <!--  end navbar-->
+</div> <!--  end row-->

@@ -8,3 +8,4 @@
 .project
 .buildpath
 .settings*
+.idea*

@@ -4,6 +4,7 @@ namespace GsmLot\MailBoxBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use GsmLot\TraderBundle\Entity\Trader;
+use GsmLot\OfferBundle\Entity\Offer;
 
 /**
  * Mailbox
@@ -43,8 +44,14 @@ class Message
      * @ORM\Column(name="message_on", type="datetime")
      */
     private $messageOn;
-    
-    
+
+    /**
+     * @var string
+     * @ORM\Column(name="ip",type="string",length=255)
+     */
+    private $ip;
+
+
     /**
      * 
      * @var boolean
@@ -64,6 +71,13 @@ class Message
      * @ORM\JoinColumn(name="sender_trader_id", referencedColumnName="trader_id")
      */
     protected $senderTrader;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Offer")
+     * @ORM\JoinColumn(name="offer_id",referencedColumnName="offer_id")
+     * @var Offer
+     */
+    protected $offer;
     
     
     /**
@@ -119,28 +133,21 @@ class Message
     }
 
     /**
-     * Set dateMessage
-     *
-     * @param \DateTime $dateMessage
-     *
-     * @return Mailbox
+     * @return \DateTime
      */
-    public function setDateMessage($dateMessage)
+    public function getMessageOn()
     {
-        $this->dateMessage = $dateMessage;
-
-        return $this;
+        return $this->messageOn;
     }
 
     /**
-     * Get dateMessage
-     *
-     * @return \DateTime
+     * @param \DateTime $messageOn
      */
-    public function getDateMessage()
+    public function setMessageOn($messageOn)
     {
-        return $this->dateMessage;
+        $this->messageOn = $messageOn;
     }
+
 
     /**
      * Set receiverTrader
@@ -194,5 +201,37 @@ class Message
     {
     	return $this->readed;
     }
-    
+
+    /**
+     * @param boolean $readed
+     */
+    public function setReaded($readed)
+    {
+        $this->readed = $readed;
+    }
+
+    /**
+     * @return Offer
+     */
+    public function getOffer()
+    {
+        return $this->offer;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * @param $ip
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+    }
 }

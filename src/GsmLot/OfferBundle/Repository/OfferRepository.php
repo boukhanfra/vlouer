@@ -41,7 +41,7 @@ class OfferRepository extends EntityRepository
 		if(isset($params['model']))
 		{
 			$query->andWhere('m.id = :model_id')
-				  ->setParameter('model_id', $params['brand']->getId());
+				  ->setParameter('model_id', $params['model']->getId());
 		}
 		
 		if(isset($params['brand']))

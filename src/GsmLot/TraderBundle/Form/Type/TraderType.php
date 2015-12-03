@@ -46,9 +46,7 @@ class TraderType extends AbstractType
 		    
 		    if(is_null($countryId))
 		    {
-		    $builder->add('city','entity',array('class'=>'GsmLot\TraderBundle\Entity\City')) ;
-		    	
-		    
+		    $builder->add('city','entity',array('class'=>'GsmLot\TraderBundle\Entity\City'));
 		    }
 		    
 		    else {
@@ -87,11 +85,7 @@ class TraderType extends AbstractType
             'data_class' => 'GsmLot\TraderBundle\Entity\Trader'
         	
         ));
-        
-    
     }
-
-    
 
     /**
      * @return string

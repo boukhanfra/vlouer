@@ -120,14 +120,5 @@ class Country
     	 
     	return $this->name;
     }
-    /**
-     * Get cities
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCities()
-    {
-        return $this->cities;
-    }
     
 }

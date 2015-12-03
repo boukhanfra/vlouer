@@ -259,7 +259,7 @@ class Subscription
     /**
      * Set trader
      *
-     * @param \AppBundle\Entity\Trader $trader
+     * @param Trader $trader
      *
      * @return Subscription
      */
@@ -273,7 +273,7 @@ class Subscription
     /**
      * Get trader
      *
-     * @return \AppBundle\Entity\Trader
+     * @return Trader
      */
     public function getTrader()
     {

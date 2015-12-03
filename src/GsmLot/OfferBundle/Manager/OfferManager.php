@@ -2,10 +2,11 @@
 
 namespace GsmLot\OfferBundle\Manager;
 
+use Exception;
 use GsmLot\OfferBundle\Entity\Offer;
 use GsmLot\IndexBundle\Entity\Manager;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityRepository;
+use GsmLot\OfferBundle\Repository\OfferRepository;
 
 /**
  * @since 29/10/2015
@@ -18,15 +19,19 @@ class OfferManager extends Manager
 	
 	/**
 	 * @abstract get repository for Offer Entity (Internal use)
-	 * @return EntityRepository
+	 * @return OfferRepository
 	 */
 	private function getRepository()
 	{
 		return $this->em->getRepository('GsmLotOfferBundle:Offer');
 	}
-	
-	
-	
+
+
+	/**
+	 * @param $params
+	 * @return mixed
+	 * @throws Exception
+	 */
 	public function offerList($params)
 	{
 		try
@@ -72,7 +77,7 @@ class OfferManager extends Manager
 			
 			$this->persistAndFlush($offer);
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -91,7 +96,7 @@ class OfferManager extends Manager
 			
 			$this->persistAndFlush($offer);
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;	
 		}
@@ -108,7 +113,7 @@ class OfferManager extends Manager
 		{
 			$this->em->remove($offer);
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -133,7 +138,7 @@ class OfferManager extends Manager
 				$this->persistAndFlush($offer);
 			}
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -158,7 +163,7 @@ class OfferManager extends Manager
 				$this->persistAndFlush($offer);
 			}
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -183,7 +188,7 @@ class OfferManager extends Manager
 				$this->persistAndFlush($offer);
 			}
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -207,7 +212,7 @@ class OfferManager extends Manager
 				$this->persistAndFlush($offer);
 			}
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;	
 		}
@@ -226,7 +231,7 @@ class OfferManager extends Manager
 			return $this->getRepository()->find($id);
 		}
 		
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -237,6 +242,7 @@ class OfferManager extends Manager
 	 * @abstract Business - get number of offers grouped by brand name
 	 * @throws Exception
 	 * @return ArrayCollection
+	 * @params array $params
 	 */
 	public function getMobileGroupedOffersBrand($params)
 	{
@@ -246,7 +252,7 @@ class OfferManager extends Manager
 			
 			return $list_count_offer;
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -256,6 +262,7 @@ class OfferManager extends Manager
 	 * @abstract Business - get number of offers grouped by norm
 	 * @return ArrayCollection
 	 * @throws Exception
+	 * @params array $params
 	 */
 	public function getMobileGroupedOffersNorm($params)
 	{
@@ -265,7 +272,7 @@ class OfferManager extends Manager
 			
 			return $list_count_offer;
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -284,7 +291,7 @@ class OfferManager extends Manager
 				
 			return $list_count_offer;
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -306,7 +313,7 @@ class OfferManager extends Manager
 			return $list_count_offer;
 				
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -328,7 +335,7 @@ class OfferManager extends Manager
 			return $list_count_offer;
 		
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -349,7 +356,7 @@ class OfferManager extends Manager
 			
 			return $list_count_offer;
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -360,7 +367,7 @@ class OfferManager extends Manager
 	 * @abstract Business - get list of offers filtered by country
 	 * @param string $type
 	 * @param integer $country_id
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function getMobileOfferCountry($type,$country_id)
 	{
@@ -370,7 +377,7 @@ class OfferManager extends Manager
 			
 			return $list_count_offer;
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -380,7 +387,7 @@ class OfferManager extends Manager
 	 * @abstract Business - get list of offers filtered by norm
 	 * @param string $type
 	 * @param integer $country_id
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function getMobileOfferNorm($type,$norm_id)
 	{
@@ -390,7 +397,7 @@ class OfferManager extends Manager
 				
 			return $list_count_offer;
 		}
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -411,7 +418,7 @@ class OfferManager extends Manager
 			return $list_count_offer;
 		}
 		
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}
@@ -432,7 +439,7 @@ class OfferManager extends Manager
 			return $list_count_offer;
 		}
 	
-		catch(\Exception $e)
+		catch(Exception $e)
 		{
 			throw $e;
 		}

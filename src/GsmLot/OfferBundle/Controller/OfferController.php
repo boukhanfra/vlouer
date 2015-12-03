@@ -10,14 +10,21 @@ use GsmLot\OfferBundle\Form\Type\OfferType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Response;
+use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 class OfferController extends Controller
 {
-	
-	
+
+	/**
+	 * @var BreadCrumbs
+	 */
 	private $breadcrumbs;
-	
-	
+
+	/**
+	 * @param ContainerInterface $container
+	 * @return void
+	 */
 	public function setContainer(ContainerInterface $container = null)
 	{
 		$this->container = $container;
@@ -33,6 +40,8 @@ class OfferController extends Controller
     /**
      * @Route("/",name="offer_list")
      * @Template()
+	 * @return Response;
+	 * @param Request $request
      */
     public function listAction(Request $request)
     {
@@ -41,7 +50,7 @@ class OfferController extends Controller
         $list_offer = $user->getTrader()->getOffers();
         
         $paginator = $this->get('knp_paginator');
-        
+
         $pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
         
         return $this->render('GsmLotOfferBundle:Offer:list.html.twig',array('pagination'=>$pagination));
@@ -50,9 +59,9 @@ class OfferController extends Controller
     
     /**
      * @Route("/offerAdmin",name="offer_admin_list")
-     * @Template()
      * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
+	 * @return Response
      */
     public function listAdminAction(Request $request)
     {
@@ -68,9 +77,9 @@ class OfferController extends Controller
     
     /**
      * @Route("/enable/{offer_id}",name="offer_enable")
-     * @Template()
      * @Security("has_role('ROLE_ADMIN')")
      * @param Request $request
+	 * @return Response
      */
     public function enableOfferAction(Request $request)
     {
@@ -90,12 +99,13 @@ class OfferController extends Controller
         
     /**
      * @Route("/create",name="offer_create")
-     * @Template()
-     */
+	 * @return Response
+	 * @param Request $request
+	 */
     public function createAction(Request $request)
     {  	
     	$this->breadcrumbs->addItem('offer.create',$this->get('router')->generate('offer_create'));
-    	
+
     	$offer = new Offer();
     	$form = $this->createForm(new OfferType(),$offer);
     	$form->handleRequest($request);
@@ -119,7 +129,9 @@ class OfferController extends Controller
     /**
      * @Route("/update/{offer_id}",name="offer_update")
      * @Template()
-     */
+	 * @return Response
+	 * @param Request $request
+	 */
     public function updateAction(Request $request)
     {        	
     	$offer = $this->get('gsm_lot_offer.offer_manager')->getOffer($request->get('offer_id'));
@@ -152,13 +164,16 @@ class OfferController extends Controller
     			return $this->render('GsmLotOfferBundle:Offer:update.html.twig',
     					array('form'=>$form->createView()));		
     		}
-    	} 	
+    	}
+
+			return $this->redirect($this->get('router')->generate('offer_list'));
     }
     
     /**
      * @Route("/active/{offer_id}",name="offer_activate")
-     * @Template()
-     */
+	 * @return Response
+	 * @param integer $offer_id
+	 */
     public function activateAction($offer_id)
     {
     	$offer = $this->get('gsm_lot_offer.offer_manager')->getOffer($offer_id);
@@ -176,12 +191,15 @@ class OfferController extends Controller
     			return $this->redirectToRoute('offer_list');
     		}
     	}
+
+		return $this->redirect($this->get('router')->generate('offer_list'));
     }
     
     
     /**
      * @Route("/deactive/{offer_id}",name="offer_deactive")
-     * @Template()
+	 * @param integer $offer_id
+	 * @return Response
      */
     public function deativateAction($offer_id)
     {
@@ -200,5 +218,7 @@ class OfferController extends Controller
     			return $this->redirectToRoute('offer_list');
     		}
     	}
+
+		return $this->redirect($this->get('router')->generate('offer_list'));
     }    
 }
