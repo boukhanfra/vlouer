@@ -9,7 +9,7 @@
      <div class="container" style="padding:10px">
          <div class="row">        
             <div class="col-xs-5" style="font-size:17px;">
-   <h2>Log in to your space</h2>
+   <h2> {{ 'security.login.title'|trans }} </h2>
 <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     <div class="form-group">
@@ -34,16 +34,15 @@
    <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /></center>
 </form>
 
-<a href="{{ path('fos_user_resetting_request') }}" > Forgot Password ?</a>
+<a href="{{ path('fos_user_resetting_request') }}" > {{ 'security.login.passwordlink'|trans }}</a>
 	
             </div>
             
            <div class="col-xs-7">
             <blockquote>
       		    <div class="jumbotron">
-  <h2>You don't have an account ? </h2>
-  <p>Become an active memeber on the International Wholesale Market. 
-Gain Global recognition as a verified and reputable trader.</p>
+  <h2>{{ 'security.login.jumbotron.header'|trans }} </h2>
+  <p>{{ 'security.login.jumbotron.texte'|trans }}</p>
   <p><a class="btn btn-primary btn-lg" href="{{ path("fos_user_registration_register") }}">{{ 'layout.register'|trans }}</a></p>
 				</div>
 		    </blockquote>

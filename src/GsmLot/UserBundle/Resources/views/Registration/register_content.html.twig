@@ -4,82 +4,80 @@
 
  <div class="row">   <h2>{{'layout.register'|trans }}</h2> </div>
          <div class="row">
-<form action="{{ path('fos_user_registration_register') }}"
- {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">    
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"
+	  class="fos_user_registration_register">
  
- {{ form_errors(form) }}
- 
-    {{ form_widget(form._token) }}   
+ 	{{ form_errors(form) }}
+	{{ form_widget(form._token) }}
           
       <div class="col-xs-4" style="text-align: justify">
 
-<div class="form-group" >
+<div class="form-group required" >
 			<label for="control-label" class="inputDefault"> {{ 'form.username'|trans }}</label>
 			{{ form_widget(form.username,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
 
-
-<div class="form-group" >
+<div class="form-group required" >
 			{{ form_errors(form.email) }}
-			<label for="control-label" class="inputDefault">{{ 'form.email'|trans }}</label>
+			<label for="control-label " class="inputDefault">{{ 'form.email'|trans }}</label>
 			{{ form_widget(form.email,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
-<div class="form-group" >
+<div class="form-group required" >
 	<label for="control-label" class="inputDefault">{{ 'form.password'|trans }}</label>
 			{{ form_widget(form.plainPassword.first,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
-<div class="form-group" >
+<div class="form-group required" >
 	<label for="control-label" class="inputDefault">{{ 'form.password_confirmation'|trans }}</label>
 			{{ form_widget(form.plainPassword.second,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
-<div class="form-group" >
-	<label for="control-label" class="inputDefault">First Name</label>
+<div class="form-group required" >
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.firstname'|trans }}</label>
 			{{ form_widget(form.trader.firstName,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
-<div class="form-group" >
-	<label for="control-label" class="inputDefault">Last Name</label>
+<div class="form-group required" >
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.lastname'|trans }}</label>
 			{{ form_widget(form.trader.lastName,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
-<div class="form-group" >
-	<label for="control-label" class="inputDefault">Address</label>
+<div class="form-group required" >
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.adresse'|trans }}</label>
 			{{ form_widget(form.trader.address,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 		</div>
 
    <div class="col-xs-4">
 
-<div class="form-group" >
-	<label for="control-label" class="inputDefault">Mobile Number</label>
+<div class="form-group required" >
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.mobilenumber'|trans }}</label>
 			{{ form_widget(form.trader.mobileNumber,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
 <div class="form-group" >
-	<label for="control-label" class="inputDefault">Office Number</label>
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.fixnumber'|trans }}</label>
 			{{ form_widget(form.trader.fixedNumber,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 
 <div class="form-group" >
-	<label for="control-label" class="inputDefault">Fax Number</label>
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.faxnumber'|trans }}</label>
 			{{ form_widget(form.trader.faxNumber,{ 'attr' :{ 'class' : 'form-control' }}) }}
 </div>
 
-<div class="form-group" >
-	<label for="control-label" class="inputDefault">Country</label>
+<div class="form-group required" >
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.country'|trans }}</label>
 			{{ form_widget(form.trader.country,{ 'attr' :{ 'class' : 'form-control', 'onchange':'showCities();'} }) }}
 </div>
 
-<div class="form-group" >
-	<label for="control-label" class="inputDefault">City</label>
+<div class="form-group required" >
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.city'|trans }}</label>
 			{{ form_widget(form.trader.city,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
-<div class="form-group" >
-	<label for="control-label" class="inputDefault">Company</label>
+<div class="form-group required" >
+	<label for="control-label" class="inputDefault">{{ 'profile.trader.company'|trans }}</label>
 			{{ form_widget(form.trader.company,{ 'attr' :{ 'class' : 'form-control'} }) }}
 </div>
 <div class="form-group" >
@@ -87,8 +85,8 @@
 </div>
 
   
-    <div>
-     <center>  <input type="submit"  class="btn btn-primary" style="width:160px" value="{{ 'registration.submit'|trans }}" /></center> 
+    <div class="col-xs-2 col-xs-offset-2">
+<input type="submit"  class="btn btn-primary" style="width:160px" value="{{ 'registration.submit'|trans }}" />
     </div>
     
        </div>

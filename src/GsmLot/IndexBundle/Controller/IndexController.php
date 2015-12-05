@@ -80,7 +80,7 @@ class IndexController extends Controller
     		
     		$this->get('mailer')->send($message);
     		
-    		$this->get('session')->getFlashBag()->add('success','index.titre.msg');
+    		$this->get('session')->getFlashBag()->add('notice','index.titre.msg');
     		 
     	
     		

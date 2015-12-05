@@ -12,6 +12,13 @@
         filter ="cssrewrite" %}
         <link type="text/css" rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
+
+        <style>
+            .form-group.required .inputDefault:after {
+                content:"*";
+                color:red;
+            }
+        </style>
     {% endblock %}
 
 </head>
@@ -37,28 +44,21 @@
     <div class="col-lg-10">
         {% for flashMessage in app.session.flashbag.get('notice') %}
             <div class="alert alert-info">
-                <center>
+
                     <strong>{{ 'offer.information'|trans }}</strong>
                     {{ flashMessage|trans }}
-                </center>
+
             </div>
         {% endfor %}
         {% for flashMessage in
         app.session.flashbag.get('error') %}
             <div class="alert alert-danger">
-                <center>
+
                     <strong>{{ flashMessage }}</strong>
-                </center>
+
             </div>
         {% endfor %}
-        {% for flashMessage in
-        app.session.flashbag.get('success') %}
-            <div class="alert alert-success">
-                <center>
-                    <strong>{{ flashMessage|trans }}</strong>
-                </center>
-            </div>
-        {% endfor %}
+
     </div>
     <div class="col-lg-2"></div>
 </div>

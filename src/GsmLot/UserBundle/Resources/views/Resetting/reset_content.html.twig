@@ -7,15 +7,21 @@
 {% endimage %} 
             </div>
             
-            <div class="col-xs-5" style="text-align: justify">
+            <div class="col-xs-3" style="text-align: justify">
 
 <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
-        
 
+<h2> {{ 'resetting.reset.submit'|trans }} </h2>
 
-<div class="form-group" >
-			{{ form_widget(form)}}
-</div>
+    <div class="form-group" >
+        <label for="control-label" class="inputDefault">{{ 'form.new_password'|trans }}</label>
+        {{ form_widget(form.plainPassword.first,{ 'attr' :{ 'class' : 'form-control'} }) }}
+    </div>
+
+    <div class="form-group" >
+        <label for="control-label" class="inputDefault">{{ 'form.new_password_confirmation'|trans }}</label>
+        {{ form_widget(form.plainPassword.second,{ 'attr' :{ 'class' : 'form-control'} }) }}
+    </div>
 
 
 {{ form_widget(form._token) }}
@@ -24,5 +30,7 @@
     </div>
 </form>
 		  </div>
+
+             <div class="col-xs-3"></div>
 		</div>
 </div>

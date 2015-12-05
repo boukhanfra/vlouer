@@ -9,8 +9,8 @@ index:
     menu:
         aboutus: 'About us'
         contactus: 'Contact us'
-        econsumer: Econsumer
-        home: Home
+        econsumer: 'Econsumer'
+        home: 'Home'
         myspace: 'My space'
         myspaceaddoffer: 'Add offer'
         myspacelogout: 'Log out'

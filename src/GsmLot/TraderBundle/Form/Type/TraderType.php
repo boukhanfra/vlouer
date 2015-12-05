@@ -37,8 +37,8 @@ class TraderType extends AbstractType
             ->add('email','email')
             ->add('address','text')
             ->add('mobileNumber','text')
-            ->add('fixedNumber','text')
-            ->add('faxNumber','text')
+            ->add('fixedNumber','text',array('required'=>false))
+            ->add('faxNumber','text',array('required'=>false))
 		    ->add('jobTitle','entity',array('class'=>'GsmLot\TraderBundle\Entity\JobTitle'))
 		    ->add('country','entity',array('class'=>'GsmLot\TraderBundle\Entity\Country')) ;
         
