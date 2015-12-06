@@ -15,11 +15,7 @@ class OfferType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('offerType','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferType',
-												 'multiple'=>false,
-												 'expanded'=>true,
-												 'label' => false,
-												 'data_class'=> 'GsmLot\OfferBundle\Entity\OfferType'
+		$builder->add('offerType','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferType'
 		))
 				->add('offerState','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferState',
 													'multiple'=>false,

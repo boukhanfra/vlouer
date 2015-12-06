@@ -41,18 +41,18 @@ class TraderType extends AbstractType
             ->add('faxNumber','text',array('required'=>false))
 		    ->add('jobTitle','entity',array('class'=>'GsmLot\TraderBundle\Entity\JobTitle'))
 		    ->add('country','entity',array('class'=>'GsmLot\TraderBundle\Entity\Country')) ;
-        
+
 		    $countryId=$this->countryId;
-		    
+
 		    if(is_null($countryId))
 		    {
 		    $builder->add('city','entity',array('class'=>'GsmLot\TraderBundle\Entity\City'));
 		    }
-		    
+
 		    else {
-		    $formUpdate  = function(FormInterface $form) use ( $countryId ) 
+		    $formUpdate  = function(FormInterface $form) use ( $countryId )
 		    {
-		    	
+
 
 		    	$options =array(
 		    			'class' => 'GsmLot\TraderBundle\Entity\City',
@@ -70,7 +70,7 @@ class TraderType extends AbstractType
 		 $builder->addEventListener(FormEvents::PRE_SET_DATA,function(FormEvent $event)use($formUpdate)
 		 {
 				$formUpdate($event->getForm());
-		 });    
+		 });
 		 
 		    }
     }
