@@ -14,7 +14,8 @@ class FilterType extends AbstractType
 	
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('country','entity',array('class' => 'GsmLotTraderBundle:Country','required'=>false))->setMethod('get')
+		$builder->add('country','entity',array('class' => 'GsmLotTraderBundle:Country','required'=>false))
+				->setMethod('get')
 				->add('brand','entity',array('class'=>'GsmLotOfferBundle:Brand','empty_data'=>null,'empty_value'=>'','required'=>false))->setMethod('get')
 				->add('norm','entity',array('class'=>'GsmLotOfferBundle:Norm','label'=>'Specification','required'=>false));
 		
