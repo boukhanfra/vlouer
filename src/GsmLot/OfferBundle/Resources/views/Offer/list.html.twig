@@ -35,7 +35,13 @@
     <td>{{ offer.norm }}</td>
     <td>{{ offer.quantity }}</td>
     <td>{{ offer.price }}</td>
-    <td>{{ offer.description|slice(0,20) }}</td>
+    <td>
+      {{ offer.description|escape|slice(0,20) }}
+      <a href="#" id="{{ offer.id }}" data-trigger="focus" data-toggle="popover"
+         title="{{ 'offer.description'|trans }}">
+        <label>...</label>
+      </a>
+    </td>
     <td>
     {% if not is_granted("ROLE_ADMIN") %}
     <a href="{{ path('offer_update',{'offer_id':offer.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
@@ -60,5 +66,26 @@
 <div class="row" style="text-align: center">
 	<div class="col-sm-12">{{ knp_pagination_render(pagination) }}</div>
 </div>
-<br/><br/><br/>
+<br/>
+<br/>
+<br/>
+{% endblock %}
+{% block javascript %}
+  {{ parent() }}
+  {% javascripts
+  '@GsmLotOfferBundle/Resources/public/js/tooltip.js'
+  '@GsmLotOfferBundle/Resources/public/js/popover.js'
+  %}
+  <script src="{{ asset_url }}" type="text/javascript"></script>
+  {% endjavascripts %}
+  {% for offer in pagination %}
+    <script type="text/javascript">
+      $('#{{ offer.id }}').popover(
+              {
+                html: true,
+                content: "{{ offer.description|escape }}"
+              }
+      );
+    </script>
+  {% endfor %}
 {% endblock %}

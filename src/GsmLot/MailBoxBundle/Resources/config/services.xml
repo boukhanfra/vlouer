@@ -6,10 +6,9 @@
 
 
     <services>
-        <service id="gsm_lot_mail_box.example" class="GsmLot\MailBoxBundle\Manager\MailBoxManager">
+        <service id="gsm_lot_mail_box.mail_box_manager" class="GsmLot\MailBoxBundle\Manager\MailBoxManager">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="security.token_storage"></argument>
-            <argument>%parameter_name%</argument>
         </service>
     </services>
 
