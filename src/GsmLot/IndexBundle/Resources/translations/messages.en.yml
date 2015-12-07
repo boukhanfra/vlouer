@@ -25,3 +25,11 @@ index:
         buyphones: 'Buy Phones'
         sellphones: 'Sell Phones'
         msg: 'Your message has beent sent, thank you'
+        searchoffer: 'search by brand'
+        searchmodel: 'search by model'
+        specification: 'sepecification'
+        country: 'geolocation'
+        bourse: 'Parquet de bourse'
+        total_offer_buy: 'All offers'
+        offer_gros: 'Search Offrers'
+

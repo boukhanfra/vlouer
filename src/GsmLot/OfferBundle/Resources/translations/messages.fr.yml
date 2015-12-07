@@ -10,20 +10,20 @@ offer:
     device: 'Type du matériel'
 
     list:
-        title: 'Liste des mes offres'
+        title: 'Liste de mes offres'
 
     model: Modèle
     norm: 'Norme'
     notactive: 'Les offres en couleur orange sont désactivées, donc elles ne sont pas visibles sur le site.'
     offerType: 'Type d''offre'
-    offerState: 'Statut du métriel'
+    offerState: 'Statut du matériel'
     physicalStock: 'Stock physique'
     price: Prix
     quantity: Quantité
     submit: Enregistrer
     reset: Annuler
-    title: 'Mes offres'
-    warning: Avertissement!
+    title: 'Nouvelle offre'
+    warning: Information :
     information: Information!
     desactivated: 'Votre offre a été bien désactivée'
     activated: 'Votre offre a été bien activée'
@@ -39,3 +39,10 @@ offer:
     localisation: 'Localisation'
     yes: 'Oui'
     no: 'Non'
+    country: Pays
+    city: Ville
+    pcs: Qte
+    no: Non
+    yes: Oui
+    activate: Publier offre
+    desactivate: Unpublier offre

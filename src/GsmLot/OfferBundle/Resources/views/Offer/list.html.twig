@@ -1,15 +1,22 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
+
+    <div class="container" style="">
+        <div class="row">
+
+            <div class="col-xs-8" style="text-align: justify">
+
 {% if not is_granted("ROLE_ADMIN") %}
+
 <div class="alert alert-warning alert-dismissible" role="alert">
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
-	<center><strong>{{ 'offer.warning'|trans }}</strong> {{ 'offer.notactive'|trans }}</center>
+<strong>{{ 'offer.warning'|trans }}</strong> {{ 'offer.notactive'|trans }}
 </div>
 <h3>{{ 'offer.list.title'|trans }}</h3>
 {% else %}
-<h3>Unvalide offers</h3>
+<h3>Manage offers</h3>
 {% endif %}
 <table class="table">
   <tr>
@@ -41,7 +48,7 @@
     <a href="{{ path('offer_update',{'offer_id':offer.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
     {% if offer.active %}
     <a href="{{ path('offer_deactive',{'offer_id':offer.id}) }}">
-    	<span class="glyphicon glyphicon-remove-circle" title="{{ 'offer.deactivate'|trans }}"></span>
+    	<span class="glyphicon glyphicon-remove-circle" title="{{ 'offer.desactivate'|trans }}"></span>
     </a>
     {% else %}
     <a href="{{ path('offer_activate',{'offer_id':offer.id}) }}">
@@ -57,8 +64,11 @@
   </tr>
   {% endfor %}
 </table>
-<div class="row" style="text-align: center">
-	<div class="col-sm-12">{{ knp_pagination_render(pagination) }}</div>
-</div>
-<br/><br/><br/>
+                <div class="row" style="text-align: center">
+                     <div class="col-sm-12">{{ knp_pagination_render(pagination) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -96,41 +96,6 @@
             $('.alert-info').fadeOut(10000)
         }
     </script>
-    <script type="text/javascript">
-        function showCities() {
-            var id_country = $('#fos_user_registration_form_trader_country').val();
-            $.ajax({
-                url: "{{ path('show_cities') }}",
-                type: 'POST',
-                data: {'id_country': id_country},
-                dataType: 'json',
-                success: function (json) { // quand la réponse de la requete arrive
-                    // alert('ca marche  : '+ id_country);
-                    $('#fos_user_registration_form_trader_city').html('');
-                    $.each(json, function (index, value) { // et  boucle sur la réponse contenu dans la variable passé à la function du success "json"
-                        $('#fos_user_registration_form_trader_city').append('<option value="' + value.id + '">' + value.nom + '</option>');
-                    });
-                }
-            });
-        }
-        function showCitiesEdit()
-        {
-            var id_country = $('#fos_user_profile_form_trader_country').val();
-            $.ajax({
-                url: "{{ path('show_cities') }}",
-                type: 'POST',
-                data: {'id_country': id_country},
-                dataType: 'json',
-                success: function (json) { // quand la réponse de la requete arrive
-                    // alert('ca marche  : '+ id_country);
-                    $('#fos_user_profile_form_trader_city').html('');
-                    $.each(json, function (index, value) { // et  boucle sur la réponse contenu dans la variable passé à la function du success "json"
-                        $('#fos_user_profile_form_trader_city').append('<option value="' + value.id + '">' + value.nom + '</option>');
-                    });
-                }
-            });
-        }
-    </script>
 {% endblock %}
 </body>
 </html>

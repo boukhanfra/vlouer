@@ -10,9 +10,16 @@ index.titre.buyphones: Comprar Móviles
 index.titre.sellphones: Vender Móviles
 index.menu.myspace : Mi espacio
 index.menu.myspaceaddoffer : Añadir oferta
-index.menu.myspaceoffers : Mes offres
+index.menu.myspaceoffers : Mis Ofertas
 index.menu.myspacerequests : demandes Mes
 index.menu.myspaceprofile : perfil lun
 index.menu.myspacelogout : cierre de sesión
 index.menu.login: 'Entrar'
 index.titre.msg: 'su mensaje fue enviado'
+index.titre.searchoffer: 'Buscar por marcas'
+index.titre.searchmodel: 'Buscar por modelo'
+index.titre.specification: 'Spécification'
+index.titre.country: 'Pais'
+index.titre.bourse: 'Beca parqué'
+index.titre.total_offer_buy: 'Todas las ofertas'
+index.titre. offer_gros: 'Búsqueda de empleo'

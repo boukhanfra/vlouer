@@ -31,5 +31,5 @@ index:
         country: 'Localisation'
         bourse: 'Parquet de bourse'
         total_offer_buy: 'Toutes les offres'
-        offer_gros: 'Offres en gros'
+        offer_gros: 'Chercher Offres'
         msg: 'Votre message à été bien envoyé'

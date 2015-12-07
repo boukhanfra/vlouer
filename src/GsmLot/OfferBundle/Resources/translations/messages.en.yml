@@ -3,21 +3,43 @@ GBP: GBP
 USD: USD
 
 offer:
-    actions: offer.actions   # FIXME
+    actions: Actions
     brand: Brand
     currency: Currency
     description: Description
     device: Device
+    create: Add offer
+    offerState: Condition
+    reset: Cancel
+    update: Update offer
 
     list:
         title: 'My Offers'
 
     model: Model
-    norm: Norm
-    notactive: offer.notactive   # FIXME
-    offerType: 'Offer type'
+    norm: Specification
+    notactive: Orange color offers are disabled , so they are not visible on the site .  # FIXME
+    offerType: 'I want to'
     physicalStock: 'Physical stock'
     price: Price
     quantity: Quantity
     submit: Submit
     title: 'New offer'
+    warning: Information :
+    information: Information!
+    desactivated: 'Su oferta fue desactivada'
+    activated: 'Su oferta ha - ha activado '
+    created: 'Your offer was created'
+    updated: 'Your offer was  updated'
+    country: Country
+    city: City
+    details: Details
+    view_offers: List offers
+    pcs: pcs.
+    created_on: Added on
+    created_by: Created by
+    localisation: Location
+    no: No
+    yes: Yes
+    activate: Publish offer
+    desactivate: Unpublish offer

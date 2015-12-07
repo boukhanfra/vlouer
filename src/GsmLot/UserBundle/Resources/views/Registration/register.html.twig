@@ -2,6 +2,23 @@
 
 {% block contenu %}
 
-{% include "GsmLotUserBundle:Registration:register_content.html.twig" %}
+    {% include "GsmLotUserBundle:Registration:register_content.html.twig" %}
 
 {% endblock contenu %}
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    {% javascripts
+    '@GsmLotUserBundle/Resources/public/js/showCities.js'
+ %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+            showCities();
+        });
+    </script>
+{% endblock %}

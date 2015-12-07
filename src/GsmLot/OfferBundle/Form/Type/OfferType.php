@@ -15,13 +15,12 @@ class OfferType extends AbstractType
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('offerType','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferType'
-		))
-				->add('offerState','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferState',
-													'multiple'=>false,
-													'expanded'=>true,
-													'data_class'=> 'GsmLot\OfferBundle\Entity\OfferState'
-				))
+		$builder->add('offerType','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferType',
+				'multiple'=>false,
+				'expanded'=>true,
+				'data_class'=> 'GsmLot\OfferBundle\Entity\OfferType'))
+
+				->add('offerState','entity',array('class'=>'GsmLot\OfferBundle\Entity\OfferState'))
 				->add('model','autocomplete',array('class'=>'GsmLotOfferBundle:Model','required'=>false))
 				->add('norm','entity',array('class'=>'GsmLot\OfferBundle\Entity\Norm'))
 				->add('currency','choice',array('choices'=>array('EUR'=>'EUR','USD'=>'USD','GBP'=>'GBP')))

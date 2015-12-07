@@ -4,3 +4,13 @@
 
 {% include "GsmLotUserBundle:Profile:edit_content.html.twig" %}
 {% endblock contenu %}
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    {% javascripts
+    '@GsmLotUserBundle/Resources/public/js/showCitiesEdit.js'
+    %}
+    <script src="{{ asset_url}}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
