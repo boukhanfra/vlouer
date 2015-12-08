@@ -27,8 +27,8 @@ offer:
     title: 'New offer'
     warning: Information :
     information: Information!
-    desactivated: 'Su oferta fue desactivada'
-    activated: 'Su oferta ha - ha activado '
+    desactivated: 'your offer is not published'
+    activated: 'Your offer was published and visible on the website !'
     created: 'Your offer was created'
     updated: 'Your offer was  updated'
     country: Country
