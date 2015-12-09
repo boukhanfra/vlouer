@@ -1,0 +1,10 @@
+.form-group.required .inputDefault:after
+{
+    content: "*";
+    color: red;
+}
+
+.logo
+{
+    padding-top: 3px;
+}

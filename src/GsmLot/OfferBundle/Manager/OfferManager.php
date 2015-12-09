@@ -444,4 +444,20 @@ class OfferManager extends Manager
 			throw $e;
 		}
 	}
+
+	/**
+	 * @return array
+	 * @throws Exception
+	 */
+	public function getOfferReport($type)
+	{
+		try
+		{
+			return $this->getRepository()->getOfferReport($type);
+		}
+		catch(Exception $e)
+		{
+			throw $e;
+		}
+	}
 }

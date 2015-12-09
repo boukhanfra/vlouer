@@ -68,7 +68,35 @@ class OfferRepository extends EntityRepository
 		->orderBy('o.createdOn','desc')
 		->getQuery()->getResult();
 	}
-	
+
+
+	/**
+	 * @return array
+	 */
+	public function getOfferReport($type)
+	{
+		return $this->createQueryBuilder('o')
+					->select('m.name as model')
+					->addSelect('b.name as brand')
+					->addSelect('sum(o.quantity) as quantity')
+					->addSelect('avg(o.price) as price')
+					->addSelect('count(t.id) as sellers')
+					->addSelect('o.currency as currency')
+					->join('GsmLotOfferBundle:Model','m','WITH','o.model = m.id')
+					->join('GsmLotOfferBundle:Brand','b','WITH','m.brand = b.id')
+					->join('GsmLotTraderBundle:Trader','t','WITH','o.trader = t.id')
+					->join('GsmLotOfferBundle:OfferType','ot','WITH','o.offerType = ot.id AND ot.name= :type')
+					->where('o.active = true')
+					->andWhere('o.enable = true')
+					->groupBy('m.name')
+					->addGroupBy('b.name')
+					->setParameter('type',$type)
+					->setMaxResults(5)
+					->getQuery()
+					->getArrayResult();
+	}
+
+
 	
 	/**
 	 * @return ArrayCollection

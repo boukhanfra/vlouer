@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ContactMail
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="GsmLot\IndexBundle\Entity\ContactMailRepository")
+ * @ORM\Table(name="contact_mail")
+ * @ORM\Entity()
  */
 class ContactMail
 {
@@ -133,7 +133,7 @@ class ContactMail
      */
     public function setObjetmail($objetmail)
     {
-        $this->objetmail = $objetmail;
+        $this->objectMail = $objetmail;
 
         return $this;
     }
@@ -145,7 +145,7 @@ class ContactMail
      */
     public function getObjetmail()
     {
-        return $this->objetmail;
+        return $this->objectMail;
     }
 
     /**
@@ -181,7 +181,7 @@ class ContactMail
      */
     public function setIpadress($ipadress)
     {
-        $this->ipadress = $ipadress;
+        $this->ipAddress = $ipadress;
 
         return $this;
     }
@@ -193,7 +193,7 @@ class ContactMail
      */
     public function getIpadress()
     {
-        return $this->ipadress;
+        return $this->ipAddress;
     }
 
     /**

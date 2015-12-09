@@ -1,7 +1,8 @@
 EUR: EUR
 GBP: GBP
 USD: USD
-
+Sell: Vente
+Buy: Achat
 offer:
     actions: Actions
     brand: Constructeur
