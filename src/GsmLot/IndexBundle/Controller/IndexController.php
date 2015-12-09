@@ -36,8 +36,11 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
-        return  
-        $this->render('GsmLotIndexBundle:Index:index.html.twig');
+		$list_offer_sell = $this->get('gsm_lot_offer.offer_manager')->getOfferReport('sell');
+		$list_offer_buy = $this->get('gsm_lot_offer.offer_manager')->getOfferReport('buy');
+		return
+        $this->render('GsmLotIndexBundle:Index:index.html.twig',array('list_offer_sell'=>$list_offer_sell,
+				'list_offer_buy' => $list_offer_buy));
     }
     
     
@@ -48,7 +51,6 @@ class IndexController extends Controller
     public function aboutAction(Request $request)
     {
     	$_locale = $request->getLocale();
-    	
     	return   $this->render('GsmLotIndexBundle:Index/About:about.'.$_locale.'.html.twig');
 
     }
