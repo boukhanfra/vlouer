@@ -356,10 +356,10 @@ class Trader
 
     public function setCountry(Country $country )
     {
-  
+
     }
 
-    
+
     
     public function getCountry()
     {

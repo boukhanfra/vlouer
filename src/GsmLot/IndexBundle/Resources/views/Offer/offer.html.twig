@@ -2,35 +2,37 @@
 {% block left %}
 {% endblock %}
 {% block contenu %}
-    <div class="col-md-9">
+<div class="container">
+<div class="row">
+    <div class="col-xs-10">
         <div class="row">
             <h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
         </div>
         <form method="get" {{ form_enctype(form) }}>
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-xs-2">
                     <strong>{{ 'offer.brand'|trans }}</strong>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2">
                     <strong>{{ 'offer.model'|trans }}</strong>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2">
                     <strong>{{ 'offer.norm'|trans }}</strong>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2">
                     <strong>{{ 'offer.country'|trans }}</strong>
                 </div>
-                <div class="col-md-2">
+                <div class="col-xs-2">
                     <strong>{{ 'offer.city'|trans }}</strong>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">{{ form_widget(form.brand) }}</div>
-                <div class="col-md-2">{{ form_widget(form.model) }}</div>
-                <div class="col-md-2">{{ form_widget(form.norm) }}</div>
-                <div class="col-md-2">{{ form_widget(form.country) }}</div>
-                <div class="col-md-2">{{ form_widget(form.city) }}</div>
-                <div class="col-md-1">
+                <div class="col-xs-2">{{ form_widget(form.brand) }}</div>
+                <div class="col-xs-2">{{ form_widget(form.model) }}</div>
+                <div class="col-xs-2">{{ form_widget(form.norm) }}</div>
+                <div class="col-xs-2">{{ form_widget(form.country) }}</div>
+                <div class="col-xs-2">{{ form_widget(form.city) }}</div>
+                <div class="col-xs-1">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-filter"></span> Filtrer
                     </button>
@@ -43,33 +45,33 @@
         <hr/>
         {% for offer in list_offer %}
             <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
+                <div class="col-xs-6"></div>
+                <div class="col-xs-6">
                     ({{ offer.norm.description }}) {{ offer.model.brand }} {{ offer.model }}
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-xs-6">
                     {{ offer.trader.firstName }} {{ offer.trader.lastName }}
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     {{ offer.currency }} {{ offer.price }}
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-xs-6">
                 <span class="lang-sm" title="{{ offer.trader.city.country }}"
                       lang="{{ offer.trader.city.country.code }}"></span>
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     {{ offer.quantity }} {{ 'offer.pcs'|trans }}
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
-                    <div class="col-md-10"></div>
-                    <div class="col-md-1">
+                <div class="col-xs-6"></div>
+                <div class="col-xs-6">
+                    <div class="col-xs-10"></div>
+                    <div class="col-xs-1">
                         <a href="#" id="{{ offer.id }}" data-trigger="focus" data-toggle="popover"
                            title="{{ offer.model.brand }} - {{ offer.model }}"
                         >{{ 'offer.details'|trans }}</a>
@@ -82,7 +84,9 @@
             <div class="col-sm-12">{{ knp_pagination_render(list_offer) }}</div>
         </div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-xs-3"></div>
+    </div>
+    </div>
 {% endblock %}
 {% block javascript %}
     {{ parent() }}
