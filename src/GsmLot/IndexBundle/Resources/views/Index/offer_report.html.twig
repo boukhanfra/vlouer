@@ -45,7 +45,7 @@
                 <tr>
                     <td>{{ offer.brand }} {{ offer.model }}</td>
                     <td>{{ offer.quantity }}</td>
-                    <td>{{ offer.price }} {{ offer.currency }}</td>
+                    <td>{{ offer.price|number_format(2) }} {{ offer.currency }}</td>
                     <td><span class="badge">{{ offer.sellers }}</span></td>
                 </tr>
                 {% endfor %}
