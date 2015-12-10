@@ -63,8 +63,8 @@ class OfferManager extends Manager
 		{
 			$offer->setCreatedOn(new \DateTime('now'));
 			$offer->setDeviceType($this->em->getRepository('GsmLotOfferBundle:DeviceType')->find(1));
-			$offer->setActive(false);
-			$offer->setEnable(true);
+			$offer->setActive(true);
+			$offer->setEnable(false);
 			
 			$this->persistAndFlush($offer);
 		}
