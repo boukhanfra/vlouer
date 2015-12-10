@@ -34,7 +34,7 @@
   {% if not offer.active %} class="warning"
   {% endif %}
   {% else %}
-  {% if not offer.enable  %} class="alert" {% endif %}
+  {% if not offer.enable  %} class="danger" {% endif %}
   {% endif %}
   >
     <td>{{ offer.model.brand }}</td>
