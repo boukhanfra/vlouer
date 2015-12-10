@@ -96,20 +96,6 @@ class OfferRepository extends EntityRepository
 					->getArrayResult();
 	}
 
-
-	
-	/**
-	 * @return ArrayCollection
-	 * @abstract query to return disbaled offer for administrator
-	 */
-	public function getDisabledOffer()
-	{
-		return $this->createQueryBuilder('o')
-					->where('o.enable = false')
-					->getQuery()->getResult();
-	}
-	
-	
 	
 	/**
 	 * @return ArayCollection

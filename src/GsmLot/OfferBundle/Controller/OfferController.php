@@ -66,7 +66,7 @@ class OfferController extends Controller
     public function listAdminAction(Request $request)
     {
     	
-    	$list_offer = $this->get('gsm_lot_offer.offer_manager')->disbledOfferForAdmin();
+    	$list_offer = $this->get('gsm_lot_offer.offer_manager')->offerList(array());
     	
     	$paginator = $this->get('knp_paginator');
     	
