@@ -49,7 +49,7 @@ class OfferManager extends Manager
 	 */
 	public function offerListAdmin()
 	{
-		return $this->getRepository()->findAll();
+		return $this->getRepository()->getAllOffers();
 	}
 	
 	/**
