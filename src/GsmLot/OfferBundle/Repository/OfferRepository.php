@@ -12,7 +12,18 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class OfferRepository extends EntityRepository 
 {
-	
+
+
+	/**
+	 * @return array
+	 */
+	public function getAllOffers()
+	{
+		return $this->createQueryBuilder('o')
+					->orderBy('o.createdOn','desc')
+					->getQuery()
+					->getResult();
+	}
 	
 	/**
 	 * @abstract query that return list of offers filtered by norm
