@@ -31,10 +31,10 @@
   {% for offer in pagination %}
   <tr
   {% if not is_granted("ROLE_ADMIN") %} 
-  {% if not offer.enable %} class="alert"  {% endif %}
+  {% if not offer.active %} class="warning"
+  {% endif %}
   {% else %}
-  {% if not offer.enable  %} class="warning" {% endif %}
- 
+  {% if not offer.enable  %} class="alert" {% endif %}
   {% endif %}
   >
     <td>{{ offer.model.brand }}</td>
@@ -64,7 +64,7 @@
     {% else %}
       {% if offer.enable %}
         <a href="{{ path('offer_disable',{ 'offer_id': offer.id}) }}">
-          <span class="glyphicon glyphicon-ok" title="Disable"></span>
+          <span class="glyphicon glyphicon-remove-circle" title="Disable"></span>
         </a>
       {% else %}
         <a href="{{ path('offer_enable',{ 'offer_id': offer.id}) }}">
