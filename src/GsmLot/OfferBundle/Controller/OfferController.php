@@ -95,7 +95,27 @@ class OfferController extends Controller
     	
     	return $this->redirect($this->get('router')->generate('offer_admin_list'));
     }
-    
+
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 * @Route("/disable/{offer_id}",name="offer_disable")
+	 * @Security("has_role('ROLE_ADMIN')")
+	 */
+	public function disableOfferAction(Request $request)
+	{
+		$offer = $this->get('gsm_lot_offer.offer_manager')->getOffer($request->get('offer_id'));
+
+		if($offer)
+		{
+			$this->get('gsm_lot_offer.offer_manager')->disableOffer($offer);
+
+			$this->get('session')->getFlashBag()->add('notice','The offer has been successfuly disabled');
+		}
+
+		return $this->redirect($this->get('router')->generate('offer_admin_list'));
+	}
         
     /**
      * @Route("/create",name="offer_create")
