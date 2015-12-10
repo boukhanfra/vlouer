@@ -31,7 +31,7 @@
   {% for offer in pagination %}
   <tr
   {% if not is_granted("ROLE_ADMIN") %} 
-  {% if not offer.active %} class="warning"  {% endif %}
+  {% if not offer.enable %} class="alert"  {% endif %}
   {% else %}
   {% if not offer.enable  %} class="warning" {% endif %}
  
@@ -62,10 +62,16 @@
     </a>
     {% endif %}
     {% else %}
-    <a href="{{ path('offer_enable',{ 'offer_id': offer.id}) }}">
-    	<span class="glyphicon glyphicon-ok" title="Validate"></span>
-    </a>
-    {% endif %}
+      {% if offer.enable %}
+        <a href="{{ path('offer_disable',{ 'offer_id': offer.id}) }}">
+          <span class="glyphicon glyphicon-ok" title="Disable"></span>
+        </a>
+      {% else %}
+        <a href="{{ path('offer_enable',{ 'offer_id': offer.id}) }}">
+          <span class="glyphicon glyphicon-ok" title="Enable"></span>
+        </a>
+      {% endif %}
+      {% endif %}
     </td>
   </tr>
   {% endfor %}
