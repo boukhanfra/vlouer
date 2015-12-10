@@ -47,24 +47,27 @@
                             <a class="dropdown-toggle btn-success" data-toggle="dropdown" href="#"
                                id="themes">{{ 'index.menu.myspace'|trans }}<span class="caret"></span></a>
                             <ul class="dropdown-menu" aria-labelledby="my space">
-                                <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a>
-                                </li>
-                                <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span
-                                                class="badge">{{ app.user.trader.offers|length }}</span></a></li>
-                                <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
-                                <li>
-                                    <a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a>
-                                </li>
-
+                               {% if is_granted("ROLE_ADMIN") %}
+                                   <li>
+                                       <a href="{{ path('offer_admin_list') }}">{{ 'index.menu.manage_offer'|trans }}</a>
+                                   </li>
+                               {% else %}
+                                   <li><a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a>
+                                   </li>
+                                   <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }} <span
+                                                   class="badge">{{ app.user.trader.offers|length }}</span></a></li>
+                                   <li><a href="">{{ 'index.menu.myspacerequests'|trans }}</a></li>
+                                   <li>
+                                       <a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a>
+                                   </li>
+                                   <li>
+                                       <a href="{{ path('fos_user_security_logout') }}">{{ 'index.menu.myspacelogout'|trans }}</a>
+                                   </li>
+                               {% endif  %}
                             </ul>
                         </li>
-
                     {% else %}
                         <li>
-
                             <a href="{{ path('fos_user_security_login') }}" class="btn btn-info"
                                style="line-height:9px;margin-top:3px;">{{ 'index.menu.login'|trans }}</a>
                         </li>
