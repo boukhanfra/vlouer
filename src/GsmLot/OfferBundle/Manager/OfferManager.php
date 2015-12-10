@@ -43,23 +43,7 @@ class OfferManager extends Manager
 			throw $e;
 		}
 	}
-	
-	/**
-	 * @abstract Business - return disbaled offer for administrator validation
-	 * @return ArrayCollection
-	 * @throws Exception
-	 */
-	public function disbledOfferForAdmin()
-	{
-		try
-		{
-			return $this->getRepository()->getDisabledOffer();
-		}
-		catch(Exception $e)
-		{
-			throw $e;
-		}
-	}
+
 	
 	/**
 	 * @abstract Business - create offer function
