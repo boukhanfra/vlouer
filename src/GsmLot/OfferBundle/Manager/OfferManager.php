@@ -44,6 +44,13 @@ class OfferManager extends Manager
 		}
 	}
 
+	/**
+	 * @return array
+	 */
+	public function offerListAdmin()
+	{
+		return $this->getRepository()->findAll();
+	}
 	
 	/**
 	 * @abstract Business - create offer function
