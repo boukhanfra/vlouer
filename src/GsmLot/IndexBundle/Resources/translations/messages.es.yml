@@ -30,3 +30,5 @@ index.average : Normal
 index.sellers : Ventas
 index.top_5_phones_buyers : Top 5 teléfonos en la demanda
 index.buyers : Compradores
+index.titre.sell: 'Mis Ofertas de Venta'
+index.titre.buy: 'Mis solicitudes de compra'

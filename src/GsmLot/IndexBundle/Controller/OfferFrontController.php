@@ -45,8 +45,16 @@ class OfferFrontController extends Controller
 		$form = $this->createForm(new FilterType());
 		
 		$form->handleRequest($request);
-		
-		$list_offer = $this->get('gsm_lot_offer.offer_manager')->offerList($form->getData());
+
+		$parameters = $form->getData();
+
+		if(!is_array($parameters))
+		{
+			$parameters = array();
+		}
+		$parameters = array_merge($parameters,array('state'=>'new'));
+
+		$list_offer = $this->get('gsm_lot_offer.offer_manager')->offerList($parameters);
 		
 		$paginator = $this->get('knp_paginator');
 		
@@ -56,130 +64,37 @@ class OfferFrontController extends Controller
 		return $this->render('GsmLotIndexBundle:Offer:offer.html.twig',
 				array('list_offer'=>$pagination,'form'=>$form->createView()));
 	}
-	
+
 	/**
-	 * @Route("/brand/{type}/{brand_id}",name="offer_mobile_brand",defaults={"brand_id"=null})
-	 * @Template()
 	 * @param Request $request
+	 * @return Response
+	 * @throws \Exception
+	 * @Route("/used",name="offer_used")
 	 */
-	public function offerMobileBrandAction(Request $request)
+	public function offerUserMobileAction(Request $request)
 	{
-		$list_model = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersModel(
-				$request->get('type'),
-				$request->get('brand_id'));
-		$list_buy_norm = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersNorm(
-				array('type'=>$request->get('type'),
-					'brand_id' => $request->get('brand_id')));
-				
-		$list_buy_country = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersCountry(
-				array('type'=>$request->get('type'),
-					'brand_id' => $request->get('brand_id')));
-				
-		$list_offer = $this->get('gsm_lot_offer.offer_manager')->getMobileOfferBrand($request->get('type'),$request->get('brand_id'));
-		
+		$form = $this->createForm(new FilterType());
+
+		$form->handleRequest($request);
+
+		$parameters = $form->getData();
+
+		if(!is_array($parameters))
+		{
+			$parameters = array();
+		}
+		$parameters = array_merge($parameters,array('state'=>'used'));
+
+		$list_offer = $this->get('gsm_lot_offer.offer_manager')->offerList($parameters);
+
 		$paginator = $this->get('knp_paginator');
-		
+
 		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
-		
-		return $this->render('GsmLotIndexBundle:Offer:offer_brand.html.twig',
-				array('list_model'=>$list_model,
-						'list_buy_norm'=>$list_buy_norm,
-						'list_buy_country'=>$list_buy_country,
-						'list_offer' => $pagination
-						
-				));
+
+
+		return $this->render('GsmLotIndexBundle:Offer:offer.html.twig',
+				array('list_offer'=>$pagination,'form'=>$form->createView()));
 	}
-	
-	/**
-	 * @Route("/country/{country_id}/{type}",name="offer_mobile_country",defaults={"country_id"= null})
-	 * @Template()
-	 * @param Request $request
-	 */
-	public function offerMobileCountryAction(Request $request)
-	{
-		$list_city= $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOfferCity(
-				$request->get('type'),
-				$request->get('country_id')
-				);
-		
-		$list_offer = $this->get('gsm_lot_offer.offer_manager')->getMobileOfferCountry(
-				$request->get('type'),
-				$request->get('country_id'));
-		
-		$paginator = $this->get('knp_paginator');
-		
-		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
-		
-		$list_brand = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersBrand(
-				array('type'=>$request->get('type'),
-					  'country_id' => $request->get('country_id')
-				));
-		$list_norm = $this->get('gsm_lot_offer.offer_manager')->getMobileGroupedOffersNorm(
-				array(
-				'type' => $request->get('type'),
-				'country_id' => $request->get('country_id')
-				));
-		
-		return $this->render('GsmLotIndexBundle:Offer:offer_country.html.twig',array(
-				'list_offer' => $pagination,
-				'list_city' => $list_city,
-				'list_brand' => $list_brand,
-				'list_norm'	=> $list_norm
-		));
-	}
-	
-	
-	/**
-	 * @Route("/norm/{norm_id}/{type}",name="offer_mobile_norm")
-	 * @Template()
-	 * @param Request $request
-	 */
-	public function offerMobileNorm(Request $request)
-	{
-	
-	}
-	
-	/**
-	 * @Route("/model/{model_id}/{type}",name="offer_mobile_model")
-	 * @Template()
-	 * @param Request $request
-	 */
-	public function offerMobileModelAction(Request $request)
-	{
-		$list_offer = $this->get('gsm_lot_offer.offer_manager')->getMobileOfferModel(
-				$request->get('type'),
-				$request->get('model_id'));
-		
-		$paginator = $this->get('knp_paginator');
-		
-		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
-		
-		return $this->render('GsmLotIndexBundle:Offer:offer_model.html.twig',array(
-				'list_offer' => $pagination,
-		));
-		
-		
-	}
-	
-	/**
-	 * @Route("/model/{city_id}/{type}",name="offer_mobile_city")
-	 * @param Request $request
-	 */
-	public function offerMobileCityAction(Request $request)
-	{
-		$list_offer = $this->get('gsm_lot_offer.offer_manager')->getMobileOfferByCity(
-				$request->get('type'),
-				$request->get('city_id'));
-		
-		$paginator = $this->get('knp_paginator');
-		
-		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
-		
-		return $this->render('GsmLotIndexBundle:Offer:offer_city.html.twig',array(
-				'list_offer' => $pagination,
-		));
-	}
-	
 	
 	/**
 	 * @Route("/getModel/{brand_id}",name="brand_load_model",options={"expose"= true})

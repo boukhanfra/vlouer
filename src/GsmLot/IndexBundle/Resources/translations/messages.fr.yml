@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 pagination.first: Début
 pagination.last: Dernier
 index.boutton.registerbuy: 'Inscrivez-vous & Achetez'
@@ -32,3 +33,5 @@ index.average: Moyenne
 index.sellers: Vendeurs
 index.top_5_phones_buyers: Top 5 téléphones demandés
 index.buyers: Acheteurs
+index.titre.sell: 'Mes offre de vente'
+index.titre.buy: "Mes demandes d'achat"
