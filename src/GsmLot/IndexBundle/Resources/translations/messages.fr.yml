@@ -1,35 +1,34 @@
-pagination:
-    first: 'Début'
-    last: 'Dernier'
-
-index:
-    boutton:
-        registerbuy: 'Inscrivez-vous & Achetez'
-        registersell: 'Inscrivez-vous & Vendez'
-
-    menu:
-        aboutus: 'A propos'   # FIXME
-        contactus: 'Contact'   # FIXME
-        econsumer: 'Eléctronique'   # FIXME
-        home: 'Accueil'   # FIXME
-        myspace: 'Mon Espace'  # FIXME
-        myspaceaddoffer: 'Ajouter une offre'   # FIXME
-        myspacelogout: 'Se déconnecter'   # FIXME
-        myspaceoffers: 'Mes offres'   # FIXME
-        myspaceprofile: 'Mon profile'   # FIXME
-        myspacerequests: 'Mes demandes'   # FIXME
-        phones: 'Téléphones'   # FIXME
-        used: 'Occasions'  # FIXME
-        login: 'Se connecter'
-
-    titre:
-        buyphones: 'Acheter des téléphones'
-        sellphones: 'Vendre des Téléphones'
-        searchoffer: 'Chercher par marque'
-        searchmodel: 'Chercher par modèle'
-        specification: 'Spécification'
-        country: 'Localisation'
-        bourse: 'Parquet de bourse'
-        total_offer_buy: 'Toutes les offres'
-        offer_gros: 'Chercher Offres'
-        msg: 'Votre message à été bien envoyé'
+pagination.first: Début
+pagination.last: Dernier
+index.boutton.registerbuy: 'Inscrivez-vous & Achetez'
+index.boutton.registersell: 'Inscrivez-vous & Vendez'
+index.menu.aboutus: 'A propos'
+index.menu.contactus: Contact
+index.menu.econsumer: Eléctronique
+index.menu.home: Accueil
+index.menu.myspace: 'Mon Espace'
+index.menu.myspaceaddoffer: 'Ajouter une offre'
+index.menu.myspacelogout: 'Se déconnecter'
+index.menu.myspaceoffers: 'Mes offres'
+index.menu.myspaceprofile: 'Mon profile'
+index.menu.myspacerequests: 'Mes demandes'
+index.menu.phones: Téléphones
+index.menu.used: Occasions
+index.menu.login: 'Se connecter'
+index.menu.manage_offer: 'Gérer offres'
+index.titre.buyphones: 'Acheter des téléphones'
+index.titre.sellphones: 'Vendre des Téléphones'
+index.titre.searchoffer: 'Chercher par marque'
+index.titre.searchmodel: 'Chercher par modèle'
+index.titre.specification: Spécification
+index.titre.country: Localisation
+index.titre.bourse: 'Parquet de bourse'
+index.titre.total_offer_buy: 'Toutes les offres'
+index.titre.offer_gros: 'Chercher Offres'
+index.titre.msg: 'Votre message à été bien envoyé'
+index.top_5_phones_sell: Top 5 téléphones à vendre
+index.quantity: Quantité
+index.average: Moyenne
+index.sellers: Vendeurs
+index.top_5_phones_buyers: Top 5 téléphones demandés
+index.buyers: Acheteurs

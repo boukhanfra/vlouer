@@ -1,88 +1,100 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
 
-    <div class="container" style="">
+    <div class="container" style="padding: 10px">
 	<div class="row">
 
-		<div class="col-xs-8" style="text-align: justify">
+		<div class="col-md-6" style="text-align: justify">
 <h3>
 {% block titre %}
 {{ 'offer.create'|trans }}
 {% endblock %}
 </h3>
 <br/>
-<form method="post" action="{% block action %} {{ path('offer_create') }} {% endblock %}">
-	<div class="checkbox">
-		<div class="row">
-			<label for="offerType" class="col-md-4">{{ 'offer.offerType'|trans }}</label>
-			{{ form_widget(form.offerType,{ 'attr' :{ 'class' : 'col-md-4'} }) }}
+<form class="form-horizontal" method="post" action="{% block action %} {{ path('offer_create') }} {% endblock %}">
+	<fieldset>
+
+
+	<div class="form-group">
+			<label for="offerType" class="col-md-2">{{ 'offer.offerType'|trans }}</label>
+		<div class="col-md-7">
+	<div class="checkbox">	{{ form_widget(form.offerType,{ 'attr' :{ 'class' : ''} }) }} </div>
+			</div>
+
+	</div>
+
+	<div class="form-group">
+		<label for="offerType" class="col-md-2">{{ 'offer.offerState'|trans }}</label>
+		<div class="col-md-7">
+			{{ form_widget(form.offerState,{ 'attr' :{ 'class' : 'form-control'} }) }}
 		</div>
 	</div>
+
 	<div class="checkbox">
-		<div class="row">
-			<label for="offerType" class="col-md-4">{{ 'offer.offerState'|trans }}</label>
-			{{ form_widget(form.offerState,{ 'attr' :{ 'class' : 'col-md-4'} }) }}
+	</div>
+
+	<div class="form-group">
+			<label for="device" class="col-md-2">{{ 'offer.norm'|trans }}</label>
+		<div class="col-md-7">
+			{{ form_widget(form.norm,{ 'attr' :{ 'class' : 'form-control'} }) }}
 		</div>
 	</div>
-	<div class="checkbox">
-	</div>
-	<div class="checkbox">
-		<div class="row">
-			<label for="device" class="col-md-4">{{ 'offer.norm'|trans }}</label>
-			{{ form_widget(form.norm,{ 'attr' :{ 'class' : 'col-md-4'} }) }}
+
+
+	<div class="form-group">
+			<label for="device" class="col-md-2">{{ 'offer.device'|trans }}</label>
+		<div class="col-md-7">
+			{{ form_widget(form.model,{ 'attr' :{ 'class' : 'form-control'} }) }}
 		</div>
 	</div>
-	<div class="checkbox">
-		<div class="row">
-			<label for="device" class="col-md-4">{{ 'offer.device'|trans }}</label>
-			{{ form_widget(form.model,{ 'attr' :{ 'class' : 'col-md-4'} }) }}
+	<div class="form-group">
+		<label for="currency" class="col-md-2">{{ 'offer.currency'|trans }}</label>
+		<div class="col-md-7">
+			{{ form_widget(form.currency,{ 'attr' :{ 'class' : 'form-control'} }) }}
 		</div>
 	</div>
-	<div class="checkbox">
-		<div class="row">
-			<label for="device" class="col-md-4">{{ 'offer.currency'|trans }}</label>
-			{{ form_widget(form.currency,{ 'attr' :{ 'class' : 'col-md-4'} }) }}
+
+	<div class="form-group">
+			<label for="quantity" class="col-md-2">{{ 'offer.quantity'|trans }}</label>
+		<div class="col-md-7">
+			{{ form_widget(form.quantity,{ 'attr' :{ 'class' : 'form-control'} }) }}
 		</div>
 	</div>
-	<div class="checkbox">
-		<div class="row">
-			<label for="quantity" class="col-md-4">{{ 'offer.quantity'|trans }}</label>
-			{{ form_widget(form.quantity,{ 'attr' :{ 'class' : 'col-md-4'} }) }}
+	<div class="form-group">
+			<label for="price" class="col-md-2">{{ 'offer.price'|trans }}</label>
+		<div class="col-md-7">
+			{{ form_widget(form.price,{ 'attr' :{ 'class' : 'form-control'} }) }}
 		</div>
 	</div>
-	<div class="checkbox">
-		<div class="row">
-			<label for="price" class="col-md-4">{{ 'offer.price'|trans }}</label>
-			{{ form_widget(form.price,{ 'attr' :{ 'class' : 'col-md-4'} }) }}
+	<div class="form-group">
+			<label for="description" class="col-md-2">{{ 'offer.description'|trans }}</label>
+		<div class="col-md-7">
+			{{ form_widget(form.description,{ 'attr' :{ 'class' : 'form-control','rows':'5'} }) }}
 		</div>
 	</div>
-	<div class="checkbox">
-		<div class="row">
-			<label for="description" class="col-md-4">{{ 'offer.description'|trans }}</label>
-			{{ form_widget(form.description,{ 'attr' :{ 'class' : 'col-md-4','rows':'5'} }) }}
-		</div>
-	</div>
-	<div class="checkbox">
-		<div class="row">
-			<label for="Physical Stock" class="col-md-4">{{ 'offer.physicalStock'|trans }}</label>
-			{{ form_widget(form.physicalStock,{ 'attr' :{ 'class' : 'col-md-4'} }) }}
+	<div class="form-group">
+		<label for="Physical Stock" class="col-md-2">{{ 'offer.physicalStock'|trans }}</label>
+		<div class="col-md-7">
+			{{ form_widget(form.physicalStock,{ 'attr' :{ 'class' : 'form-control'} }) }}
 		</div>
 	</div>
 	{{ form_row(form._token) }}
-	<div class="row">
-	<div class="col-xs-3"></div>
-		<div class="col-xs-2 col-md-offset-1">
-			<button type="reset" class="btn btn-primary">{{ 'offer.reset'|trans }}</button>
-		</div>
 
-		<div class="col-xs-2">
+		<div class="form-group">
+			<div class="row">
+			<div class="col-xs-2 col-xs-offset-2">
+			<button type="reset" class="btn btn-primary">{{ 'offer.reset'|trans }}</button>
+			</div>
+			<div class="col-xs-2 col-xs-offset-2">
 			<button type="submit" class="btn btn-primary">{{ 'offer.submit'|trans }}</button>
-		</div>
-	</div>
+			</div>
+			</div>
+	    </div>
+		</fieldset>
       </form>
 		</div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             {% image '@GsmLotIndexBundle/Resources/public/images/about.jpg' %}
             <img src="{{ asset_url }}" alt="gsmlot phones exchange" class="img-responsive" />
             {% endimage %}

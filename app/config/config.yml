@@ -119,9 +119,6 @@ swiftmailer:
     sender_address: admin@gsmlot.com
     encryption: ssl
     auth_mode: login
-    spool:
-        type: file
-        path: %kernel.cache_dir%/swiftmailer/spool
  
 
 jms_i18n_routing:

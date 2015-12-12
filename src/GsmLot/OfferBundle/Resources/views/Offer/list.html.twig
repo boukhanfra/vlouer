@@ -4,7 +4,7 @@
     <div class="container" style="">
         <div class="row">
 
-            <div class="col-xs-8" style="text-align: justify">
+            <div class="col-md-8" style="text-align: justify">
 
 {% if not is_granted("ROLE_ADMIN") %}
 
@@ -30,7 +30,7 @@
   </tr>
   {% for offer in pagination %}
   <tr
-  {% if not is_granted("ROLE_ADMIN") %} 
+  {% if not is_granted("ROLE_ADMIN") %}
   {% if not offer.active %} class="warning"
   {% endif %}
   {% else %}

@@ -1,26 +1,28 @@
 <div class="row">
-    <div class="navbar navbar-default navbar-fixed-top">
-        <!--  debut  logo-->
+<div class="navbar navbar-default navbar-fixed-top">
+
         <div class="navbar-header">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-10">
-                <a href="{{ path('index_index') }}" class="">
-                    {% image '@GsmLotIndexBundle/Resources/public/images/logo.jpg' %}
-                    <img src="{{ asset_url }}" alt="GsmLot Logo" class="logo img-responsive"  title="GsmLot Logo" width="140"/>
-                    {% endimage %}
-                </a>
+
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-            </div>
         </div>
         <!--  end  logo-->
         <!--  debut navbar menus-->
         <div class="navbar-collapse collapse" id="navbar-main">
-            <div class="col-lg-6">
+
+            <div class="col-md-9">
                 <ul class="nav navbar-nav">
+                    <li>
+                    <a href="" >
+                        {% image '@GsmLotIndexBundle/Resources/public/images/logo.jpg' %}
+                        <img src="{{ asset_url }}" alt="GsmLot Logo" class="img-responsive" style="width:60px;"  title="GsmLot Logo"/>
+                        {% endimage %}
+                    </a>
+                    </li>
+
                     <li><a href="{{ path('index_index') }}">{{ 'index.menu.home'|trans }}</a></li>
                     <li>
                         <a href="{{ path('offer_mobile') }}">{{ 'index.menu.phones'|trans }}</a>
@@ -40,7 +42,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li class="dropdown">
@@ -96,4 +98,4 @@
             </div>
         </div>  <!--  end navbar collapse-->
     </div> <!--  end navbar-->
-</div> <!--  end row-->
+</div>
