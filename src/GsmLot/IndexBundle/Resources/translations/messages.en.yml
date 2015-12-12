@@ -32,4 +32,6 @@ index:
         bourse: 'Parquet de bourse'
         total_offer_buy: 'All offers'
         offer_gros: 'Search Offrers'
+        sell: 'My sell offers'
+        buy: 'My buy requests'
 

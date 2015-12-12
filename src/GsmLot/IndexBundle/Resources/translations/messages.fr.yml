@@ -33,3 +33,5 @@ index:
         total_offer_buy: 'Toutes les offres'
         offer_gros: 'Chercher Offres'
         msg: 'Votre message à été bien envoyé'
+        sell: 'Mes offre de vente'
+        buy: "Mes demandes d'achat"

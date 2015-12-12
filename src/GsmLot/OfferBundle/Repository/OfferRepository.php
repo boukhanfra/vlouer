@@ -34,6 +34,7 @@ class OfferRepository extends EntityRepository
 	public function offerFilter($params)
 	{
 		$query =  $this->createQueryBuilder('o')
+						->join('GsmLotOfferBundle:OfferState','os','WITH','o.offerState = os.id')
 						->join('GsmLotOfferBundle:Norm', 'n','WITH','o.norm = n.id')
 						->join('GsmLotOfferBundle:Model', 'm','WITH','o.model = m.id')
 						->join('GsmLotOfferBundle:Brand', 'b','WITH','m.brand = b.id')
@@ -42,6 +43,21 @@ class OfferRepository extends EntityRepository
 						->join('GsmLotTraderBundle:Country','cn','WITH','c.country = cn.id');
 		
 		$query->where('1=1');
+
+		if(isset($params['state']))
+		{
+			if($params['state'] == 'new')
+			{
+				$query->andWhere('os.name = :state')
+					  ->setParameter('state',$params['state']);
+			}
+			elseif($params['state'] == 'used')
+			{
+				$query->andWhere('os.name = :state1 OR os.name = :state2')
+					  ->setParameter('state1','used')
+				     ->setParameter('state2','tested');
+			}
+		}
 
 		if(isset($params['norm']))
 		{

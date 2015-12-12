@@ -84,6 +84,8 @@ class OfferManager extends Manager
 		try
 		{
 			$offer->setUpdateOn(new \DateTime('now'));
+
+			$offer->setEnable(false);
 			
 			$this->persistAndFlush($offer);
 		}

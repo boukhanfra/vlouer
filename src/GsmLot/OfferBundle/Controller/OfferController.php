@@ -47,15 +47,49 @@ class OfferController extends Controller
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $list_offer = $user->getTrader()->getOffers();
+        $list_offer = array();
+
+		foreach($user->getTrader()->getOffers() as $offer)
+		{
+			if($offer->getOfferType()->getName()=='sell')
+			{
+				$list_offer[] = $offer;
+			}
+		}
         
         $paginator = $this->get('knp_paginator');
 
         $pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
         
-        return $this->render('GsmLotOfferBundle:Offer:list.html.twig',array('pagination'=>$pagination));
+        return $this->render('GsmLotOfferBundle:Offer:list.html.twig',array('pagination'=>$pagination,'title'=>'index.titre.sell'));
     }
-    
+
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 * @Route("/myRequest",name="offer_request")
+	 */
+	public function requestAction(Request $request)
+	{
+		$user = $this->get('security.token_storage')->getToken()->getUser();
+
+		$list_offer = array();
+
+		foreach($user->getTrader()->getOffers() as $offer)
+		{
+			if($offer->getOfferType()->getName()=='buy')
+			{
+				$list_offer[] = $offer;
+			}
+		}
+
+		$paginator = $this->get('knp_paginator');
+
+		$pagination = $paginator->paginate($list_offer,$request->query->getInt('page',1),10);
+
+		return $this->render('GsmLotOfferBundle:Offer:list.html.twig',array('pagination'=>$pagination,'title'=>'index.titre.buy'));
+	}
     
     /**
      * @Route("/offerAdmin",name="offer_admin_list")
