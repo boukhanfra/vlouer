@@ -4,7 +4,7 @@ namespace GsmLot\OfferBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class OfferType extends AbstractType
 {
@@ -39,13 +39,11 @@ class OfferType extends AbstractType
 	{
 		return 'new_offer';
 	}
-	
+
 	/**
-	 * 
-	 * {@inheritDoc}
-	 * @see \Symfony\Component\Form\AbstractType::setDefaultOptions()
+	 * @param OptionsResolver $resolver
 	 */
-	public function setDefaultOptions(OptionsResolverInterface $resolver)
+	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
 				'data_class' => 'GsmLot\OfferBundle\Entity\Offer'

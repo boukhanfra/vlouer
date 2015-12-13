@@ -4,11 +4,11 @@ namespace GsmLot\IndexBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use GsmLot\IndexBundle\Form\Type\FilterType;
 use Symfony\Component\HttpFoundation\Response;
+use GsmLot\TraderBundle\Entity\City;
 
 
 class OfferFrontController extends Controller 
@@ -38,7 +38,8 @@ class OfferFrontController extends Controller
 	
 	/**
 	 * @Route("/",name="offer_mobile")
-	 * @Template()
+	 * @param Request $request
+	 * @return Response
 	 */
 	public function offerMobileAction(Request $request)
 	{
@@ -98,52 +99,53 @@ class OfferFrontController extends Controller
 	
 	/**
 	 * @Route("/getModel/{brand_id}",name="brand_load_model",options={"expose"= true})
-	 * @Template()
 	 * @param Request $request
+	 * @return Response
 	 */
 	public function getModelsAction(Request $request)
 	{
+		$content = '<option></option>';
+
 		if ($request->isXmlHttpRequest()) 
 		{
 		
 			$models = $this->get ( 'gsm_lot_offer.model_manager' )->getModelsByBrand($request->get('brand_id' ));
-		
-			$content = '<option></option>';
-		
+
 			foreach ( $models as $model ) 
 			{
 		
 				$content .= '<option value ="' . $model->getId() . '">' . $model . '</option>';
 			}
-		
-			return new Response( $content, 200 );
 		}
+
+		return new Response( $content, 200 );
 	}
 	
 	
 	/**
 	 * @Route("/getCity/{country_id}",name="country_load_city",options={"expose"= true})
-	 * @Template()
 	 * @param Request $request
+	 * @return Response
 	 */
 	public function getCitiesAction(Request $request)
 	{
+		$content = '<option></option>';
+
 		if ($request->isXmlHttpRequest())
 		{
 		
 			$cities = $this->get ('gsm_lot_trader.city_manager')->getCitiesByCountry($request->get('country_id'));
-		
-			$content = '<option></option>';
-		
+
+			/**
+			 * @var $city City
+			 */
 			foreach ( $cities as $city )
 			{
 		
 				$content .= '<option value ="' . $city->getId() . '">' . $city . '</option>';
 			}
-		
-			return new Response( $content, 200 );
 		}
+
+		return new Response( $content, 200 );
 	}
-	 
-	
 }

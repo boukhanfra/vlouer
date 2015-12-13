@@ -51,6 +51,9 @@ class OfferController extends Controller
 
         $this->get('session')->set('redirect','offer_list');
 
+        /**
+         * @var $offer Offer
+         */
 		foreach($user->getTrader()->getOffers() as $offer)
 		{
 			if($offer->getOfferType()->getName()=='sell')
@@ -80,6 +83,9 @@ class OfferController extends Controller
 
 		$list_offer = array();
 
+        /**
+         * @var $offer Offer
+         */
 		foreach($user->getTrader()->getOffers() as $offer)
 		{
 			if($offer->getOfferType()->getName()=='buy')
