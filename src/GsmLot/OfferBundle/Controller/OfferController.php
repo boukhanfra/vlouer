@@ -33,8 +33,7 @@ class OfferController extends Controller
 		
 		$this->breadcrumbs->addItem('index.menu.home',$this->get('router')->generate('index_index'));
 		
-		$this->breadcrumbs->addItem('index.menu.myspaceoffers',$this->get('router')->generate('offer_list'));
-		
+
 	}
 	
     /**
@@ -45,7 +44,9 @@ class OfferController extends Controller
      */
     public function listAction(Request $request)
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+		$this->breadcrumbs->addItem('index.menu.myspaceoffers',$this->get('router')->generate('offer_list'));
+
+		$user = $this->get('security.token_storage')->getToken()->getUser();
 
         $list_offer = array();
 
@@ -72,6 +73,8 @@ class OfferController extends Controller
 	 */
 	public function requestAction(Request $request)
 	{
+		$this->breadcrumbs->addItem('index.titre.buy',$this->get('router')->generate('offer_request'));
+
 		$user = $this->get('security.token_storage')->getToken()->getUser();
 
 		$list_offer = array();
@@ -99,8 +102,10 @@ class OfferController extends Controller
      */
     public function listAdminAction(Request $request)
     {
-    	
-    	$list_offer = $this->get('gsm_lot_offer.offer_manager')->offerListAdmin();
+
+        $this->breadcrumbs->addItem('index.menu.myspaceoffers',$this->get('router')->generate('offer_admin_list'));
+
+        $list_offer = $this->get('gsm_lot_offer.offer_manager')->offerListAdmin();
     	
     	$paginator = $this->get('knp_paginator');
     	
