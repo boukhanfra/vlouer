@@ -8,25 +8,25 @@
 {% endif %}
      <div class="container" style="padding:10px">
          <div class="row">        
-            <div class="col-xs-5" style="font-size:17px;">
+            <div class="col-md-5" style="font-size:17px;">
    <h2> {{ 'security.login.title'|trans }} </h2>
 <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     <div class="form-group">
-	    <label for="username" class="col-lg-6 control-label">{{ 'security.login.username'|trans }}</label>
-	   <div class="col-lg-5">
+	    <label for="username" class="col-md-6 control-label">{{ 'security.login.username'|trans }}</label>
+	   <div class="col-md-5">
 	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 		</div>
 	</div>
 	<div class="form-group">
-	    <label for="password" class="col-lg-6 control-label">{{ 'security.login.password'|trans }}</label>
-    	 <div class="col-lg-5">
+	    <label for="password" class="col-md-6 control-label">{{ 'security.login.password'|trans }}</label>
+    	 <div class="col-md-5">
     	<input type="password" id="password" name="_password" required="required" />
     	 </div>
 	</div>
 	<div class="form-group">
-		<label for="remember_me" class="col-lg-6 control-label">{{ 'security.login.remember_me'|trans }}</label>
-		  <div class="col-lg-5">
+		<label for="remember_me" class="col-md-6 control-label">{{ 'security.login.remember_me'|trans }}</label>
+		  <div class="col-md-5">
 		<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
 		  </div>
 	</div>
@@ -38,12 +38,12 @@
 	
             </div>
             
-           <div class="col-xs-7">
+           <div class="col-md-7">
             <blockquote>
       		    <div class="jumbotron">
   <h2>{{ 'security.login.jumbotron.header'|trans }} </h2>
   <p>{{ 'security.login.jumbotron.texte'|trans }}</p>
-  <p><a class="btn btn-primary btn-lg" href="{{ path("fos_user_registration_register") }}">{{ 'layout.register'|trans }}</a></p>
+  <p><a class="btn btn-primary btn-md" href="{{ path("fos_user_registration_register") }}">{{ 'layout.register'|trans }}</a></p>
 				</div>
 		    </blockquote>
             </div>        

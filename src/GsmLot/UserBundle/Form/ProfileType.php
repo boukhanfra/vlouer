@@ -14,13 +14,13 @@ class ProfileType extends AbstractType
 	
 	public function __construct($context)
 	{
-		$this->user = $context->getToken()->getUser();
+		//$this->user = $context->getToken()->getUser();
 	}
 	
 	
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('trader', new TraderType($this->user->getTrader()->getCity()->getCountry()->getId())) ; 
+		$builder->add('trader', new TraderType());
 		
 	}
 

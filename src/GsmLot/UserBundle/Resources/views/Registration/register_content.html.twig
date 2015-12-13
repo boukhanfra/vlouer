@@ -1,8 +1,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container" style="padding:10px">
+<div class="container" style="padding:16px">
 
- <div class="row">   <h2>{{'layout.register'|trans }}</h2> </div>
+  <h2>{{'layout.register'|trans }}</h2>
          <div class="row">
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"
 	  class="fos_user_registration_register">
@@ -10,7 +10,7 @@
  	{{ form_errors(form) }}
 	{{ form_widget(form._token) }}
           
-      <div class="col-xs-4" style="text-align: justify">
+      <div class="col-md-4" style="text-align: justify">
 
 <div class="form-group required" >
 			<label for="control-label" class="inputDefault"> {{ 'form.username'|trans }}</label>
@@ -50,7 +50,7 @@
 </div>
 		</div>
 
-   <div class="col-xs-4">
+   <div class="col-md-4">
 
 <div class="form-group required" >
 	<label for="control-label" class="inputDefault">{{ 'profile.trader.mobilenumber'|trans }}</label>
@@ -84,17 +84,17 @@
 	<label for="control-label" class="inputDefault"></label>
 </div>
 
-  
-    <div class="col-xs-2 col-xs-offset-2">
+
+    <div class="col-md-2 col-md-offset-2">
 <input type="submit"  class="btn btn-primary" style="width:160px" value="{{ 'registration.submit'|trans }}" />
     </div>
-    
+
        </div>
-       
+
 </form>
 
 
-            <div class="col-xs-4">
+            <div class="col-md-4">
  {% image '@GsmLotIndexBundle/Resources/public/images/register.jpg' %}
     <img src="{{ asset_url }}" alt="gsmlot phones exchange" class="img-responsive" style="border-radius:4px" />
 {% endimage %} 

@@ -2,7 +2,9 @@
 {% block left %}
 {% endblock %}
 {% block contenu %}
-    <div class="col-md-9">
+<div class="container">
+<div class="row">
+    <div class="col-md-10">
         <div class="row">
             <h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
         </div>
@@ -11,28 +13,33 @@
                 <div class="col-md-2">
                     <strong>{{ 'offer.brand'|trans }}</strong>
                 </div>
+                <div class="col-md-2">{{ form_widget(form.brand) }}</div>
                 <div class="col-md-2">
                     <strong>{{ 'offer.model'|trans }}</strong>
+
                 </div>
+                <div class="col-md-2">{{ form_widget(form.model) }}</div>
+
                 <div class="col-md-2">
                     <strong>{{ 'offer.norm'|trans }}</strong>
                 </div>
+                <div class="col-md-2">{{ form_widget(form.norm) }}</div>
+
                 <div class="col-md-2">
                     <strong>{{ 'offer.country'|trans }}</strong>
                 </div>
+                <div class="col-md-2">{{ form_widget(form.country) }}</div>
+
                 <div class="col-md-2">
                     <strong>{{ 'offer.city'|trans }}</strong>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">{{ form_widget(form.brand) }}</div>
-                <div class="col-md-2">{{ form_widget(form.model) }}</div>
-                <div class="col-md-2">{{ form_widget(form.norm) }}</div>
-                <div class="col-md-2">{{ form_widget(form.country) }}</div>
                 <div class="col-md-2">{{ form_widget(form.city) }}</div>
-                <div class="col-md-1">
+
+                </div>
+            <div class="row">
+                <div class="col-md-1 col-md-offset-10">
                     <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-filter"></span> Filtrer
+                        <span class="glyphicon glyphicon-filter"></span> Search
                     </button>
                 </div>
             </div>
@@ -83,6 +90,8 @@
         </div>
     </div>
     <div class="col-md-3"></div>
+    </div>
+    </div>
 {% endblock %}
 {% block javascript %}
     {{ parent() }}

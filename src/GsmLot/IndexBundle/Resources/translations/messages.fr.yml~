@@ -1,0 +1,36 @@
+pagination:
+    first: 'Début'
+    last: 'Dernier'
+
+index:
+    boutton:
+        registerbuy: 'Inscrivez-vous & Achetez'
+        registersell: 'Inscrivez-vous & Vendez'
+
+    menu:
+        aboutus: 'A propos'   # FIXME
+        contactus: 'Contact'   # FIXME
+        econsumer: 'Eléctronique'   # FIXME
+        home: 'Accueil'   # FIXME
+        myspace: 'Mon Espace'  # FIXME
+        myspaceaddoffer: 'Ajouter une offre'   # FIXME
+        myspacelogout: 'Se déconnecter'   # FIXME
+        myspaceoffers: 'Mes offres'   # FIXME
+        myspaceprofile: 'Mon profile'   # FIXME
+        myspacerequests: 'Mes demandes'   # FIXME
+        phones: 'Téléphones'   # FIXME
+        used: 'Occasions'  # FIXME
+        login: 'Se connecter'
+        manage_offer: 'Gérer offres'
+
+    titre:
+        buyphones: 'Acheter des téléphones'
+        sellphones: 'Vendre des Téléphones'
+        searchoffer: 'Chercher par marque'
+        searchmodel: 'Chercher par modèle'
+        specification: 'Spécification'
+        country: 'Localisation'
+        bourse: 'Parquet de bourse'
+        total_offer_buy: 'Toutes les offres'
+        offer_gros: 'Chercher Offres'
+        msg: 'Votre message à été bien envoyé'

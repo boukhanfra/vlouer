@@ -21,9 +21,8 @@
 {% set local = app.request.get('_locale') %}
 {% include '@GsmLotIndex/Index/menu.html.twig' %}
 <!--  start block timezones-->
-<div class="row" style="margin: 3px 2px 8px 3px;border-bottom:1px solid #d9d9d9;height: 30px">
-    <div class="col-lg-6"></div>
-    <div class="col-lg-6" style="padding-left:40px">
+<div class="row" style="border-bottom:1px hidden #d9d9d9;height: 30px;">
+    <div class="pull-right" style="padding: 3px 18px 3px 3px">
         <span class="label label-success">NYC {{ "now"|date("H:i", "America/New_York") }}</span>
         <span class="label label-default">Paris {{ "now"|date("H:i", "Europe/Paris") }}</span>
         <span class="label label-primary">Hong Kong {{ "now"|date("H:i", "Asia/Hong_Kong") }}</span>
@@ -35,7 +34,7 @@
 <!--  end block timezones-->
 {{ wo_render_breadcrumbs() }}
 <div class="row">
-    <div class="col-lg-10">
+    <div class="col-md-8 col-md-offset-2" style="align-content: center">
         {% for flashMessage in app.session.flashbag.get('notice') %}
             <div class="alert alert-info">
                 <strong>{{ 'offer.information'|trans }}</strong>
@@ -49,10 +48,12 @@
             </div>
         {% endfor %}
     </div>
-    <div class="col-lg-2"></div>
+    <div class="col-md-2"></div>
 </div>
+<div style="min-height: 430px">
 {% block contenu %}
 {% endblock %}
+</div>
 {% block footer %}
     {% include 'GsmLotIndexBundle:Index:footer.html.twig' %}
 {% endblock %}

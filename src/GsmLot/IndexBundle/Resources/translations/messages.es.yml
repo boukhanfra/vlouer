@@ -23,5 +23,12 @@ index.titre.country: 'Pais'
 index.titre.bourse: 'Beca parqué'
 index.titre.total_offer_buy: 'Todas las ofertas'
 index.titre. offer_gros: 'Búsqueda de empleo'
+index.menu.manage_offer: 'Manage offers'
+ndex.top_5_phones_sell : Top cinco teléfonos en venta
+index.quantity : Cantidad
+index.average : Normal
+index.sellers : Ventas
+index.top_5_phones_buyers : Top 5 teléfonos en la demanda
+index.buyers : Compradores
 index.titre.sell: 'Mis Ofertas de Venta'
 index.titre.buy: 'Mis solicitudes de compra'

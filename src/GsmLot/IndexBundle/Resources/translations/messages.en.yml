@@ -1,37 +1,36 @@
-pagination:
-    first: 'First'
-    last: 'Last'
-index:
-    boutton:
-        registerbuy: 'Register & Strat Buying'
-        registersell: 'Register & Start Selling'
-
-    menu:
-        aboutus: 'About us'
-        contactus: 'Contact us'
-        econsumer: 'Econsumer'
-        home: 'Home'
-        myspace: 'My space'
-        myspaceaddoffer: 'Add offer'
-        myspacelogout: 'Log out'
-        myspaceoffers: 'My offers'
-        myspaceprofile: 'My profile'
-        myspacerequests: 'My requests'
-        phones: 'Phones'
-        used: 'Used'
-        login: 'Log in'
-
-    titre:
-        buyphones: 'Buy Phones'
-        sellphones: 'Sell Phones'
-        msg: 'Your message has beent sent, thank you'
-        searchoffer: 'search by brand'
-        searchmodel: 'search by model'
-        specification: 'sepecification'
-        country: 'geolocation'
-        bourse: 'Parquet de bourse'
-        total_offer_buy: 'All offers'
-        offer_gros: 'Search Offrers'
-        sell: 'My sell offers'
-        buy: 'My buy requests'
-
+pagination.first: First
+pagination.last: Last
+index.boutton.registerbuy: 'Register & Strat Buying'
+index.boutton.registersell: 'Register & Start Selling'
+index.menu.aboutus: 'About us'
+index.menu.contactus: 'Contact us'
+index.menu.econsumer: Econsumer
+index.menu.home: Home
+index.menu.myspace: 'My space'
+index.menu.myspaceaddoffer: 'Add offer'
+index.menu.myspacelogout: 'Log out'
+index.menu.myspaceoffers: 'My offers'
+index.menu.myspaceprofile: 'My profile'
+index.menu.myspacerequests: 'My requests'
+index.menu.phones: Phones
+index.menu.used: Used
+index.menu.login: 'Log in'
+index.menu.manage_offer: 'Manage offers'
+index.titre.buyphones: 'Buy Phones'
+index.titre.sellphones: 'Sell Phones'
+index.titre.msg: 'Your message has beent sent, thank you'
+index.titre.searchoffer: 'search by brand'
+index.titre.searchmodel: 'search by model'
+index.titre.specification: sepecification
+index.titre.country: geolocation
+index.titre.bourse: 'Parquet de bourse'
+index.titre.total_offer_buy: 'All offers'
+index.titre.offer_gros: 'Search Offrers'
+index.top_5_phones_sell: Top five phones for sale
+index.quantity: Quantity
+index.average: Average
+index.sellers: Sellers
+index.top_5_phones_buyers: Top 5 phones on demand
+index.buyers: Buyers
+index.titre.sell: 'My offers for sale'
+index.titre.buy: 'My requests'

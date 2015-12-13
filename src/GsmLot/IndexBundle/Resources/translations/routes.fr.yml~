@@ -1,25 +1,74 @@
+# Desc: /profile/change-password
 fos_user_change_password: /profile/change-password
+
+# Desc: /profile/edit
 fos_user_profile_edit: /profile/edit
+
+# Desc: /profile/
 fos_user_profile_show: /profile/
+
+# Desc: /register/check-email
 fos_user_registration_check_email: /register/check-email
+
+# Desc: /register/confirm/{token}
 fos_user_registration_confirm: '/register/confirm/{token}'
+
+# Desc: /register/confirmed
 fos_user_registration_confirmed: /register/confirmed
+
+# Desc: /register/
 fos_user_registration_register: /register/
+
+# Desc: /resetting/check-email
 fos_user_resetting_check_email: /resetting/check-email
+
+# Desc: /resetting/request
 fos_user_resetting_request: /resetting/request
+
+# Desc: /resetting/reset/{token}
 fos_user_resetting_reset: '/resetting/reset/{token}'
+
+# Desc: /resetting/send-email
 fos_user_resetting_send_email: /resetting/send-email
+
+# Desc: /login_check
 fos_user_security_check: /login_check
+
+# Desc: /login
 fos_user_security_login: /login
+
+# Desc: /logout
 fos_user_security_logout: /logout
+
+# Desc: /mailbox/
 gsmlot_mailbox_mailbox_index: /mailbox/
+
+# Desc: /offer/disable
 gsmlot_offer_offer_disable: /offer/disable
+
+# Desc: /offer/remove
 gsmlot_offer_offer_remove: /offer/remove
+
+# Desc: /subscription/hello/{name}
 gsmlot_subscription_subscription_index: '/subscription/hello/{name}'
+
+# Desc: /trader/hello/{name}
 gsmlot_trader_trader_index: '/trader/hello/{name}'
+
+# Desc: /user/hello/{name}
 gsmlot_user_userbundle_index: '/user/hello/{name}'
+
+# Desc: /about
 index_about: /about
+
+# Desc: /contact/{_locale}
 index_contact: '/contact/{_locale}'
+
+# Desc: /
 index_index: /
+
+# Desc: /offer/create
 offer_create: /offer/create
+
+# Desc: /offer/
 offer_list: /offer/

@@ -18,7 +18,7 @@ offer:
 
     model: Model
     norm: Specification
-    notactive: Orange color offers are disabled , so they are not visible on the site .  # FIXME
+    notactive: Offers  colored in Orange are unpublished , so they are not visible on the website .  # FIXME
     offerType: 'I want to'
     physicalStock: 'Physical stock'
     price: Price
