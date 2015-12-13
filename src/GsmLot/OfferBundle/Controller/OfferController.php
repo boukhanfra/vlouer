@@ -50,6 +50,8 @@ class OfferController extends Controller
 
         $list_offer = array();
 
+        $this->get('session')->set('redirect','offer_list');
+
 		foreach($user->getTrader()->getOffers() as $offer)
 		{
 			if($offer->getOfferType()->getName()=='sell')
@@ -76,6 +78,8 @@ class OfferController extends Controller
 		$this->breadcrumbs->addItem('index.titre.buy',$this->get('router')->generate('offer_request'));
 
 		$user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $this->get('session')->set('redirect','offer_request');
 
 		$list_offer = array();
 
@@ -168,6 +172,7 @@ class OfferController extends Controller
     	$offer = new Offer();
     	$form = $this->createForm(new OfferType(),$offer);
     	$form->handleRequest($request);
+
     	if($form->isValid())
     	{
     	
@@ -177,7 +182,7 @@ class OfferController extends Controller
     		
     		$this->get('session')->getFlashBag()->add('notice','offer.created');
     		
-    		return $this->redirect($this->get('router')->generate('offer_list'));
+    		return $this->redirect($this->get('router')->generate($this->get('session')->get('redirect')));
     	}
     	
     	return $this->render('GsmLotOfferBundle:Offer:create.html.twig',
@@ -201,10 +206,8 @@ class OfferController extends Controller
     	{
     		if($offer->getTrader()->getUser()->getId() == $user->getId())
     		{
-    			
     			$this->breadcrumbs->addItem('offer.update',$this->get('router')->generate('offer_update',array('offer_id'=> $offer->getId())));
-    			 
-    			
+
     			$form = $this->createForm(new OfferType(),$offer);
     			
     			$form->handleRequest($request);
@@ -216,8 +219,8 @@ class OfferController extends Controller
     				$this->get('gsm_lot_offer.offer_manager')->updateOffer($offer);
     				
     				$this->get('session')->getFlashBag()->add('notice','offer.updated');
-    				
-    				return $this->redirectToRoute('offer_list');
+
+                    return $this->redirect($this->get('router')->generate($this->get('session')->get('redirect')));
     			}
     			
     			return $this->render('GsmLotOfferBundle:Offer:update.html.twig',
@@ -225,7 +228,7 @@ class OfferController extends Controller
     		}
     	}
 
-			return $this->redirect($this->get('router')->generate('offer_list'));
+			return $this->redirect($this->get('router')->generate($this->get('session')->get('redirect')));
     }
     
     /**
@@ -247,11 +250,11 @@ class OfferController extends Controller
     			
     			$this->get('session')->getFlashBag()->add('notice','offer.activated');
     			
-    			return $this->redirectToRoute('offer_list');
+    			return $this->redirect($this->get('router')->generate($this->get('session')->get('redirect')));
     		}
     	}
 
-		return $this->redirect($this->get('router')->generate('offer_list'));
+		return $this->redirect($this->get('router')->generate($this->get('session')->get('redirect')));
     }
     
     
@@ -274,10 +277,10 @@ class OfferController extends Controller
     			
     			$this->get('session')->getFlashBag()->add('notice','offer.desactivated');
     			
-    			return $this->redirectToRoute('offer_list');
+    			return $this->redirect($this->get('router')->generate($this->get('session')->get('redirect')));
     		}
     	}
 
-		return $this->redirect($this->get('router')->generate('offer_list'));
+		return $this->redirect($this->get('router')->generate($this->get('session')->get('redirect')));
     }    
 }
