@@ -3,8 +3,6 @@
  */
 $(document).ready(function() {
 
-	$('select').css({'width':'100%'});
-	
 	$('#offer_filter_brand').change(function() {
 
 		brand_id = $('#offer_filter_brand').val();
