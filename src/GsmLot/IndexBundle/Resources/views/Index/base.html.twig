@@ -34,7 +34,7 @@
 <!--  end block timezones-->
 {{ wo_render_breadcrumbs() }}
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8 col-md-offset-2" style="align-content: center">
         {% for flashMessage in app.session.flashbag.get('notice') %}
             <div class="alert alert-info">
                 <strong>{{ 'offer.information'|trans }}</strong>
@@ -50,8 +50,10 @@
     </div>
     <div class="col-md-2"></div>
 </div>
+<div style="min-height: 430px">
 {% block contenu %}
 {% endblock %}
+</div>
 {% block footer %}
     {% include 'GsmLotIndexBundle:Index:footer.html.twig' %}
 {% endblock %}
