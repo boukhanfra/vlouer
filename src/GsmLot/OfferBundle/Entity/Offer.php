@@ -111,6 +111,7 @@ class Offer
     protected $deviceType;
 	
     /**
+     * @var Model
      * @ORM\ManyToOne(targetEntity="GsmLot\OfferBundle\Entity\Model")
      * @ORM\JoinColumn(name="model_id",referencedColumnName="model_id",nullable=false)
      */
@@ -515,5 +516,10 @@ class Offer
     public function setOfferState($offerState)
     {
     	$this->offerState = $offerState;
+    }
+
+    public function __toString()
+    {
+        return $this->model->getBrand().' '.$this->model;
     }
 }

@@ -7,4 +7,4 @@
 '<strong>{{ 'offer.price'|trans }}: </strong>{{ offer.price }} {{ offer.currency }}<br/>'+
 '<strong>{{ 'offer.physicalStock'|trans }} : </strong>'+
 '{% if offer.physicalStock == 1 %}{{ 'offer.yes'|trans }}{% else %}{{ 'offer.no'|trans }}{% endif %}<br/>'+
-'<br/><button type="button" class="btn btn-primary btn-sm">Contacter</button>'
+'<br/><button type="button" onclick="location.href=\'{{ path('message_send',{ 'offer_id': offer.id }) }}\'" class="btn btn-primary btn-sm">Contacter</button>'

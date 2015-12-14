@@ -176,7 +176,7 @@ class Message
      * @param Trader $senderTrader
      *
      */
-    public function setSender(Trader $senderTrader = null)
+    public function setSenderTrader(Trader $senderTrader = null)
     {
         $this->senderTrader = $senderTrader;
 
@@ -218,6 +218,13 @@ class Message
         return $this->offer;
     }
 
+    /**
+     * @param Offer $offer
+     */
+    public function setOffer(Offer $offer)
+    {
+        $this->offer = $offer;
+    }
 
     /**
      * @return string
@@ -234,4 +241,5 @@ class Message
     {
         $this->ip = $ip;
     }
+
 }
