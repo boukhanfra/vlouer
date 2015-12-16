@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <title>{% block title %}GsmLot Website{% endblock %}</title>
     {% block stylesheet %}
         {% stylesheets
@@ -12,8 +12,7 @@
         'bundles/gsmlotindex/css/languages.css'
         'bundles/gsmlotindex/css/app.css'
         'bundles/gsmlotindex/css/flag/css/flag-icon.min.css'
-        filter ="cssrewrite"
-        %}
+        filter ="cssrewrite" %}
         <link type="text/css" rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
     {% endblock %}
@@ -22,51 +21,52 @@
 {% set local = app.request.get('_locale') %}
 {% include '@GsmLotIndex/Index/menu.html.twig' %}
 <!--  start block timezones-->
-<div class="row" style="border-bottom:1px hidden #d9d9d9;height: 30px;">
-    <div class="pull-right" style="padding: 3px 18px 3px 3px">
-        <span class="label label-success">NYC {{ "now"|date("H:i", "America/New_York") }}</span>
-        <span class="label label-default">Paris {{ "now"|date("H:i", "Europe/Paris") }}</span>
-        <span class="label label-primary">Hong Kong {{ "now"|date("H:i", "Asia/Hong_Kong") }}</span>
-        <span class="label label-warning"> Casablanca {{ "now"|date("H:i", "Africa/Casablanca") }}</span>
-        <span class="label label-danger">Moscow {{ "now"|date("H:i", "Europe/Moscow") }}</span>
-        <span class="label label-info">Istanbul {{ "now"|date("H:i", "Asia/Istanbul") }}</span>
+<div class="container-fluid">
+    <div class="row" style="border-bottom:1px hidden #d9d9d9;height: 30px;">
+        <div class="pull-right" style="padding: 3px 18px 3px 3px">
+            <span class="label label-success">NYC {{ "now"|date("H:i", "America/New_York") }}</span>
+            <span class="label label-default">Paris {{ "now"|date("H:i", "Europe/Paris") }}</span>
+            <span class="label label-primary">Hong Kong {{ "now"|date("H:i", "Asia/Hong_Kong") }}</span>
+            <span class="label label-warning"> Casablanca {{ "now"|date("H:i", "Africa/Casablanca") }}</span>
+            <span class="label label-danger">Moscow {{ "now"|date("H:i", "Europe/Moscow") }}</span>
+            <span class="label label-info">Istanbul {{ "now"|date("H:i", "Asia/Istanbul") }}</span>
+        </div>
     </div>
-</div>
-<!--  end block timezones-->
-{{ wo_render_breadcrumbs() }}
-<div class="row">
-    <div class="text-center">
-        {% for flashMessage in app.session.flashbag.get('notice') %}
-            <div class="alert alert-info" id="alert-info">
-                <strong>{{ 'offer.information'|trans }}</strong>
-                {{ flashMessage|trans }}
-            </div>
-        {% endfor %}
-        {% for flashMessage in
-        app.session.flashbag.get('error') %}
-            <div class="alert alert-danger">
-                <strong>{{ flashMessage }}</strong>
-            </div>
-        {% endfor %}
+    <!--  end block timezones-->
+    {{ wo_render_breadcrumbs() }}
+    <div class="row">
+        <div class="text-center">
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="alert alert-info" id="alert-info">
+                    <strong>{{ 'offer.information'|trans }}</strong>
+                    {{ flashMessage|trans }}
+                </div>
+            {% endfor %}
+            {% for flashMessage in
+            app.session.flashbag.get('error') %}
+                <div class="alert alert-danger">
+                    <strong>{{ flashMessage }}</strong>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-2"></div>
     </div>
-    <div class="col-md-2"></div>
+    <div style="min-height: 430px">
+        {% block contenu %}
+        {% endblock %}
+    </div>
+    {% block footer %}
+        {% include 'GsmLotIndexBundle:Index:footer.html.twig' %}
+    {% endblock %}
+    {% block javascript %}
+        {% javascripts
+        '@GsmLotIndexBundle/Resources/public/js/jquery-1.10.2.min.js'
+        '@GsmLotIndexBundle/Resources/public/js/boostrap.min.js'
+        '@GsmLotIndexBundle/Resources/public/js/custom.min.js'
+        '@GsmLotIndexBundle/Resources/public/js/app.js' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
 </div>
-<div style="min-height: 430px">
-{% block contenu %}
-{% endblock %}
-</div>
-{% block footer %}
-    {% include 'GsmLotIndexBundle:Index:footer.html.twig' %}
-{% endblock %}
-{% block javascript %}
-    {% javascripts
-    '@GsmLotIndexBundle/Resources/public/js/jquery-1.10.2.min.js'
-    '@GsmLotIndexBundle/Resources/public/js/boostrap.min.js'
-    '@GsmLotIndexBundle/Resources/public/js/custom.min.js'
-    '@GsmLotIndexBundle/Resources/public/js/app.js'
-    %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
 </body>
 </html>
