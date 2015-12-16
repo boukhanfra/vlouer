@@ -4,17 +4,17 @@
 {% block contenu %}
 <div class="container">
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
         <div class="row">
             <h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
         </div>
         <form method="get" {{ form_enctype(form) }}>
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-1">
                     <strong>{{ 'offer.brand'|trans }}</strong>
                 </div>
                 <div class="col-md-2">{{ form_widget(form.brand,{'attr':{ 'class':'champ' }}) }}</div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                     <strong>{{ 'offer.model'|trans }}</strong>
 
                 </div>
@@ -24,18 +24,19 @@
                     <strong>{{ 'offer.norm'|trans }}</strong>
                 </div>
                 <div class="col-md-2">{{ form_widget(form.norm, {'attr':{ 'class':'champ'}}) }}</div>
-
-                <div class="col-md-2">
+            </div>
+            <div class="row">
+                <div class="col-md-1">
                     <strong>{{ 'offer.country'|trans }}</strong>
                 </div>
                 <div class="col-md-2">{{ form_widget(form.country, {'attr':{ 'class':'champ' }}) }}</div>
 
-                <div class="col-md-2">
+                <div class="col-md-1">
                     <strong>{{ 'offer.city'|trans }}</strong>
                 </div>
                 <div class="col-md-2">{{ form_widget(form.city, {'attr':{ 'class':'champ' }}) }}</div>
 
-                </div>
+            </div>
             <div class="row">
                 <div class="col-md-1 col-md-offset-10">
                     <button type="submit" class="btn btn-primary">

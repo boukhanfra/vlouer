@@ -9,3 +9,4 @@
 .buildpath
 .settings*
 .idea*
+/app/config/save
