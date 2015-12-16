@@ -35,9 +35,9 @@
 <!--  end block timezones-->
 {{ wo_render_breadcrumbs() }}
 <div class="row">
-    <div class="col-md-8 col-md-offset-2" style="align-content: center">
+    <div class="text-center">
         {% for flashMessage in app.session.flashbag.get('notice') %}
-            <div class="alert alert-info">
+            <div class="alert alert-info" id="alert-info">
                 <strong>{{ 'offer.information'|trans }}</strong>
                 {{ flashMessage|trans }}
             </div>

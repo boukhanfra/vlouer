@@ -1,80 +1,63 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
-
     <div class="container" style="padding:10px;">
-        
- <div class="row">
-     <div class="col-md-6">
-  <div class="panel panel-default">
-  <div class="panel-heading">Contact informations</div>
-  <div class="panel-body">
-    
-<b>Addresse:</b>  6175 beaver crossing dr cumming, GA 30040
-<br/><br/>
-<b>Téléphone: </b> (1) 404-396-2872
-<br/><br/>
-<b>Email: </b>  info@gsmlot.com
-<br/><br/>
-<b>Nous sommes ouvert:</b>   Lundi – Vendredi 10 AM – 8 PM
-  </div>
-</div>    
-     
-     <div class="row">
-      <div class="col-md-12">
-      <center>      
- {% image '@GsmLotIndexBundle/Resources/public/images/contact.jpg' %}
-    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="border-radius:7px;" class="img-responsive" />
-{% endimage %}
-	</center> 
- 		</div>
-	</div>
-
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contact informations</div>
+                    <div class="panel-body">
+                        <b>Addresse:</b> 6175 beaver crossing dr cumming, GA 30040
+                        <br/><br/>
+                        <b>Téléphone: </b> (1) 404-396-2872
+                        <br/><br/>
+                        <b>Email: </b> info@gsmlot.com
+                        <br/><br/>
+                        <b>Nous sommes ouvert:</b> Lundi – Vendredi 10 AM – 8 PM
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            {% image '@GsmLotIndexBundle/Resources/public/images/contact.jpg' %}
+                            <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="border-radius:7px;"
+                                 class="img-responsive"/>
+                            {% endimage %}
+                        </div>
+                    </div>
+                </div>
             </div>
-            
             <div class="col-md-5" style="text-align: justify">
-            <h2> Nous contacter</h2>
-    <blockquote>
-  
-{{ form_start(form) }}
-<div class="form-group" >
-			<label for="control-label" class="inputDefault">Prénom</label>
-			{{ form_widget(form.firstName,{ 'attr' :{ 'class' : 'form-control'} }) }}
-</div>
-
-<div class="form-group" >
-			<label for="control-label" class="inputDefault">Nom</label>
-			{{ form_widget(form.lastName,{ 'attr' :{ 'class' : 'form-control'} }) }}
-</div>
-<div class="form-group" >
-			<label for="control-label" class="inputDefault">Email</label>
-			{{ form_widget(form.email,{ 'attr' :{ 'class' : 'form-control'} }) }}
-</div>
-<div class="form-group" >
-			<label for="control-label" class="inputDefault">Sujet</label>
-			{{ form_widget(form.objectMail,{ 'attr' :{ 'class' : 'form-control'} }) }}
-</div>
-
-<div class="form-group">
-      <label for="textArea" class="inputDefault">Votre Message</label>
-
-{{ form_widget(form.messageMail,{ 'attr' :{ 'rows' : '4'} }) }}    
- </div>
- {{ form_row(form._token) }}
-    <div class="row">
-    <div class="col-md-2 col-md-offset-3">
-	 <button type="submit" class="btn btn-primary"> Envoyer Message</button>
-</div>
-
-
-</blockquote>
-        
+                <h2> Nous contacter</h2>
+                <blockquote>
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        <label for="control-label" class="inputDefault">Prénom</label>
+                        {{ form_widget(form.firstName,{ 'attr' :{ 'class' : 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="control-label" class="inputDefault">Nom</label>
+                        {{ form_widget(form.lastName,{ 'attr' :{ 'class' : 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="control-label" class="inputDefault">Email</label>
+                        {{ form_widget(form.email,{ 'attr' :{ 'class' : 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="control-label" class="inputDefault">Sujet</label>
+                        {{ form_widget(form.objectMail,{ 'attr' :{ 'class' : 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="textArea" class="inputDefault">Votre Message</label>
+                        {{ form_widget(form.messageMail,{ 'attr' :{ 'rows' : '4'} }) }}
+                    </div>
+                    {{ form_row(form._token) }}
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-3">
+                            <button type="submit" class="btn btn-primary"> Envoyer Message</button>
+                        </div>
+                    </div>
+                </blockquote>
             </div>
-            
-     
-     <div class="col-md-1"></div>
-     
-     </div>
-     
-     </div>
-     
+        </div>
+    </div>
 {% endblock %}

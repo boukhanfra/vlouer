@@ -23,10 +23,12 @@
                 </tbody>
             </table>
 
-            <center><a href={{ path("fos_user_registration_register") }} class="btn btn-success">
+            <div class="text-center">
+                <button type="button" onclick="location.href='{{ path("fos_user_registration_register") }}'"
+                        class="btn btn-success">
                 {{ 'index.boutton.registersell'|trans }}
-                </a>
-            </center>
+                </button>
+            </div>
         </div>
 
         <div class="col-lg-6">
@@ -51,10 +53,11 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <center><a href="{{ path("fos_user_registration_register") }}"
-                       class="btn btn-warning">{{ 'index.boutton.registerbuy'|trans }}
-                </a>
-            </center>
+            <div class="text-center">
+                <button type="button" onclick="location.href='{{ path("fos_user_registration_register") }}'" class="btn btn-warning">
+                    {{ 'index.boutton.registerbuy'|trans }}
+                </button>
+            </div>
         </div>
     </div>
 </div>

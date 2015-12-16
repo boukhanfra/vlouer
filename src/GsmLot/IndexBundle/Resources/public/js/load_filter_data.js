@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 	$('#offer_filter_brand').change(function() {
 
-		brand_id = $('#offer_filter_brand').val();
+		var brand_id = $('#offer_filter_brand').val();
 
 		if (brand_id == '') {
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
 	
 	$('#offer_filter_country').change(function() {
 
-		country_id = $('#offer_filter_country').val();
+		var country_id = $('#offer_filter_country').val();
 
 		if (country_id == '') {
 
