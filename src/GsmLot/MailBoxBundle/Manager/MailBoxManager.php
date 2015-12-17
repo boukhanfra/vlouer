@@ -43,12 +43,12 @@ class MailBoxManager extends Manager
      * @param Message $message
      * @throws \Exception
      */
-    public function createMessage(Message $message)
+    public function sendMessage(Message $message)
     {
         try
         {
             $message->setReaded(false);
-            $message->setSender($this->currentUser->getTrader());
+            $message->setSenderTrader($this->currentUser->getTrader());
             $this->persistAndFlush($message);
         }
         catch(\Exception $e)

@@ -43,3 +43,5 @@ offer:
     yes: Yes
     activate: Publish offer
     desactivate: Unpublish offer
+    email: 'mail'
+    at: 'At'

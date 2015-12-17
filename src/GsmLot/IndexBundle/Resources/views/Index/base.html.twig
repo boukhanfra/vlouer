@@ -1,5 +1,6 @@
+{% set local = app.request.get('_locale') %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ local }}">
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -18,7 +19,6 @@
     {% endblock %}
 </head>
 <body>
-{% set local = app.request.get('_locale') %}
 {% include '@GsmLotIndex/Index/menu.html.twig' %}
 <!--  start block timezones-->
 <div class="container-fluid">
@@ -27,7 +27,7 @@
             <span class="label label-success">NYC {{ "now"|date("H:i", "America/New_York") }}</span>
             <span class="label label-default">Paris {{ "now"|date("H:i", "Europe/Paris") }}</span>
             <span class="label label-primary">Hong Kong {{ "now"|date("H:i", "Asia/Hong_Kong") }}</span>
-            <span class="label label-warning"> Casablanca {{ "now"|date("H:i", "Africa/Casablanca") }}</span>
+            <span class="label label-warning">Casablanca {{ "now"|date("H:i", "Africa/Casablanca") }}</span>
             <span class="label label-danger">Moscow {{ "now"|date("H:i", "Europe/Moscow") }}</span>
             <span class="label label-info">Istanbul {{ "now"|date("H:i", "Asia/Istanbul") }}</span>
         </div>
