@@ -80,7 +80,7 @@
                             <div class="col-md-1"></div>
                         </li>
                         <li>
-                            <li class="btn-group" style="margin-top:3px">
+                            <div class="btn-group" style="margin-top:3px">
                                 <a href="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"
                                    class="btn btn-primary"><span class="lang-sm lang-lbl" lang="{{ local }}"></span></a>
                                 <a aria-expanded="true" href="#" class="btn btn-primary dropdown-toggle"
@@ -96,7 +96,7 @@
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
-                            </li>
+                            </div>
                         </li>
                     </ul>
                 </div>
