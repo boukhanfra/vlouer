@@ -1,105 +1,103 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
-
     <div class="container" style="">
         <div class="row">
-
             <div class="col-md-8" style="text-align: justify">
+                {% if not is_granted("ROLE_ADMIN") %}
 
-{% if not is_granted("ROLE_ADMIN") %}
-
-<div class="alert alert-warning alert-dismissible" role="alert">
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		<span aria-hidden="true">&times;</span>
-	</button>
-<strong>{{ 'offer.warning'|trans }}</strong> {{ 'offer.notactive'|trans }}
-</div>
-<h3>{{ title |trans }}</h3>
-{% else %}
-<h3>Manage offers</h3>
-{% endif %}
-<table class="table">
-  <tr>
-    <th>{{ 'offer.brand'|trans }}</th>
-    <th>{{ 'offer.model'|trans }}</th>
-    <th>{{ 'offer.norm'|trans }}</th>
-    <th>{{ 'offer.quantity'|trans }}</th>
-    <th>{{ 'offer.price'|trans }}</th>
-    <th>{{ 'offer.description'|trans }}</th>
-    <th>{{ 'offer.actions'|trans }}</th>
-  </tr>
-  {% for offer in pagination %}
-  <tr
-  {% if not is_granted("ROLE_ADMIN") %}
-  {% if not offer.active %} class="warning"
-  {% endif %}
-  {% else %}
-  {% if not offer.enable  %} class="danger" {% endif %}
-  {% endif %}
-  >
-    <td>{{ offer.model.brand }}</td>
-    <td>{{ offer.model }}</td>
-    <td>{{ offer.norm }}</td>
-    <td>{{ offer.quantity }}</td>
-    <td>{{ offer.price }}</td>
-    <td>
-      {{ offer.description|escape|slice(0,20) }}
-      <a href="#" id="{{ offer.id }}" data-trigger="focus" data-toggle="popover"
-         title="{{ 'offer.description'|trans }}">
-        <label>...</label>
-      </a>
-    </td>
-    <td>
-    {% if not is_granted("ROLE_ADMIN") %}
-    <a href="{{ path('offer_update',{'offer_id':offer.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
-    {% if offer.active %}
-    <a href="{{ path('offer_deactive',{'offer_id':offer.id}) }}">
-    	<span class="glyphicon glyphicon-remove-circle" title="{{ 'offer.desactivate'|trans }}"></span>
-    </a>
-    {% else %}
-    <a href="{{ path('offer_activate',{'offer_id':offer.id}) }}">
-    	<span class="glyphicon glyphicon-ok-circle" title="{{ 'offer.activate'|trans }}"></span>
-    </a>
-    {% endif %}
-    {% else %}
-      {% if offer.enable %}
-        <a href="{{ path('offer_disable',{ 'offer_id': offer.id}) }}">
-          <span class="glyphicon glyphicon-remove-circle" title="Disable"></span>
-        </a>
-      {% else %}
-        <a href="{{ path('offer_enable',{ 'offer_id': offer.id}) }}">
-          <span class="glyphicon glyphicon-ok" title="Enable"></span>
-        </a>
-      {% endif %}
-      {% endif %}
-    </td>
-  </tr>
-  {% endfor %}
-</table>
-<div class="row" style="text-align: center">
-	<div class="col-sm-12">{{ knp_pagination_render(pagination) }}</div>
-</div>
-
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>{{ 'offer.warning'|trans }}</strong> {{ 'offer.notactive'|trans }}
+                    </div>
+                    <h3>{{ title |trans }}</h3>
+                {% else %}
+                    <h3>Manage offers</h3>
+                {% endif %}
+                <table class="table">
+                    <tr>
+                        <th>{{ 'offer.brand'|trans }}</th>
+                        <th>{{ 'offer.model'|trans }}</th>
+                        <th>{{ 'offer.norm'|trans }}</th>
+                        <th>{{ 'offer.quantity'|trans }}</th>
+                        <th>{{ 'offer.price'|trans }}</th>
+                        <th>{{ 'offer.description'|trans }}</th>
+                        <th>{{ 'offer.actions'|trans }}</th>
+                    </tr>
+                    {% for offer in pagination %}
+                        <tr
+                                {% if not is_granted("ROLE_ADMIN") %}
+                                    {% if not offer.active %} class="warning"
+                                    {% endif %}
+                                {% else %}
+                                    {% if not offer.enable %} class="danger" {% endif %}
+                                {% endif %}
+                        >
+                            <td>{{ offer.model.brand }}</td>
+                            <td>{{ offer.model }}</td>
+                            <td>{{ offer.norm }}</td>
+                            <td>{{ offer.quantity }}</td>
+                            <td>{{ offer.price }}</td>
+                            <td>
+                                {{ offer.description|escape|slice(0,20) }}
+                                <a href="#" id="{{ offer.id }}" data-trigger="focus" data-toggle="popover"
+                                   title="{{ 'offer.description'|trans }}">
+                                    <label>...</label>
+                                </a>
+                            </td>
+                            <td>
+                                {% if not is_granted("ROLE_ADMIN") %}
+                                    <a href="{{ path('offer_update',{'offer_id':offer.id}) }}"><span
+                                                class="glyphicon glyphicon-edit"></span></a>
+                                    {% if offer.active %}
+                                        <a href="{{ path('offer_deactive',{'offer_id':offer.id}) }}">
+                                            <span class="glyphicon glyphicon-remove-circle"
+                                                  title="{{ 'offer.desactivate'|trans }}"></span>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('offer_activate',{'offer_id':offer.id}) }}">
+                                            <span class="glyphicon glyphicon-ok-circle"
+                                                  title="{{ 'offer.activate'|trans }}"></span>
+                                        </a>
+                                    {% endif %}
+                                {% else %}
+                                    {% if offer.enable %}
+                                        <a href="{{ path('offer_disable',{ 'offer_id': offer.id}) }}">
+                                            <span class="glyphicon glyphicon-remove-circle" title="Disable"></span>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('offer_enable',{ 'offer_id': offer.id}) }}">
+                                            <span class="glyphicon glyphicon-ok" title="Enable"></span>
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="row" style="text-align: center">
+                    <div class="col-sm-12">{{ knp_pagination_render(pagination) }}</div>
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}
 {% block javascript %}
-  {{ parent() }}
-  {% javascripts
-  '@GsmLotOfferBundle/Resources/public/js/tooltip.js'
-  '@GsmLotOfferBundle/Resources/public/js/popover.js'
-  %}
-  <script src="{{ asset_url }}" type="text/javascript"></script>
-  {% endjavascripts %}
-  {% for offer in pagination %}
-    <script type="text/javascript">
-      $('#{{ offer.id }}').popover(
-              {
-                html: true,
-                content: "{{ offer.description|escape }}"
-              }
-      );
-    </script>
-  {% endfor %}
+    {{ parent() }}
+    {% javascripts
+    '@GsmLotOfferBundle/Resources/public/js/tooltip.js'
+    '@GsmLotOfferBundle/Resources/public/js/popover.js' %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+    {% for offer in pagination %}
+        <script type="text/javascript">
+            $('#{{ offer.id }}').popover(
+                    {
+                        html: true,
+                        content: "{{ offer.description|escape }}"
+                    }
+            );
+        </script>
+    {% endfor %}
 {% endblock %}
