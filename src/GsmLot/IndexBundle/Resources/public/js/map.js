@@ -1,6 +1,6 @@
 var check = false;
 
-function initialize(city,country)
+function initialize(city,offer_id)
 {
     if(!check)
     {
@@ -16,7 +16,7 @@ function initialize(city,country)
                 lng = data.results[0].geometry.location.lng;
                 var map = null ;
 
-                var mapCanvas = document.getElementById('map');
+                var mapCanvas = document.getElementById('map'+offer_id);
 
                 mapCanvas.innerHTML = "";
 
