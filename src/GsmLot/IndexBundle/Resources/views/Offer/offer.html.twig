@@ -2,65 +2,11 @@
 {% block left %}
 {% endblock %}
 {% block contenu %}
-<<<<<<< HEAD
-<div class="container">
-<div class="row">
-    <div class="col-md-8">
-        <div class="row">
-            <h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
-        </div>
-        <form method="get" {{ form_enctype(form) }}>
-            <div class="row">
-                <div class="col-md-1">
-                    <strong>{{ 'offer.brand'|trans }}</strong>
-                </div>
-                <div class="col-md-2">{{ form_widget(form.brand,{'attr':{ 'class':'champ' }}) }}</div>
-                <div class="col-md-1">
-                    <strong>{{ 'offer.model'|trans }}</strong>
-                </div>
-                <div class="col-md-2">{{ form_widget(form.model,{'attr':{ 'class':'champ' }}) }}</div>
-                <div class="col-md-2">
-                    <strong>{{ 'offer.norm'|trans }}</strong>
-                </div>
-                <div class="col-md-2">{{ form_widget(form.norm, {'attr':{ 'class':'champ'}}) }}</div>
-                <div class="col-md-2">
-                    <strong>{{ 'offer.country'|trans }}</strong>
-                </div>
-                <div class="col-md-2">{{ form_widget(form.country, {'attr':{ 'class':'champ' }}) }}</div>
-                <div class="col-md-2">
-                    <strong>{{ 'offer.city'|trans }}</strong>
-                </div>
-                <div class="col-md-2">{{ form_widget(form.city, {'attr':{ 'class':'champ' }}) }}</div>
-                </div>
-            <div class="row">
-                <div class="col-md-1 col-md-offset-10">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-filter"></span> Search
-                    </button>
-                </div>
-            </div>
-            {{ form_widget(form._token) }}
-        </form>
-        <hr/>
-        <h5>{{ 'offer.view_offers'|trans }} ({{ list_offer|length }})</h5>
-        <hr/>
-        {% for offer in list_offer %}
-            <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
-                    ({{ offer.norm.description }}) {{ offer.model.brand }} {{ offer.model }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    {{ offer.trader.firstName }} {{ offer.trader.lastName }}
-=======
     <div class="container">
         <div class="row">
             <div class="col-md-10">
                 <div class="row">
                     <h3>{{ 'index.titre.offer_gros'|trans }}</h3>
->>>>>>> 29bfedc042d5d968af1b31afed3b930f948c972f
                 </div>
                 <div class="well">
                     <form method="get" {{ form_enctype(form) }}>
