@@ -1,54 +1,54 @@
 <h4>{{ offer.model.brand }} - {{ offer.model }} {{ 'offer.at'|trans }} {{ offer.trader.city }}
     - {{ offer.trader.city.country }}</h4>
+<div class="col-md-7">
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.created_on'|trans }} :</strong></div>
+        <div class="col-md-6">{{ offer.createdOn|date("Y-m-d H:i:s") }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.created_by'|trans }} :</strong></div>
+        <div class="col-md-6"> {{ offer.trader.user.username }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.email'|trans }} :</strong></div>
+        <div class="col-md-6">{{ offer.trader.user.email }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.norm'|trans }} : </strong></div>
+        <div class="col-md-6">{{ offer.norm.description }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.localisation'|trans }} : </strong></div>
+        <div class="col-md-6">{{ offer.trader.city.country }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.description'|trans }}: </strong></div>
+        <div class="col-md-6">
+            <p class="text-justify">
+                {{ offer.description }}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.quantity'|trans }}: </strong></div>
+        <div class="col-md-6">{{ offer.quantity }} Pcs</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.price'|trans }}: </strong></div>
+        <div class="col-md-6">{{ offer.price }} {{ offer.currency }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><strong>{{ 'offer.physicalStock'|trans }} : </strong></div>
+        <div class="col-md-6">
+            {% if offer.physicalStock == 1 %}{{ 'offer.yes'|trans }}
+            {% else %}
+                {{ 'offer.no'|trans }}
+            {% endif %}
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-7">
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.created_on'|trans }} :</strong></div>
-                <div class="col-md-10">{{ offer.createdOn|date("Y-m-d H:i:s") }}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.created_by'|trans }} :</strong></div>
-                <div class="col-md-10"> {{ offer.trader.user.username }}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.email'|trans }} :</strong></div>
-                <div class="col-md-10">{{ offer.trader.user.email }}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.norm'|trans }} : </strong></div>
-                <div class="col-md-10">{{ offer.norm.description }}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.localisation'|trans }} : </strong></div>
-                <div class="col-md-10">{{ offer.trader.city.country }}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.description'|trans }}: </strong></div>
-                <div class="col-md-10">
-                    <p class="text-justify">
-                        {{ offer.description }}
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.quantity'|trans }}: </strong></div>
-                <div class="col-md-10">{{ offer.quantity }} Pcs</div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.price'|trans }}: </strong></div>
-                <div class="col-md-10">{{ offer.price }} {{ offer.currency }}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><strong>{{ 'offer.physicalStock'|trans }} : </strong></div>
-                <div class="col-md-10">
-                    {% if offer.physicalStock == 1 %}{{ 'offer.yes'|trans }}
-                    {% else %}
-                        {{ 'offer.no'|trans }}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
         <div class="col-md-5">
             <div class="map" id="map{{ offer.id }}"></div>
         </div>

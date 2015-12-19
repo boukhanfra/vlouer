@@ -26,12 +26,14 @@ index.titre.bourse: 'Parquet de bourse'
 index.titre.total_offer_buy: 'Toutes les offres'
 index.titre.offer_gros: 'Chercher Offres'
 index.titre.msg: 'Votre message à été bien envoyé'
-index.top_5_phones_sell: Top 5 téléphones à vendre
+index.top_5_phones_sell: 'Top 5 téléphones à vendre'
 index.quantity: Quantité
 index.average: Moyenne
 index.sellers: Vendeurs
-index.top_5_phones_buyers: Top 5 téléphones demandés
+index.top_5_phones_buyers: 'Top 5 téléphones demandés'
 index.buyers: Acheteurs
 index.titre.sell: 'Mes offre de vente'
-index.titre.buy: "Mes demandes d'achat"
-index.menu.manage_trader: "Gestion des commerçants"
+index.titre.buy: 'Mes demandes d''achat'
+index.menu.manage_trader: 'Gestion des commerçants'
+index.offer.search: 'Filtrer'
+index.offer.result_search: 'Résultat de recherche'

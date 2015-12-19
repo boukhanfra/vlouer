@@ -124,5 +124,4 @@ class OfferRepository extends EntityRepository
 					->getQuery()
 					->getArrayResult();
 	}
-
 }

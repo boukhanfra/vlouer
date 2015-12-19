@@ -26,12 +26,14 @@ index.titre.country: geolocation
 index.titre.bourse: 'Parquet de bourse'
 index.titre.total_offer_buy: 'All offers'
 index.titre.offer_gros: 'Search Offrers'
-index.top_5_phones_sell: Top five phones for sale
+index.top_5_phones_sell: 'Top five phones for sale'
 index.quantity: Quantity
 index.average: Average
 index.sellers: Sellers
-index.top_5_phones_buyers: Top 5 phones on demand
+index.top_5_phones_buyers: 'Top 5 phones on demand'
 index.buyers: Buyers
 index.titre.sell: 'My offers for sale'
 index.titre.buy: 'My requests'
 index.menu.manage_trader: 'Manage traders'
+index.offer.search: 'Filter'
+index.offer.result_search: 'Search result'
