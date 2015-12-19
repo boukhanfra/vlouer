@@ -4,7 +4,6 @@ namespace GsmLot\IndexBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use GsmLot\IndexBundle\Entity\ContactMail;
 use Symfony\Component\HttpFoundation\Request;
 use GsmLot\IndexBundle\Form\Type\ContactMailType;
@@ -14,25 +13,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IndexController extends Controller
 {
-	
-	
 	private $breadcrumbs;
-	
-	
+
 	public function setContainer(ContainerInterface $container = null)
 	{
 		$this->container = $container;
-	
 		$this->breadcrumbs = $this->get("white_october_breadcrumbs");
-	
-
 	}
-	
-	
-	
+
     /**
      * @Route("/",name="index_index")
-     * @Template()
+	 * @return Response
      */
     public function indexAction()
     {
@@ -42,11 +33,11 @@ class IndexController extends Controller
         $this->render('GsmLotIndexBundle:Index:index.html.twig',array('list_offer_sell'=>$list_offer_sell,
 				'list_offer_buy' => $list_offer_buy));
     }
-    
-    
+
     /**
      * @Route("/about",name="index_about")
-     * @Template()
+	 * @param Request $request
+	 * @return Response
      */
     public function aboutAction(Request $request)
     {
@@ -57,19 +48,18 @@ class IndexController extends Controller
     
     /**
      * @Route("/contact",name="index_contact")
-     * @Template()
+	 * @param Request $request
+	 * @return Response
      */
     public function contactAction(Request $request)
     {
     	$_locale = $request->getLocale();
-    	$form ='';
     	$mail = new ContactMail();
     	$form = $this->createForm(new ContactMailType(),$mail);
-    	$form->handleRequest(Request::createFromGlobals());
-    	
+    	$form->handleRequest($request);
+
     	if($form->isValid())
     	{
-    		
     		$message = \Swift_Message::newInstance()
     		->setSubject($mail->getObjectMail())
     		->setFrom($mail->getEmail())
@@ -78,26 +68,12 @@ class IndexController extends Controller
     	    $this->renderView('GsmLotIndexBundle:Index/Contact:mail.html.twig',array('mail'=>$mail)),
     				'text/html'
     				);
-    		
-    		
     		$this->get('mailer')->send($message);
-    		
-    		$this->get('session')->getFlashBag()->add('notice','index.titre.msg');
-    		 
-    	
-    		
+			$this->get('session')->getFlashBag()->add('notice','index.titre.msg');
+
     	}
-    
-    	
-    	
     	return $this->render('GsmLotIndexBundle:Index/Contact:contact.'.$_locale.'.html.twig', array(
     			'form' => $form->createView(),
     			));
-    	
-  
-   
     }
-  
-
-   
 }

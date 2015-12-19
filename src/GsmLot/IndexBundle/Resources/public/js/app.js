@@ -19,7 +19,9 @@ $(function () {
 });
 
 
-if ($('.alert-info').length > 0)
+var alert = $('#alert-info');
+
+if(alert)
 {
-    $('.alert-info').fadeOut(10000)
+    alert.fadeOut(10000);
 }

@@ -1,0 +1,27 @@
+{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
+{% block contenu %}
+    <h3>{{ 'mail_box.new_message'|trans }}</h3>
+    <br/>
+    <form method="post">
+        <div class="row">
+            <div class="col-md-2">{{ 'mail_box.subject'|trans }}</div>
+            <div class="col-md-4 form-group">{{ form_widget(form.subject) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ 'mail_box.body'|trans }}</div>
+            <div class="col-md-4 form-group">{{ form_widget(form.body) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ 'mail_box.receiver'|trans }}</div>
+            <div class="col-md-4 form-group">{{ form_widget(form.receiverTrader) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ 'mail_box.offer'|trans }}</div>
+            <div class="col-md-4 form-group">{{ form_widget(form.offer) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">{{ 'mail_box.sender'|trans }}</div>
+            <div class="col-md-4 form-group">{{ form_widget(form.senderTrader) }}</div>
+        </div>
+    </form>
+{% endblock %}

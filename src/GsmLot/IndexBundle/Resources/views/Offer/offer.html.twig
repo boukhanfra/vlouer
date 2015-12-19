@@ -16,27 +16,21 @@
                 <div class="col-md-2">{{ form_widget(form.brand,{'attr':{ 'class':'champ' }}) }}</div>
                 <div class="col-md-1">
                     <strong>{{ 'offer.model'|trans }}</strong>
-
                 </div>
                 <div class="col-md-2">{{ form_widget(form.model,{'attr':{ 'class':'champ' }}) }}</div>
-
                 <div class="col-md-2">
                     <strong>{{ 'offer.norm'|trans }}</strong>
                 </div>
                 <div class="col-md-2">{{ form_widget(form.norm, {'attr':{ 'class':'champ'}}) }}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <strong>{{ 'offer.country'|trans }}</strong>
                 </div>
                 <div class="col-md-2">{{ form_widget(form.country, {'attr':{ 'class':'champ' }}) }}</div>
-
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <strong>{{ 'offer.city'|trans }}</strong>
                 </div>
                 <div class="col-md-2">{{ form_widget(form.city, {'attr':{ 'class':'champ' }}) }}</div>
-
-            </div>
+                </div>
             <div class="row">
                 <div class="col-md-1 col-md-offset-10">
                     <button type="submit" class="btn btn-primary">
@@ -66,8 +60,8 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                <span class="lang-sm" title="{{ offer.trader.city.country }}"
-                      lang="{{ offer.trader.city.country.code }}"></span>
+                <span class="lang-sm flag-icon flag-icon-{{ offer.trader.city.country.code|lower }}" title="{{ offer.trader.city.country }}"
+                      ></span>
                 </div>
                 <div class="col-md-4">
                     {{ offer.quantity }} {{ 'offer.pcs'|trans }}
@@ -106,10 +100,11 @@
     {% endjavascripts %}
     {% for offer in list_offer %}
         <script type="text/javascript">
+            var content = '{% include 'GsmLotIndexBundle:Offer:popup.html.twig' with {'offer':offer} %}';
             $('#{{ offer.id }}').popover(
                     {
                         html: true,
-                        content:{% include 'GsmLotIndexBundle:Offer:popup.html.twig' with {'offer':offer} %}
+                        content:content
                     }
             );
         </script>

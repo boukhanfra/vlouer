@@ -1,89 +1,65 @@
 {% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
 {% block contenu %}
-
-     <div class="container" style="padding:10px;">
-        
- <div class="row">
-     <div class="col-md-6">             
-  <div class="panel panel-default">
-  <div class="panel-heading">Contact informations</div>
-  <div class="panel-body">
-    
-<b>Dirección:</b>  6175 beaver crossing dr cumming, GA 30040
-<br/><br/>
-<b>Teléfono: </b> (1) 404-396-2872
-<br/><br/>
-<b>Email: </b>  info@gsmlot.com
-<br/><br/>
-<b>Abierto:</b>   Lunes – Viernes 10 AM – 8 PM
-
-  </div>
-</div>    
-           
-     <div class="row">
-      <div class="col-md-12">
-      <center>      
- {% image '@GsmLotIndexBundle/Resources/public/images/contact.jpg' %}
-    <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="border-radius:7px;" class="img-responsive" />
-{% endimage %}
-	</center> 
-      </div>
-     </div>
-
- </div>
-            
-            
-            
-            
-            
-            
-            <div class="col-md-5" style="text-align: justify">
-     
-  <h2>Contactenaos</h2>
-			
-    <blockquote>
-
-  
-{{ form_start(form) }}
-<div class="form-group" >
-			<label for="control-label" class="inputDefault">Nombre de pila</label>
-			{{ form_widget(form.firstName,{ 'attr' :{ 'class' : 'form-control'} }) }}
-</div>
-
-<div class="form-group" >
-			<label for="control-label" class="inputDefault">Apellido</label>
-			{{ form_widget(form.lastName,{ 'attr' :{ 'class' : 'form-control'} }) }}
-</div>
-<div class="form-group" >
-			<label for="control-label" class="inputDefault">Correo electrónico</label>
-			{{ form_widget(form.email,{ 'attr' :{ 'class' : 'form-control'} }) }}
-</div>
-<div class="form-group" >
-			<label for="control-label" class="inputDefault">Sujeto</label>
-			{{ form_widget(form.objectMail,{ 'attr' :{ 'class' : 'form-control'} }) }}
-</div>
-
-<div class="form-group">
-      <label for="textArea" class="inputDefault">Mensaje</label>
-
-{{ form_widget(form.messageMail,{ 'attr' :{ 'rows' : '4'} }) }}    
- </div>
- {{ form_row(form._token) }}
-    <div class="row">
-    <div class="col-lg-2 col-lg-offset-3">
-	 <button type="submit" class="btn btn-primary"> Enviar mensaje</button>
-</div>
-
-
-</blockquote>
-        
+    <div class="container" style="padding:10px;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contact informations</div>
+                    <div class="panel-body">
+                        <b>Dirección:</b> 6175 beaver crossing dr cumming, GA 30040
+                        <br/><br/>
+                        <b>Teléfono: </b> (1) 404-396-2872
+                        <br/><br/>
+                        <b>Email: </b> info@gsmlot.com
+                        <br/><br/>
+                        <b>Abierto:</b> Lunes – Viernes 10 AM – 8 PM
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            {% image '@GsmLotIndexBundle/Resources/public/images/contact.jpg' %}
+                            <img src="{{ asset_url }}" alt="gsmlot phones exchange" style="border-radius:7px;"
+                                 class="img-responsive"/>
+                            {% endimage %}
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-     
-     <div class="col-md-1"></div>
-     
-     </div>
-     
-     </div>
-     
+            <div class="col-md-5" style="text-align: justify">
+                <h2>Contactenaos</h2>
+                <blockquote>
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        <label for="control-label" class="inputDefault">Nombre de pila</label>
+                        {{ form_widget(form.firstName,{ 'attr' :{ 'class' : 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="control-label" class="inputDefault">Apellido</label>
+                        {{ form_widget(form.lastName,{ 'attr' :{ 'class' : 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="control-label" class="inputDefault">Correo electrónico</label>
+                        {{ form_widget(form.email,{ 'attr' :{ 'class' : 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="control-label" class="inputDefault">Sujeto</label>
+                        {{ form_widget(form.objectMail,{ 'attr' :{ 'class' : 'form-control'} }) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="textArea" class="inputDefault">Mensaje</label>
+
+                        {{ form_widget(form.messageMail,{ 'attr' :{ 'rows' : '4'} }) }}
+                    </div>
+                    {{ form_row(form._token) }}
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-3">
+                            <button type="submit" class="btn btn-primary"> Enviar mensaje</button>
+                        </div>
+                    </div>
+                </blockquote>
+            </div>
+        </div>
+    </div>
 {% endblock %}
