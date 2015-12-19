@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
-
+use GsmLot\TraderBundle\Entity\Trader;
 
 class TraderController extends Controller
 {
@@ -60,6 +60,9 @@ class TraderController extends Controller
      */
     public function enableAction(Request $request)
     {
+        /**
+         * @var $trader Trader
+         */
         $trader = $this->get('gsm_lot_trader.trader_manager')->getTrader($request->get('trader_id'));
 
         if($trader)
@@ -82,6 +85,9 @@ class TraderController extends Controller
      */
     public function disableAction(Request $request)
     {
+        /**
+         * @var $trader Trader
+         */
         $trader = $this->get('gsm_lot_trader.trader_manager')->getTrader($request->get('trader_id'));
 
         if($trader)

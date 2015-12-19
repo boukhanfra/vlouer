@@ -4,7 +4,6 @@
         <div class="row">
             <div class="col-md-8" style="text-align: justify">
                 {% if not is_granted("ROLE_ADMIN") %}
-
                     <div class="alert alert-warning alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -48,26 +47,26 @@
                             </td>
                             <td>
                                 {% if not is_granted("ROLE_ADMIN") %}
-                                    <a href="{{ path('offer_update',{'offer_id':offer.id}) }}"><span
+                                    <a class="btn btn-xs btn-warning" href="{{ path('offer_update',{'offer_id':offer.id}) }}"><span
                                                 class="glyphicon glyphicon-edit"></span></a>
                                     {% if offer.active %}
-                                        <a href="{{ path('offer_deactive',{'offer_id':offer.id}) }}">
+                                        <a class="btn btn-xs btn-danger" href="{{ path('offer_deactive',{'offer_id':offer.id}) }}">
                                             <span class="glyphicon glyphicon-remove-circle"
                                                   title="{{ 'offer.desactivate'|trans }}"></span>
                                         </a>
                                     {% else %}
-                                        <a href="{{ path('offer_activate',{'offer_id':offer.id}) }}">
+                                        <a class="btn btn-xs btn-success" href="{{ path('offer_activate',{'offer_id':offer.id}) }}">
                                             <span class="glyphicon glyphicon-ok-circle"
                                                   title="{{ 'offer.activate'|trans }}"></span>
                                         </a>
                                     {% endif %}
                                 {% else %}
                                     {% if offer.enable %}
-                                        <a href="{{ path('offer_disable',{ 'offer_id': offer.id}) }}">
+                                        <a class="btn btn-xs btn-danger" href="{{ path('offer_disable',{ 'offer_id': offer.id}) }}">
                                             <span class="glyphicon glyphicon-remove-circle" title="Disable"></span>
                                         </a>
                                     {% else %}
-                                        <a href="{{ path('offer_enable',{ 'offer_id': offer.id}) }}">
+                                        <a class="btn btn-xs btn-success" href="{{ path('offer_enable',{ 'offer_id': offer.id}) }}">
                                             <span class="glyphicon glyphicon-ok" title="Enable"></span>
                                         </a>
                                     {% endif %}

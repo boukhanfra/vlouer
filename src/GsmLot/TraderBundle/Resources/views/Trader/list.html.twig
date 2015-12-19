@@ -20,7 +20,11 @@
                         <td>{{ trader.user.userName }}</td>
                         <td>{{ trader.firstName }}</td>
                         <td>{{ trader.lastName }}</td>
-                        <td>{{ trader.user.email }}</td>
+                        <td>
+                            <a href="mailto:{{ trader.user.email }}">
+                                {{ trader.user.email }}
+                            </a>
+                        </td>
                         <td><span class="badge">{{ trader.offers|length }}</span></td>
                         <td>
                             {% if trader.enabled %}
@@ -31,14 +35,17 @@
                         </td>
                         <td>
                             {% if trader.enabled %}
-                                <a href="{{ path('trader_disable',{ 'trader_id': trader.id}) }}">
+                                <a class="btn btn-xs btn-danger" href="{{ path('trader_disable',{ 'trader_id': trader.id}) }}">
                                     <span class="glyphicon glyphicon-remove-circle" title="Disable"></span>
                                 </a>
                             {% else %}
-                                <a href="{{ path('trader_enable',{ 'trader_id': trader.id}) }}">
+                                <a class="btn btn-xs btn-success" href="{{ path('trader_enable',{ 'trader_id': trader.id}) }}">
                                     <span class="glyphicon glyphicon-ok" title="Enable"></span>
                                 </a>
                             {% endif %}
+                            <a href="{{ path('offer_trader',{'trader_id':trader.id}) }}" class="btn btn-xs btn-info">
+                                <span class="glyphicon glyphicon-th" title="Offers"></span>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

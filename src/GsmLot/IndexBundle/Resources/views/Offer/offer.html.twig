@@ -8,38 +8,48 @@
                 <div class="row">
                     <h2>{{ 'index.titre.offer_gros'|trans }}</h2><br/>
                 </div>
-                <form method="get" {{ form_enctype(form) }}>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <strong>{{ 'offer.brand'|trans }}</strong>
+                <div class="well">
+                    <form method="get" {{ form_enctype(form) }}>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <strong>{{ 'offer.brand'|trans }}</strong>
+                            </div>
+                            <div class="col-md-2">{{ form_widget(form.brand,{'attr':{ 'class':'champ' }}) }}</div>
+                            <div class="col-md-2">
+                                <strong>{{ 'offer.model'|trans }}</strong>
+                            </div>
+                            <div class="col-md-2">{{ form_widget(form.model,{'attr':{ 'class':'champ' }}) }}</div>
                         </div>
-                        <div class="col-md-2">{{ form_widget(form.brand,{'attr':{ 'class':'champ' }}) }}</div>
-                        <div class="col-md-2">
-                            <strong>{{ 'offer.model'|trans }}</strong>
+                        <br/>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <strong>{{ 'offer.country'|trans }}</strong>
+                            </div>
+                            <div class="col-md-2">{{ form_widget(form.country, {'attr':{ 'class':'champ' }}) }}</div>
+                            <div class="col-md-2">
+                                <strong>{{ 'offer.city'|trans }}</strong>
+                            </div>
+                            <div class="col-md-2">{{ form_widget(form.city, {'attr':{ 'class':'champ' }}) }}</div>
                         </div>
-                        <div class="col-md-2">{{ form_widget(form.model,{'attr':{ 'class':'champ' }}) }}</div>
-                        <div class="col-md-2">
-                            <strong>{{ 'offer.norm'|trans }}</strong>
+                        <br/>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <strong>{{ 'offer.norm'|trans }}</strong>
+                            </div>
+                            <div class="col-md-2">{{ form_widget(form.norm, {'attr':{ 'class':'champ'}}) }}</div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-filter"></span> Search
+                                </button>
+                            </div>
                         </div>
-                        <div class="col-md-2">{{ form_widget(form.norm, {'attr':{ 'class':'champ'}}) }}</div>
-                        <div class="col-md-2">
-                            <strong>{{ 'offer.country'|trans }}</strong>
-                        </div>
-                        <div class="col-md-2">{{ form_widget(form.country, {'attr':{ 'class':'champ' }}) }}</div>
-                        <div class="col-md-2">
-                            <strong>{{ 'offer.city'|trans }}</strong>
-                        </div>
-                        <div class="col-md-2">{{ form_widget(form.city, {'attr':{ 'class':'champ' }}) }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1 col-md-offset-10">
-                            <button type="submit" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-filter"></span> Search
-                            </button>
-                        </div>
-                    </div>
-                    {{ form_widget(form._token) }}
-                </form>
+                        <br/>
+                        {{ form_widget(form._token) }}
+                    </form>
+                </div>
                 <hr/>
                 <h5>{{ 'offer.view_offers'|trans }} ({{ list_offer|length }})</h5>
                 <hr/>
@@ -91,7 +101,7 @@
                     </div>
                     <hr/>
                 {% endfor %}
-                <div class="row" style="text-align: center">
+                <div class="row text-center">
                     <div class="col-sm-12">{{ knp_pagination_render(list_offer) }}</div>
                 </div>
             </div>
@@ -107,8 +117,7 @@
     {% javascripts
     '@GsmLotOfferBundle/Resources/public/js/collapse.js'
     '@GsmLotIndexBundle/Resources/public/js/load_filter_data.js'
-    '@GsmLotIndexBundle/Resources/public/js/map.js'
-    %}
+    '@GsmLotIndexBundle/Resources/public/js/map.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
