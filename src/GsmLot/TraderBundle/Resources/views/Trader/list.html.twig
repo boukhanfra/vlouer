@@ -1,0 +1,58 @@
+{% extends 'GsmLotIndexBundle:Index:base.html.twig' %}
+{% block contenu %}
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <h4>{{ 'trader.management'|trans }}</h4>
+            <br/>
+            <table class="table">
+                <tr>
+                    <th>{{ 'trader.user_name'|trans }}</th>
+                    <th>{{ 'trader.first_name'|trans }}</th>
+                    <th>{{ 'trader.last_name'|trans }}</th>
+                    <th>{{ 'trader.email'|trans }}</th>
+                    <th>{{ 'trader.total_offer'|trans }}</th>
+                    <th>{{ 'trader.status'|trans }}</th>
+                    <th>{{ 'trader.actions'|trans }}</th>
+                </tr>
+                {% for trader in pagination %}
+                    <tr>
+                        <td>{{ trader.user.userName }}</td>
+                        <td>{{ trader.firstName }}</td>
+                        <td>{{ trader.lastName }}</td>
+                        <td>
+                            <a href="mailto:{{ trader.user.email }}">
+                                {{ trader.user.email }}
+                            </a>
+                        </td>
+                        <td><span class="badge">{{ trader.offers|length }}</span></td>
+                        <td>
+                            {% if trader.enabled %}
+                                <span class="label label-success">{{ 'trader.enabled'|trans }}</span>
+                            {% else %}
+                                <span class="label label-danger">{{ 'trader.desabled'|trans }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if trader.enabled %}
+                                <a class="btn btn-xs btn-danger" href="{{ path('trader_disable',{ 'trader_id': trader.id}) }}">
+                                    <span class="glyphicon glyphicon-remove-circle" title="Disable"></span>
+                                </a>
+                            {% else %}
+                                <a class="btn btn-xs btn-success" href="{{ path('trader_enable',{ 'trader_id': trader.id}) }}">
+                                    <span class="glyphicon glyphicon-ok" title="Enable"></span>
+                                </a>
+                            {% endif %}
+                            <a href="{{ path('offer_trader',{'trader_id':trader.id}) }}" class="btn btn-xs btn-info">
+                                <span class="glyphicon glyphicon-th" title="Offers"></span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="row" style="text-align: center">
+        <div class="col-sm-12">{{ knp_pagination_render(pagination) }}</div>
+    </div>
+{% endblock %}

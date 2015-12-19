@@ -7,6 +7,6 @@ parameters:
     database_password: soundous
     mailer_transport: smtp
     mailer_host: smtpout.secureserver.net
-    mailer_user: admin@gsmlot.com 
+    mailer_user: admin@gsmlot.com
     mailer_password: Redondo92015
     secret: 736922ef9b84163e6b17f1d94eb518ca228229ba

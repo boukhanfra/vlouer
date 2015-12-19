@@ -81,7 +81,13 @@ class Trader
      * @ORM\Column(name="fax_number", type="string", length=255, nullable=true)
      */
     private $faxNumber;
-    
+
+
+    /**
+     * @ORM\Column(name="enabled",type="boolean",nullable=false)
+     * @var boolean
+     */
+    private $enabled;
     
     /**
      * 
@@ -101,8 +107,8 @@ class Trader
 	 * @ORM\JoinColumn(name="job_title_id",referencedColumnName="job_title_id")
 	 */
     protected $jobTitle;
-    
-    
+
+
    	/**
    	 * 
    	 * 
@@ -449,6 +455,23 @@ class Trader
     public function __toString()
     {
         return $this->user->getUsername();
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param boolean $enabled
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
     }
 
 }

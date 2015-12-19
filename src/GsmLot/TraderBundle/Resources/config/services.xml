@@ -8,5 +8,8 @@
         <service id="gsm_lot_trader.city_manager" class="GsmLot\TraderBundle\Manager\CityManager">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
+        <service id="gsm_lot_trader.trader_manager" class="GsmLot\TraderBundle\Manager\TraderManager">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
     </services>
 </container>

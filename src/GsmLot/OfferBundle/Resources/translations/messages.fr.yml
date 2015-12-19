@@ -47,3 +47,5 @@ offer:
     yes: Oui
     activate: Publier offre
     desactivate: Unpublier offre
+    email: 'Email'
+    at: 'à'

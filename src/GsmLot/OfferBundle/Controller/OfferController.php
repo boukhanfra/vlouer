@@ -12,6 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
+use GsmLot\TraderBundle\Entity\Trader;
 
 class OfferController extends Controller
 {
@@ -69,6 +70,39 @@ class OfferController extends Controller
         
         return $this->render('GsmLotOfferBundle:Offer:list.html.twig',array('pagination'=>$pagination,'title'=>'index.titre.sell'));
     }
+
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 * @Route("/offerTrader/{trader_id}",name="offer_trader")
+	 * @Security("has_role('ROLE_ADMIN')")
+	 */
+	public function offerTraderAction(Request $request)
+	{
+		/**
+		 * @var $trader Trader
+		 */
+		$trader = $this->get('gsm_lot_trader.trader_manager')->getTrader($request->get('trader_id'));
+
+		$this->breadcrumbs->addItem('index.offer',$this->get('router')->generate('offer_trader',
+				array('trader_id'=>$request->get('trader_id'))));
+
+		if($trader)
+		{
+			$offer_list = $this->get('gsm_lot_offer.offer_manager')->getOfferTrader($trader);
+
+			$paginator = $this->get('knp_paginator');
+
+			$pagination = $paginator->paginate($offer_list,$request->query->getInt('page',1),10);
+
+			return $this->render('GsmLotOfferBundle:Offer:list.html.twig',array('pagination'=>$pagination));
+		}
+		else
+		{
+			return $this->redirect($this->get('router')->generate('trader_list'));
+		}
+	}
 
 
 	/**

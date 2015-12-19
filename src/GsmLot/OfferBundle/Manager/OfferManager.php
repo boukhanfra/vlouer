@@ -245,4 +245,14 @@ class OfferManager extends Manager
 			throw $e;
 		}
 	}
+
+
+	/**
+	 * @param $trader
+	 * @return array
+	 */
+	public function getOfferTrader($trader)
+	{
+		return $this->getRepository()->findBy(array('trader'=>$trader));
+	}
 }

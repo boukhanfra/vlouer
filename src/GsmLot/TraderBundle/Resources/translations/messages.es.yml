@@ -1,0 +1,10 @@
+trader.management: __trader.management
+trader.user_name: __trader.user_name
+trader.first_name: __trader.first_name
+trader.last_name: __trader.last_name
+trader.email: __trader.email
+trader.total_offer: __trader.total_offer
+trader.status: __trader.status
+trader.actions: __trader.actions
+trader.enabled: __trader.enabled
+trader.desabled: __trader.desabled
