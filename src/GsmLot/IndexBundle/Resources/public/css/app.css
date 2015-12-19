@@ -13,3 +13,19 @@
 {
     width:100%;
 }
+
+.map
+{
+    width: 100%;
+    height: 300px;
+}
+
+.footer-element
+{
+    color:white;
+}
+
+.horloge
+{
+    padding-right: 5px;
+}

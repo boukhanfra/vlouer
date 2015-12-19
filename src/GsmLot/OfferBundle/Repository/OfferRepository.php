@@ -91,6 +91,7 @@ class OfferRepository extends EntityRepository
 		
 		return $query->andWhere('o.active = true')
 		->andWhere('o.enable = true')
+		->andWhere('t.enabled = true')
 		->orderBy('o.createdOn','desc')
 		->getQuery()->getResult();
 	}
@@ -115,6 +116,7 @@ class OfferRepository extends EntityRepository
 					->join('GsmLotOfferBundle:OfferType','ot','WITH','o.offerType = ot.id AND ot.name= :type')
 					->where('o.active = true')
 					->andWhere('o.enable = true')
+					->andWhere('t.enabled = true')
 					->groupBy('m.name')
 					->addGroupBy('b.name')
 					->setParameter('type',$type)
@@ -122,5 +124,4 @@ class OfferRepository extends EntityRepository
 					->getQuery()
 					->getArrayResult();
 	}
-
 }

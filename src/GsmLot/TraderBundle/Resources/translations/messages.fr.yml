@@ -1,0 +1,10 @@
+trader.management: 'Gestion des commerçants'
+trader.user_name: "Nom d'utilisateur"
+trader.first_name: 'Nom'
+trader.last_name: 'Prénom'
+trader.email: 'Email'
+trader.total_offer: 'Total des offres'
+trader.status: 'Statut'
+trader.actions: 'Actions'
+trader.enabled: 'Activé'
+trader.desabled: 'Désactivé'

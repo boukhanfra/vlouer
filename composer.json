@@ -59,7 +59,7 @@
 			"file" : "app/config/parameters.yml"
 		}
 	},
-	"minimum-stability" : "dev",
+	"minimum-stability" : "stable",
 	"description" : "The Gsm Lot plateform",
 	"keywords" : [
 		"Gsm",
