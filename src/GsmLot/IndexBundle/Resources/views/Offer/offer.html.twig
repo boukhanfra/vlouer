@@ -25,6 +25,7 @@
                             </div>
                         </div>
                         <br/>
+
                         <div class="row">
                             <div class="col-md-2">
                                 <strong>{{ 'offer.country'|trans }}</strong>
@@ -40,6 +41,7 @@
                             </div>
                         </div>
                         <br/>
+
                         <div class="row">
                             <div class="col-md-2">
                                 <strong>{{ 'offer.norm'|trans }}</strong>
@@ -103,9 +105,28 @@
                     <br/>
                     <div class="row">
                         <div class="collapse" id="{{ offer.id }}">
-                            <div class="well">
-                                {% include 'GsmLotIndexBundle:Offer:popup.html.twig' with  {'offer':offer} %}
-                            </div>
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <div class="well">
+                                    {% include 'GsmLotIndexBundle:Offer:popup.html.twig' with  {'offer':offer} %}
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    <strong>
+                                        {{ 'index.offer.message'|trans }}
+                                    </strong>
+                                    <br/>
+                                    <br/>
+                                    <p class="text-justify">
+                                        {{ 'index.offer.noauthenticated_user'|trans }}
+                                    </p>
+                                    <br/>
+                                    <br/>
+                                    <a class="btn btn-success" href="{{ path('fos_user_security_login') }}">
+                                        {{ 'index.offer.login_or_register'|trans }}
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                     <hr/>

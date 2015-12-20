@@ -9,8 +9,5 @@
 .buildpath
 .settings*
 .idea*
-<<<<<<< HEAD
 /app/config/save
-=======
 composer.lock
->>>>>>> 29bfedc042d5d968af1b31afed3b930f948c972f

@@ -3,7 +3,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block contenu %}
-
      <div class="container" style="padding:10px">
          <div class="row">        
             <div class="col-md-5" style="font-size:17px;">
@@ -31,24 +30,13 @@
 		<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
 		  </div>
 	</div>
-   <center> 
-   <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /></center>
+   <div class="text-center">
+   <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /></div>
 </form>
 
 <a href="{{ path('fos_user_resetting_request') }}" > {{ 'security.login.passwordlink'|trans }}</a>
-	
             </div>
-            
-           <div class="col-md-7">
-            <blockquote>
-      		    <div class="jumbotron">
-  <h2>{{ 'security.login.jumbotron.header'|trans }} </h2>
-  <p>{{ 'security.login.jumbotron.texte'|trans }}</p>
-  <p><a class="btn btn-primary btn-md" href="{{ path("fos_user_registration_register") }}">{{ 'layout.register'|trans }}</a></p>
-				</div>
-		    </blockquote>
-            </div>        
-       </div>
+        </div>
     </div>
-     
+
 {% endblock %}
