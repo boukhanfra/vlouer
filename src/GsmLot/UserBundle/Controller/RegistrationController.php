@@ -48,13 +48,12 @@ class RegistrationController extends BaseController{
 		$form->setData($user);
 	
 		$form->handleRequest($request);
-		
-	//	echo 'city '.$request->request->get('fos_user_registration_form[trader][company]');
-	
+
 		if ($form->isValid()) {
 			$event = new FormEvent($form, $request);
 			$dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 			$user->getTrader()->setUser($user);
+			$user->getTrader()->setEnabled(true);
 			$userManager->updateUser($user);
 	
 			if (null === $response = $event->getResponse()) {

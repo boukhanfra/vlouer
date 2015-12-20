@@ -37,3 +37,6 @@ index.offer.search: 'Filtro'
 index.offer.result_search: 'Resultado de la búsqueda'
 index.menu.manage_trader: 'gestionar los comerciantes'
 index.boutton.registersell: 'Registro y Strat compra'
+index.offer.noauthenticated_user: "Tienes que iniciar sesión para ver el contenido detallado de la oferta, los detalles de las ofertas está reservada sólo para los miembros de la plataforma GsmLot"
+index.offer.login_or_register: "Entrar o registrar"
+index.offer.message: "a la atención del apreciado visitante:"

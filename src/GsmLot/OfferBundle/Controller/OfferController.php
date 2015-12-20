@@ -14,6 +14,12 @@ use Symfony\Component\HttpFoundation\Response;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 use GsmLot\TraderBundle\Entity\Trader;
 
+/**
+ * Class OfferController
+ * @package GsmLot\OfferBundle\Controller
+ * @author: aziz
+ * @since: 2015-10-22
+ */
 class OfferController extends Controller
 {
 
@@ -49,14 +55,16 @@ class OfferController extends Controller
 
 		$user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $list_offer = array();
+		$list_offer = array();
+
+		$offer_list = $user->getTrader()->getOffers();
 
         $this->get('session')->set('redirect','offer_list');
 
         /**
          * @var $offer Offer
          */
-		foreach($user->getTrader()->getOffers() as $offer)
+		foreach($offer_list as $offer)
 		{
 			if($offer->getOfferType()->getName()=='sell')
 			{
@@ -120,10 +128,12 @@ class OfferController extends Controller
 
 		$list_offer = array();
 
+		$offer_liste = $user->getTrader()->getOffers();
+
         /**
          * @var $offer Offer
          */
-		foreach($user->getTrader()->getOffers() as $offer)
+		foreach($offer_liste as $offer)
 		{
 			if($offer->getOfferType()->getName()=='buy')
 			{
