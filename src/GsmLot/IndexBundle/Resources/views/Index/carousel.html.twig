@@ -1,4 +1,4 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -9,15 +9,22 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             {% image '@GsmLotIndexBundle/Resources/public/images/homeheader.jpg' %}
-            <img src="{{ asset_url }}" alt="gsmlot phones exchange" class="img-responsive"/>
+            <img src="{{ asset_url }}" alt="gsmlot phones exchange"  class="img-responsive"/>
             {% endimage %}
             <div class="carousel-caption">
-                The Traders Exchange plateforme
             </div>
         </div>
         <div class="item">
-            {% image '@GsmLotIndexBundle/Resources/public/images/header.jpg' %}
-            <img src="{{ asset_url }}" height="380" alt="gsmlot phones exchange" class="img-responsive"/>
+            {% image '@GsmLotIndexBundle/Resources/public/images/carousel1.jpg' %}
+            <img src="{{ asset_url }}"  alt="gsmlot phones exchange" class="img-responsive"/>
+            {% endimage %}
+            <div class="carousel-caption">
+            </div>
+        </div>
+
+        <div class="item">
+            {% image '@GsmLotIndexBundle/Resources/public/images/carousel2.jpg' %}
+            <img src="{{ asset_url }}"  alt="gsmlot phones exchange" class="img-responsive"/>
             {% endimage %}
             <div class="carousel-caption">
             </div>
