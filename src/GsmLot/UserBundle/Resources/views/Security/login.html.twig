@@ -3,8 +3,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block contenu %}
+
      <div class="container" style="padding:10px">
-         <div class="row">        
+         <div class="row">
             <div class="col-md-5" style="font-size:17px;">
 				{% if error %}
 					<div class="alert alert-danger">{{ 'security.login.failure'|trans }}</div>
@@ -35,8 +36,24 @@
 </form>
 
 <a href="{{ path('fos_user_resetting_request') }}" > {{ 'security.login.passwordlink'|trans }}</a>
+
+</div>
+
+            <div class="col-md-7">
+                <blockquote>
+                    <div class="jumbotron">
+                        <h2>{{ 'security.login.jumbotron.header'|trans }} </h2>
+
+                        <p>{{ 'security.login.jumbotron.texte'|trans }}</p>
+
+                        <p><a class="btn btn-primary btn-md"
+                              href="{{ path("fos_user_registration_register") }}">{{ 'layout.register'|trans }}</a></p>
+                    </div>
+                </blockquote>
+
             </div>
-        </div>
+
     </div>
+	</div>
 
 {% endblock %}
