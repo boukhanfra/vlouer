@@ -55,12 +55,25 @@
                                             <a href="{{ path('offer_create') }}">{{ 'index.menu.myspaceaddoffer'|trans }}</a>
                                         </li>
                                         <li><a href="{{ path('offer_list') }}">{{ 'index.menu.myspaceoffers'|trans }}
-                                                <span class="badge">{{ app.user.trader.offers|offer|length }}</span></a>
+                                                <span class="badge">
+                                                {% if app.user.trader.offers is defined %}
+                                                    {{ app.user.trader.offers|offer|length }}
+                                                {% else %}
+                                                    0
+                                                {% endif %}
+                                                </span></a>
                                         </li>
                                         <li>
                                             <a href="{{ path('offer_request') }}">{{ 'index.menu.myspacerequests'|trans }}
-                                                <span class="badge">{{ app.user.trader.offers|request|length }}</span>
-                                            </a></li>
+                                                <span class="badge">
+                                                {% if app.user.trader.offers is defined %}
+                                                {{ app.user.trader.offers|request|length }}
+                                                {% else %}
+                                                    0
+                                                {% endif %}
+                                                </span>
+                                            </a>
+                                        </li>
                                     {% endif %}
                                     <li>
                                         <a href="{{ path('fos_user_profile_edit') }}">{{ 'index.menu.myspaceprofile'|trans }}</a>

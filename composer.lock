@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "319b323ef5d92e7f219b420b431acc37",
-    "content-hash": "b7de4e2eb1b32c0e3b5c869d7b6ea64d",
+    "hash": "e9a2506f1a9039f64a31484fd9114a3c",
+    "content-hash": "93ea36ad7004091cd27e13c9f1e24479",
     "packages": [
         {
             "name": "coresphere/console-bundle",

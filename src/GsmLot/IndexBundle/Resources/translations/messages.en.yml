@@ -37,3 +37,6 @@ index.titre.buy: 'My requests'
 index.menu.manage_trader: 'Manage traders'
 index.offer.search: 'Filter'
 index.offer.result_search: 'Search result'
+index.offer.noauthenticated_user: "You must be logged in to see the detailed content of the offer, details of offers is reserved only for members of the platform GsmLot"
+index.offer.login_or_register: "Log in or registrer"
+index.offer.message: "To dear visitor's attention:"

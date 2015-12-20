@@ -37,3 +37,6 @@ index.titre.buy: 'Mes demandes d''achat'
 index.menu.manage_trader: 'Gestion des commerçants'
 index.offer.search: 'Filtrer'
 index.offer.result_search: 'Résultat de recherche'
+index.offer.noauthenticated_user: "Vous devez être connecté pour voir le contenu détaillé de l'offre, le détail des offres est réservé seulement aux membres de la plateforme GsmLot"
+index.offer.login_or_register: "Se connecter ou s'enregistrer"
+index.offer.message: "A l'attention de cher internaute:"
