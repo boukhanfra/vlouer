@@ -1,7 +1,7 @@
-GsmLot
+VLouer
 =======
 
-The GsmLot web plateform:
+The VLouer web plateform:
 
 Contributors: a.boukhanfra, nizar.ibaline
 
